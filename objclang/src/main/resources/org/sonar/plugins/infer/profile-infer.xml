@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<profile>
+    <name>Infer</name>
+    <language>objc</language>
+    <rules>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>InferKey</key>
+        </rule>
+    </rules>
+</profile>

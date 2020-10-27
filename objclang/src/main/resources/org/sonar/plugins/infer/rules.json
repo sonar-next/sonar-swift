@@ -1,0 +1,16 @@
+[
+  {
+    "category": "BestPractice",
+    "key": "UndetachedDelegate",
+    "name": "Undetached delegate or data source",
+    "description": "When an object sets itself as the delegate or data source of one of its members, it must detach that reference in its -[NSObject dealloc] method.",
+    "severity": "MAJOR"
+  },
+  {
+    "category": "BestPractice",
+    "key": "MallocWithoutSizeof",
+    "name": "Memory allocation without using sizeof",
+    "description": "The sizeof operator should be used to obtain the correct size for any allocated structure or variable \u2014 the sizes of some data types vary between the 32-bit and 64-bit runtimes.This rule is na\u00efve and may produce false positives in many cases.",
+    "severity": "MAJOR"
+  }
+]

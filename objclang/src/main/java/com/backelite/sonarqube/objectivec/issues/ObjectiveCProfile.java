@@ -19,6 +19,8 @@ package com.backelite.sonarqube.objectivec.issues;
 
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
+import com.backelite.sonarqube.objectivec.issues.infer.InferProfile;
+import com.backelite.sonarqube.objectivec.issues.infer.InferProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfile;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfileImporter;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
@@ -37,10 +39,13 @@ public class ObjectiveCProfile implements BuiltInQualityProfilesDefinition {
     private static final Logger LOGGER = LoggerFactory.getLogger(ObjectiveCProfile.class);
     private final OCLintProfileImporter ocLintProfileImporter;
     private final FauxPasProfileImporter fauxPasProfileImporter;
+    private final InferProfileImporter inferProfileImporter;
 
-    public ObjectiveCProfile(final OCLintProfileImporter ocLintProfileImporter, final FauxPasProfileImporter fauxPasProfileImporter) {
+    public ObjectiveCProfile(final OCLintProfileImporter ocLintProfileImporter, final FauxPasProfileImporter fauxPasProfileImporter,
+                             final InferProfileImporter inferProfileImporter) {
         this.ocLintProfileImporter = ocLintProfileImporter;
         this.fauxPasProfileImporter = fauxPasProfileImporter;
+        this.inferProfileImporter = inferProfileImporter;
     }
 
     @Override
@@ -66,6 +71,15 @@ public class ObjectiveCProfile implements BuiltInQualityProfilesDefinition {
             }
         } catch (IOException ex){
             LOGGER.error("Error Creating Objective-C Profile",ex);
+        }
+
+        try (Reader config = new InputStreamReader(getClass().getResourceAsStream(InferProfile.PROFILE_PATH))) {
+            RulesProfile inferPasRulesProfile = inferProfileImporter.importProfile(config, ValidationMessages.create());
+            for (ActiveRule rule : inferPasRulesProfile.getActiveRules()) {
+                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+            }
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating Objective-C Profile", ex);
         }
         nbiqp.done();
     }
