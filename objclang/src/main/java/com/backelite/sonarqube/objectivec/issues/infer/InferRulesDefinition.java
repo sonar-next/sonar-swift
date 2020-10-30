@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Harry
@@ -25,10 +27,15 @@ public class InferRulesDefinition implements RulesDefinition {
     public static final String REPOSITORY_NAME = REPOSITORY_KEY;
     private static final String RULES_FILE = "/org/sonar/plugins/infer/rules.json";
 
+    private final SonarRuntime sonarRuntime;
+    public InferRulesDefinition(SonarRuntime sonarRuntime) {
+        this.sonarRuntime = sonarRuntime;
+    }
+
     @Override
     public void define(Context context) {
         NewRepository repository = context.createRepository(REPOSITORY_KEY, ObjectiveC.KEY).setName(REPOSITORY_NAME);
-        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream(RULES_FILE), Charset.forName("UTF-8"))) {
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream(RULES_FILE), StandardCharsets.UTF_8)) {
             JSONArray slRules = (JSONArray) JSONValue.parse(reader);
             if (slRules != null) {
                 for (Object obj : slRules) {

@@ -24,6 +24,10 @@ import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasRulesDefinition;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasSensor;
+import com.backelite.sonarqube.objectivec.issues.infer.InferProfile;
+import com.backelite.sonarqube.objectivec.issues.infer.InferProfileImporter;
+import com.backelite.sonarqube.objectivec.issues.infer.InferRulesDefinition;
+import com.backelite.sonarqube.objectivec.issues.infer.InferSensor;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfile;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintRulesDefinition;
@@ -100,6 +104,13 @@ import java.util.Arrays;
                 name = "Path to FauxPas json formatted report",
                 description = "Relative to projects' root.",
                 global = false,
+                project = true),
+        @Property(
+                key = InferSensor.REPORT_PATH_KEY,
+                defaultValue = InferSensor.DEFAULT_REPORT_PATH,
+                name = "Path to Infer json formatted report",
+                description = "Relative to projects' root.",
+                global = false,
                 project = true)
 
 })
@@ -140,6 +151,14 @@ public class SwiftPlugin implements Plugin {
                 // OCLint quality profile
                 OCLintProfile.class,
                 OCLintProfileImporter.class,
+
+                // Infer OC rules
+                InferSensor.class,
+                InferRulesDefinition.class,
+
+                // Infer OC quality profile
+                InferProfile.class,
+                InferProfileImporter.class,
 
                 // FauxPas rules
                 FauxPasSensor.class,

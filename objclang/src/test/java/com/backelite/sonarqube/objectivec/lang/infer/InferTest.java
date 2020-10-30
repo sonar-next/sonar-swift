@@ -17,7 +17,7 @@ public class InferTest {
     @Test
     public void define() {
         SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(7, 3), SonarQubeSide.SERVER);
-        InferRulesDefinition rulesDefinition = new InferRulesDefinition();
+        InferRulesDefinition rulesDefinition = new InferRulesDefinition(sonarRuntime);
         RulesDefinition.Context context = new RulesDefinition.Context();
         rulesDefinition.define(context);
 
