@@ -49,7 +49,7 @@ public class InferRulesDefinition implements RulesDefinition {
         } catch (IOException e) {
             logger.error("Failed to load infer rules", e);
         }
-        // TODO: By Harry 2020/10/27 下方的文件待写，需要研究一下是什么东西
+
         SqaleXmlLoader.load(repository, "/com/sonar/sqale/infer-model.xml");
         repository.done();
 
