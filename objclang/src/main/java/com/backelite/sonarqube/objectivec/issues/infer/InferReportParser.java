@@ -59,8 +59,8 @@ public class InferReportParser {
     private void recordIssue(final JSONObject jsonObject) {
 
         String filePath = (String) jsonObject.get("file");
-        if (filePath != null){
-            FilePredicate fp = context.fileSystem().predicates().hasAbsolutePath(filePath);
+        if (filePath != null) {
+            FilePredicate fp = context.fileSystem().predicates().hasRelativePath(filePath);
 
             if (!context.fileSystem().hasFiles(fp)) {
                 logger.warn("file not included in sonar {}", filePath);
