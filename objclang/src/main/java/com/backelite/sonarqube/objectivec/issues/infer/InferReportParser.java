@@ -26,6 +26,7 @@ import java.io.IOException;
 public class InferReportParser {
 
     private static final Logger logger = LoggerFactory.getLogger(InferReportParser.class);
+    public static final String LINE_NUMBER = "line_number";
 
     private final SensorContext context;
 
@@ -60,6 +61,24 @@ public class InferReportParser {
 
         String filePath = (String) jsonObject.get("file");
         if (filePath != null) {
+
+            JSONArray bugTraceJsonArray = (JSONArray) jsonObject.get("bug_trace");
+            int lineNum = Integer.valueOf(String.valueOf(jsonObject.get("line")));
+            if (bugTraceJsonArray.size() == 1) {
+                JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(0);
+                Object lineNumber = bugTraceObject.get(LINE_NUMBER);
+                filePath = (String) bugTraceObject.get("filename");
+                if (lineNumber == null) {
+                    logger.error("bug_trace line_number is null, bugTraceObject = {}", bugTraceObject);
+                    return;
+                }
+                lineNum = Integer.valueOf(String.valueOf(lineNumber));
+            }
+
+            if (lineNum == 0) {
+                lineNum++;
+            }
+
             FilePredicate fp = context.fileSystem().predicates().hasRelativePath(filePath);
 
             if (!context.fileSystem().hasFiles(fp)) {
@@ -68,11 +87,6 @@ public class InferReportParser {
             }
 
             String info = (String) jsonObject.get("qualifier");
-
-            int lineNum = (int) jsonObject.get("line");
-            if (lineNum == 0) {
-                lineNum++;
-            }
 
             InputFile inputFile = context.fileSystem().inputFile(fp);
             NewIssueLocation dil = new DefaultIssueLocation()
