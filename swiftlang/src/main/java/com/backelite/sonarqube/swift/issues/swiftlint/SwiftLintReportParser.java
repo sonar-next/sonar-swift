@@ -37,6 +37,8 @@ public class SwiftLintReportParser {
 
     private final SensorContext context;
 
+    private static final Pattern PATTERN = Pattern.compile("(.*.swift):(\\w+):?(\\w+)?: (warning|error): (.*) \\((\\w+)");
+
     public SwiftLintReportParser(final SensorContext context) {
         this.context = context;
     }
@@ -53,8 +55,7 @@ public class SwiftLintReportParser {
     private void recordIssue(final String line) {
         LOGGER.debug("record issue {}", line);
 
-        Pattern pattern = Pattern.compile("(.*.swift):(\\w+):?(\\w+)?: (warning|error): (.*) \\((\\w+)");
-        Matcher matcher = pattern.matcher(line);
+        Matcher matcher = PATTERN.matcher(line);
         while (matcher.find()) {
             String filePath = matcher.group(1);
             int lineNum = Integer.parseInt(matcher.group(2));
