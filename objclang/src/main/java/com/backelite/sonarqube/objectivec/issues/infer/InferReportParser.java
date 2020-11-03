@@ -93,15 +93,20 @@ public class InferReportParser {
 
             InputFile inputFile = context.fileSystem().inputFile(fp);
             assert inputFile != null;
-            NewIssueLocation dil = new DefaultIssueLocation()
-                    .on(inputFile)
-                    .at(inputFile.selectLine(lineNum))
-                    .message(info);
-            context.newIssue()
-                    .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, (String) jsonObject.get("bug_type")))
-                    .addFlow(this.composeLocationList(filePath, bugTraceJsonArray))
-                    .at(dil)
-                    .save();
+            try {
+                NewIssueLocation dil = new DefaultIssueLocation()
+                        .on(inputFile)
+                        .at(inputFile.selectLine(lineNum))
+                        .message(info);
+                context.newIssue()
+                        .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, (String) jsonObject.get("bug_type")))
+                        .addFlow(this.composeLocationList(filePath, bugTraceJsonArray))
+                        .at(dil)
+                        .save();
+            } catch (IllegalArgumentException e) {
+                logger.error("infer error, jsonObject = {}", jsonObject, e);
+            }
+
         }
     }
 
@@ -128,11 +133,15 @@ public class InferReportParser {
                     continue;
                 }
                 assert inputFile != null;
-                NewIssueLocation newIssueLocation = new DefaultIssueLocation()
-                        .on(inputFile)
-                        .at(inputFile.selectLine(lineNum))
-                        .message(description);
-                locations.add(newIssueLocation);
+                try {
+                    NewIssueLocation newIssueLocation = new DefaultIssueLocation()
+                            .on(inputFile)
+                            .at(inputFile.selectLine(lineNum))
+                            .message(description);
+                    locations.add(newIssueLocation);
+                } catch (IllegalArgumentException e) {
+                    logger.error("infer error, bugTraceObject = {}", bugTraceObject, e);
+                }
             }
         }
 
