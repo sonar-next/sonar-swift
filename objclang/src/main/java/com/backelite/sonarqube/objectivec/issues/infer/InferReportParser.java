@@ -44,12 +44,9 @@ public class InferReportParser {
             if (reportObj != null) {
                 JSONArray reportJson = (JSONArray) reportObj;
                 for (Object obj : reportJson) {
-                    recordIssue((JSONObject) obj);
+                    this.recordIssue((JSONObject) obj);
                 }
             }
-
-        } catch (FileNotFoundException e) {
-            logger.error("Failed to parse Infer report file", e);
 
         } catch (IOException e) {
             logger.error("Failed to parse Infer report file", e);
@@ -63,7 +60,7 @@ public class InferReportParser {
         if (filePath != null) {
 
             JSONArray bugTraceJsonArray = (JSONArray) jsonObject.get("bug_trace");
-            int lineNum = Integer.valueOf(String.valueOf(jsonObject.get("line")));
+            int lineNum = Integer.parseInt(String.valueOf(jsonObject.get("line")));
             if (bugTraceJsonArray.size() == 1) {
                 JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(0);
                 Object lineNumber = bugTraceObject.get(LINE_NUMBER);
@@ -72,11 +69,12 @@ public class InferReportParser {
                     logger.error("bug_trace line_number is null, bugTraceObject = {}", bugTraceObject);
                     return;
                 }
-                lineNum = Integer.valueOf(String.valueOf(lineNumber));
+                lineNum = Integer.parseInt(String.valueOf(lineNumber));
             }
 
             if (lineNum == 0) {
-                lineNum++;
+                logger.error("line number == 0, {}", jsonObject);
+                return;
             }
 
             FilePredicate fp = context.fileSystem().predicates().hasRelativePath(filePath);
@@ -89,6 +87,7 @@ public class InferReportParser {
             String info = (String) jsonObject.get("qualifier");
 
             InputFile inputFile = context.fileSystem().inputFile(fp);
+            assert inputFile != null;
             NewIssueLocation dil = new DefaultIssueLocation()
                     .on(inputFile)
                     .at(inputFile.selectLine(lineNum))
