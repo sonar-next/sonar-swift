@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -112,7 +113,7 @@ public class InferReportParser {
 
     private List<NewIssueLocation> composeLocationList(String parentFilePath, JSONArray bugTraceJsonArray) {
         List<NewIssueLocation> locations = new ArrayList<>();
-        for (int i = bugTraceJsonArray.size() - 1; i > 0; i--) {
+        for (int i = bugTraceJsonArray.size() - 1; i >= 0; i--) {
             JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(i);
             String filePath = (String) bugTraceObject.get("filename");
             if (filePath != null) {
