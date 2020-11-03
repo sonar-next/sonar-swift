@@ -7,7 +7,10 @@ import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.InputComponent;
 import org.sonar.api.batch.fs.InputFile;
+import org.sonar.api.batch.fs.TextRange;
+import org.sonar.api.batch.fs.internal.DefaultTextRange;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.batch.sensor.issue.internal.DefaultIssueLocation;
@@ -17,6 +20,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Harry
@@ -94,9 +99,44 @@ public class InferReportParser {
                     .message(info);
             context.newIssue()
                     .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, (String) jsonObject.get("bug_type")))
+                    .addFlow(this.composeLocationList(filePath, bugTraceJsonArray))
                     .at(dil)
                     .save();
         }
+    }
+
+    private List<NewIssueLocation> composeLocationList(String parentFilePath, JSONArray bugTraceJsonArray) {
+        List<NewIssueLocation> locations = new ArrayList<>();
+        for (int i = 0; i < bugTraceJsonArray.size(); i++) {
+            JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(0);
+            String filePath = (String) bugTraceObject.get("filename");
+            if (filePath != null) {
+//                if (!filePath.equals(parentFilePath)) {
+//                    continue;
+//                }
+                FilePredicate fp = context.fileSystem().predicates().hasRelativePath(filePath);
+                if (!context.fileSystem().hasFiles(fp)) {
+                    logger.warn("bug_trace to location file not included in sonar {}", filePath);
+                    continue;
+                }
+                InputFile inputFile = context.fileSystem().inputFile(fp);
+                String description = (String) bugTraceObject.get("description");
+                Object lineNumber = bugTraceObject.get(LINE_NUMBER);
+                int lineNum = Integer.parseInt(String.valueOf(lineNumber));
+                if (lineNum == 0) {
+                    logger.error("bug_trace to location line number == 0, {}", bugTraceObject);
+                    continue;
+                }
+                assert inputFile != null;
+                NewIssueLocation newIssueLocation = new DefaultIssueLocation()
+                        .on(inputFile)
+                        .at(inputFile.selectLine(lineNum))
+                        .message(description);
+                locations.add(newIssueLocation);
+            }
+        }
+
+        return locations;
     }
 
 }
