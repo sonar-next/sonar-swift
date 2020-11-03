@@ -107,8 +107,8 @@ public class InferReportParser {
 
     private List<NewIssueLocation> composeLocationList(String parentFilePath, JSONArray bugTraceJsonArray) {
         List<NewIssueLocation> locations = new ArrayList<>();
-        for (int i = 0; i < bugTraceJsonArray.size(); i++) {
-            JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(0);
+        for (int i = bugTraceJsonArray.size() - 1; i > 0; i--) {
+            JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(i);
             String filePath = (String) bugTraceObject.get("filename");
             if (filePath != null) {
 //                if (!filePath.equals(parentFilePath)) {
