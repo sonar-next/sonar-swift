@@ -4,636 +4,745 @@
     "key": "BIABDUCTION_MEMORY_LEAK",
     "name": "biabduction memory leak",
     "description": "Reported as Memory LeakMemory Leak by biabduction.\nSee MEMORY_LEAK.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "DANGLING_POINTER_DEREFERENCE",
     "name": "dangling pointer dereference",
     "description": "Reported as Dangling Pointer DereferenceDangling Pointer Dereference by biabduction.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "DIVIDE_BY_ZERO",
     "name": "divide by zero",
     "description": "Reported as Divide By ZeroDivide By Zero by biabduction.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "EMPTY_VECTOR_ACCESS",
     "name": "empty vector access",
     "description": "Reported as Empty Vector AccessEmpty Vector Access by biabduction.\nThis error type is reported only in C++, in versions >= C++11.\nThe code is trying to access an element of a vector that Infer believes to be empty. Such an access will cause undefined behavior at runtime.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "IVAR_NOT_NULL_CHECKED",
     "name": "ivar not null checked",
     "description": "Reported as Ivar Not Null CheckedIvar Not Null Checked by biabduction.\nThis error type is only reported in Objective-C. This is similar to Null dereference, but Infer hasn t found a whole trace where the error can happen, but only found that a null dereference can happen if an instance variable of a parameter is `nil`. For example:\nPossible solutions are adding a check for `nil`, or making sure that the method is not called with `nil`.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "NULL_DEREFERENCE",
     "name": "null dereference",
     "description": "Reported as Null DereferenceNull Dereference by biabduction.\nInfer reports null dereference bugs in C, Objective-C and Java. The issue is about a pointer that can be `null` and it is dereferenced. This leads to a crash in all the above languages.\n### Null dereference in C\nHere is an example of an inter-procedural null dereference bug in C:\n### Null dereference in Objective-C\nIn Objective-C, null dereferences are less common than in Java, but they still happen and their cause can be hidden. In general, passing a message to nil does not cause a crash and returns `nil`, but dereferencing a pointer directly does cause a crash as well as calling a `nil` block.C\nMoreover, there are functions from the libraries that do not allow `nil` to be passed as argument. Here are some examples:\n### Null dereference in Java\nMany of Infer s reports of potential NPE s come from code of the form\nIf you see code of this form, then you have several options.\n If you are unsure whether or not foo() will return null , you should ideally i. Change the code to ensure that foo() can not return null ii. Add a check for whether p is null, and do something other than dereferencing p when it is null.\nSometimes, in case ii it is not obvious what you should do when p is null. One possibility (a last option) is to throw an exception, failing early. This can be done using checkNotNull as in the following code:\nThe call checkNotNull(foo()) will never return null; in case foo() returns null it fails early by throwing an NPE.\n If you are absolutely sure that foo() will not be null , then if you land your diff this case will no longer be reported after your diff makes it to master. In the future we might include analysis directives (hey, analyzer, p is not null!) like in Hack that tell the analyzer the information that you know, but that is for later.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "PARAMETER_NOT_NULL_CHECKED",
     "name": "parameter not null checked",
     "description": "Reported as Parameter Not Null CheckedParameter Not Null Checked by biabduction.\nThis error type is reported only in Objective-C. It is similar to Null dereference, but Infer hasn t found a whole trace where the error can happen, but only found that a null dereference can happen if you call a method with nil as an argument. Therefore it is only a warning. For example:\nor when the parameter is a block:\nPossible solutions are adding a check for `nil`, or making sure that the method is not called with `nil`. When an argument will never be `nil`, you can add the annotation `nonnull` to the argument s type, to tell Infer (and the type system), that the argument won t be `nil`. This will silence the warning.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "PREMATURE_NIL_TERMINATION_ARGUMENT",
     "name": "premature nil termination argument",
     "description": "Reported as Premature Nil Termination ArgumentPremature Nil Termination Argument by biabduction.\nThis error type is reported in C and Objective-C. In many variadic methods, `nil` is used to signify the end of the list of input objects. This is similar to nil-termination of C strings. If one of the arguments that is not the last argument to the method is `nil` as well, Infer reports an error because that may lead to unexpected behavior.\nAn example of such variadic methods is arrayWithObjects\nIn this example, if `str` is `nil` then an array `@[@\"aaa\"]` of size 1 will be created, and not an array `@[@\"aaa\", str, @\"bbb\"]` of size 3 as expected.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "RESOURCE_LEAK",
     "name": "resource leak",
     "description": "Reported as Resource LeakResource Leak by biabduction.\nInfer reports resource leaks in C, Objective-C and Java. In general, resources are entities such as files, sockets, connections, etc, that need to be closed after being used.\n### Resource leak in C\nThis is an example of a resource leak in C code:\n### Resource leak in Java\nFor the remaining of this section, we will consider examples of resource leaks in Java code.\nTIP: A common source of bugs is exceptions skipping past close() statements. That is the first thing to look for if INFER reports a potential resource leak.\n### Basics and Standard Idiom\nSome objects in Java, the resources, are supposed to be closed when you stop using them, and failure to close is a resource leak. Resources include input streams, output streams, readers, writers, sockets, http connections, cursors, and json parsers.\nThe standard idiom is\nor more for example,\nand you should use the standard idiom for the most part, when you don t want to return the resource to the surrounding context.\nSometimes people just leave out close(), and that is a bug, but more typically exceptional paths are the root of the problem, as in\nwhere an exception in fos.write will cause execution to skip past the close() statement.\n#### Multiple Resources Bugs\nWe can deal with multiple resources correctly and simply just by nesting the standard idiom.\nBugs often occur when using multiple resources in other ways because of exceptions in close() methods. For example,\nHere, if there is an exception in the call to fis.close() execution will skip past fos.close(); a leak.\nAnother way, besides the standard idiom, to deal with this problem is to swallow exceptions.\nYou can also swallow the exception on the output stream. Some people prefer not to swallow output stream exceptions, and also flush before closing. http://code.google.com/p/guava-libraries/issues/detail?id=1118\nNotice that the nested standard idiom does not need the checks for null, which are in there in this case to protect against the case when one of the allocations throws an exception, in which case one would get a NullPointerException.\n### Nested_Allocations\nWhen a resource allocation is included as an argument to a constructor, if the constructor fails it can leave an an unreachable resource that no one can close.\nFor example gzipOutputStream = new GZIPOutputStream(new FileOutputStream(out)); is bad in case the outer constructor, GZIPOutputStream, throws an exception. In that case, no one will have a hold of the FileOutputStream and so no one will be able to close it.\nIn such a case you need to move the allocation the FileOutputStream out of the nested position and name it, so you are able to close if anything goes wrong during execution of the GZIPOutputStream constructor.\nHere are resources that can throw exceptions i their constructor(s).\n - ObjectInputStream , ObjectOutputStream, PipedInputStream, PipedOutputStream,  PipedReader, PipedWriter, JarInputStream, JarOutputStream, GZIPInputStream,  GZIPOutputStream , ZipFile all throw IOException\n - PrintStream throws UnsupportedEncodingException\nThe constructors for FileInputStream, FileOutputStream and RandomAccessFile throw FileNotFoundException, but these cases are not problematic in the sense that their arguments are not resources and so they do not cause the nested resource leak.\n### Allocation of JSonParser and Cursor resources\nSome resources are created inside libraries instead of by newnew.\nCursor is an interface, the actual resources are something like SQLiteCursor. So, every time you call a function that returns a Cursor object, there is an allocation.\nFor instance, in the functions from SQLiteDatabase query(…) and rawQuery(…) allocate a cursor resource. For SQLiteQueryBuilder, ContentProviderClient, ContentResolver. MediaStore and DownloadManager it is only query(…) Cursor objects cursor created by these functions need to be closed (i.e., cursor.close()).\nSimilarly, JsonParser is an abstract class, and create a resource in functions from the class JsonFactory createParser(byte[] data) createParser(byte[] data, int offset, int len) createParser(String content) createParser(URL url) createParser(File f) JsonParser objects js created by these functions need to be closed (jp.close()). On the other hand . JasonParsers gotten from createParser(InputStream in) and createParser(Reader r) give you JsonParsers that don’t need to be closed. This is because they receive the resource from somewhere that will maintain the responsibility to close it.\n### Escaping resources and exceptions\nSometimes you want to return a resource to the outside, in which case you should not close it, but you still need to be careful of exceptions in case control skips past the return leaving no one to close. Here is a simple example of a positive use of escaping resources.\nIn this case it is intended that an object that wraps `stream` is passed to the caller of `createAttachment`. You should certainly not close stream here, because it is being passed to the outside.\nBut for escaping resources like this you still need to be careful of exceptions. For example, in\nif stream.write(7) throws an exception, then no one will have a hold of stream, and no one will be able to close it; a leak.\n### Java 7s try-with-resources\n(For use with Java 7 only)\nClearly, accounting for the ramifications of all the exceptional cases is complicated, and there is a better way in Java 7.\nAll the complicated exceptional cases above are (apparently) covered by this construct, and the result is much simpler.\nSo, if you are trying to fix a potential leak in code with multiples resources you can go ahead and try to understand whether the potential leak is real. Or, if the code is complex and it is hard to figure out, it would be perfectly legitimate to simply convert the code over to try-with-resources if you have access to Java 7, so as to save yourself some brain-cycles. You will also end up with cleaner code.\nIf try-with-resources is so great you should always use it. But you shouldn t… Try-with-resources gives resources static scoping, and works via a stack discipline. Sometimes, you want a resource to persist beyond scope, as in the escaping example above. In an escaping example maybe you could refactor lots of code so that try-with-resources applies, and maybe you cannot in a sensible way. This just illustrates that, though you might hear people say that try-with-resources solvessolves the resource problem, it does not. It is very useful, but you cannot use it blindly when you see a resource-allocation site.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "RETAIN_CYCLE",
     "name": "retain cycle",
     "description": "Reported as Retain CycleRetain Cycle by biabduction.\nA retain cycle is a situation when object A retains object B, and object B retains object A at the same time. Here is an example:\nYou can fix a retain cycle in ARC by using __weak variables or weak properties for your back linksback links, i.e. links to direct or indirect parents in an object hierarchy:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "DEAD_STORE",
     "name": "dead store",
     "description": "Reported as Dead StoreDead Store by liveness.\nThis error is reported in C++. It fires when the value assigned to a variables is never used (e.g., `int i = 1; i = 2; return i;`).\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "GUARDEDBY_VIOLATION",
     "name": "guardedby violation",
     "description": "Reported as GuardedBy ViolationGuardedBy Violation by racerd.\nA field annotated with `@GuardedBy` is being accessed by a call-chain that starts at a non-private method without synchronization.\nExample:\nAction: Protect the offending access by acquiring the lock indicated by the `@GuardedBy(...)`.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INTERFACE_NOT_THREAD_SAFE",
     "name": "interface not thread safe",
     "description": "Reported as Interface Not Thread SafeInterface Not Thread Safe by racerd.\nThis error indicates that you have invoked an interface method not annotated with `@ThreadSafe` from a thread-safe context (e.g., code that uses locks or is marked `@ThreadSafe`). The fix is to add the `@ThreadSafe` annotation to the interface or to the interface method. For background on why these annotations are needed, see the detailed explanation here.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "LOCK_CONSISTENCY_VIOLATION",
     "name": "lock consistency violation",
     "description": "Reported as Lock Consistency ViolationLock Consistency Violation by racerd.\nThis is a C++ and Objective C error reported whenever:\n - A class contains a member `lock` used for synchronization (most often a  `std::mutex`).\n - It has a public method which writes to some member `x` while holding `lock`.\n - It has a public method which reads `x` without holding `lock`.\nThe above may happen through a chain of calls. Above, `x` may also be a container (an array, a vector, etc).\n### Fixing Lock Consistency Violation reports\n - Avoid the offending access (most often the read). Of course, this may not be  possible.\n - Use synchronization to protect the read, by using the same lock protecting the  corresponding write.\n - Make the method doing the read access private. This should silence the  warning, since Infer looks for a pair of non-private methods. Objective-C:  Infer considers a method as private if it s not exported in the header-file  interface.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "THREAD_SAFETY_VIOLATION",
     "name": "thread safety violation",
     "description": "Reported as Thread Safety ViolationThread Safety Violation by racerd.\nThis warning indicates a potential data race in Java. The analyser is called RacerD and this section gives brief but a mostly complete description of its features. See the RacerD page for more in-depth information and examples.\n### Thread-safety: What is a data race\nHere a data race is a pair of accesses to the same member field such that:\n - at least one is a write, and,\n - at least one occurs without any lock synchronization, and,\n - the two accesses occur on threads (if known) which can run in parallel.\n### Thread-safety: Potential fixes\n - Synchronizing the accesses (using the `synchronized` keyword, thread-exclusion  such as atomic objects, `volatile` etc).\n - Making an offending method private   this will exclude it from being checked  at the top level, though it will be checked if called by a public method which  may itself, e.g., hold a lock when calling it.\n - Putting the two accesses on the same thread, e.g., by using `@MainThread` or  `@ThreadConfined`.\n### Thread-safety: Conditions checked before reporting\nThe class and method are not marked `@ThreadSafe(enableChecks = false)`, and,\n - The method is declared `synchronized`, or employs (non-transitively) locking,  or,\n - The class is not marked `@NotThreadSafe`, and,\n - The class/method is marked `@ThreadSafe,` or one of the configured synonyms in `.inferconfig`, or,\n - A parent class, or an override method are marked with the above annotations.\nNB currently RacerD does not take into account `@GuardedBy`.\n### Thread-safety: Thread annotations recognized by RacerD\nThese class and method annotations imply the method is on the main thread: `@MainThread`, `@UiThread`\nThese method annotations imply the method is on the main thread: `@OnBind`, `@OnEvent`, `@OnMount`, `@OnUnbind`, `@OnUnmount`\nBoth classes of annotations work through the inheritance tree (i.e. if a parent class or method is marked with one of these annotations, so is the child class / method override).\nIn addition to these, RacerD recognizes many lifecycle methods as necessarily running on the main thread, eg `Fragment.onCreate` etc.\nFinally, the thread status of being on the main thread propagates backwards through the call graph (ie if `foo` calls `bar` and `bar` is marked `@UiThtread` then `foo` is automatically considered on the main thread too). Calling `assertMainThread`, `assertOnUiThread`, `checkOnMainThread` has the same effect.\nNB RacerD currently does not recognize `@WorkerThread`, `@BinderThread` or `@AnyThread`.\n### Thread-safety: Other annotations and what they do\nThese annotations can be found at `com.facebook.infer.annotation.*`.\n - `@Functional` This is a method annotation indicating the method always returns  the same value. When a method `foo` is annotated `@Functional`, RacerD will  ignore any writes of the return value of `foo`. For example, in  `this.x = foo()`, the write to `this.x` is ignored. The reasoning is that if  the method returns the same value whenever it s called, any data race on  `this.x` is benign, if that is the only write.\n - `@ThreadConfined` This is a class/method/field annotation which takes a single  parameter which can be `UI`, `ANY` or a user chosen string. It indicates to  RacerD a thread identifier for the class/method/field. Thus,  `@ThreadConfined(UI)` is equivalent to `@UiThread`, and `@ThreadConfined(ANY)`  is equivalent to not having the annotation at all, for classes and methods.  When this annotation is applied to a field it instructs Infer to assume  (without checking) that all accesses to that field are made on the same thread  (and can, therefore, not race by definition). The intention is that RacerD  uses that to detect exclusion between accesses occurring on the same thread.  However, only the UI thread is supported at this time, and any user provided  value is considered equal to `UI`.\n - `@VisibleForTesting` A method annotation making Infer consider the method as  effectively `private`. This means it will not be checked for races against  other non-private methods of the class, but only if called by one.\n - `@ReturnsOwnership` A method annotation indicating that the method returns a  freshly owned object. Accesses to the returned value will not be considered  for data races, as the object is in-effect unique and not accessible yet from  other threads. The main utility of this annotation is in interfaces, where  Infer cannot look up the implementation and decide for itself.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "STATIC_INITIALIZATION_ORDER_FIASCO",
     "name": "static initialization order fiasco",
     "description": "Reported as Static Initialization Order FiascoStatic Initialization Order Fiasco by siof.\nThis error is reported in C++. It fires when the initialization of a static variable `A`, accesses a static variable `B` from another translation unit (usually another `.cpp` file). There are no guarantees whether `B` has been already initialized or not at that point.\nFor more technical definition and techniques to avoid/remediate, see the FAQ.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "DEADLOCK",
     "name": "deadlock",
     "description": "Reported as DeadlockDeadlock by starvation.\nThis error is currently reported in Java. A deadlock occurs when two distinct threads try to acquire two locks in reverse orders. The following code illustrates a textbook example. Of course, in real deadlocks, the lock acquisitions may be separated by deeply nested call chains.\nThe standard solution to a deadlock is to fix an order of lock acquisition and adhere to that order in all cases. Another solution may be to shrink the critical sections (i.e., the code executing under lock) to the minimum required.\nOld-style containers such as `Vector` are synchronized on the object monitor, which means that deadlocks can occur even without explicit synchronisation on both threads. For instance:\nInfer has support for detecting these deadlocks too.\nTo suppress reports of deadlocks in a method `m()` use the `@SuppressLint(\"DEADLOCK\")` annotation, as follows:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "LOCKLESS_VIOLATION",
     "name": "lockless violation",
     "description": "Reported as Lockless ViolationLockless Violation by starvation.\nA method implements an interface signature annotated with `@Lockless` but which transitively acquires a lock.\nExample:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "STARVATION",
     "name": "starvation",
     "description": "Reported as UI Thread StarvationUI Thread Starvation by starvation.\nThis error is reported in Java, and specifically on Android. These reports are triggered when a method that runs on the UI thread may block, thus potentially leading to an Application Not Responding error.\nInfer considers a method as running on the UI thread whenever:\n - The method, one of its overrides, its class, or an ancestral class, is  annotated with `@UiThread`.\n - The method, or one of its overrides is annotated with `@OnEvent`, `@OnClick`,  etc.\n - The method or its callees call a `Litho.ThreadUtils` method such as  `assertMainThread`.\nThe issue is reported when a method deemed to run on the UI thread\n - Makes a method call which may block.\n - Takes a lock, and another thread takes the same lock, and before releasing it,  makes a call that may block.\nCalls that may block are considered:\n - Certain I/O calls.\n - Two way `Binder.transact` calls.\n - Certain OS calls.\n - `Future` or `AsyncTask` calls to `get` without timeouts, or with too large  timeouts.\nTo suppress starvation reports in a method `m()` use the `@SuppressLint(\"STARVATION\")` annotation, as follows:\nTo signal to Infer that a method does not perform any blocking calls, despite appearences, you can use the `@NonBlocking` annotation:\nThis instructs Infer to filter out any potentially blocking calls in `m()` (also, transitively), and thus any other method can expect no starvation reports due to a call to `m()`. You will need to set up your class path appropriately to include the JAR files in `infer/annotations` for this annotation to work.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "STRICT_MODE_VIOLATION",
     "name": "strict mode violation",
     "description": "Reported as Strict Mode ViolationStrict Mode Violation by starvation.\nAndroid has a feature called strict mode, which if enabled, will flag the occasions where the main thread makes a call that results in disk I/O, waiting on a network socket, etc. The analysis catching starvation errors and deadlocks (the `--starvation` analysis) has the ability to statically detect such violations.\nTo suppress this warning, it s enough to annotate the offending method with `@SuppressLint(\"STRICT_MODE_VIOLATION\")`.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CAPTURED_STRONG_SELF",
     "name": "captured strong self",
     "description": "Reported as Captured strongSelfCaptured strongSelf by self-in-block.\nThis will happen in one of two cases generally:\n1. One uses `weakSelf` but forgot to declare it weak first.\n2. One is using `strongSelf`, declared in a block, in another (inside) block.  This changes the delicate balance of the `weakSelf`/`strongSelf` use in the  first block. The retain cycle is avoided there because `strongSelf` is a  local variable to the block. If `strongSelf` is used in the inside block,  then it s not a local variable anymore, but a captured variable.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "MIXED_SELF_WEAKSELF",
     "name": "mixed self weakself",
     "description": "Reported as Mixed Self WeakSelfMixed Self WeakSelf by self-in-block.\nThis happens when an Objective-C block captures both `self` and `weakSelf`, a weak pointer to `self`. Possibly the developer meant to capture only `weakSelf` to avoid a retain cycle, but made a typo and used `self` as well in the block, instead of `strongSelf`. In this case, this could cause a retain cycle.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "MULTIPLE_WEAKSELF",
     "name": "multiple weakself",
     "description": "Reported as Multiple WeakSelf UseMultiple WeakSelf Use by self-in-block.\nAn Objective-C block uses `weakSelf` more than once. This could lead to unexpected behaviour. Even if `weakSelf` is not nil in the first use, it could be nil in the following uses since the object that `weakSelf` points to could be freed anytime. One should assign it to a strong pointer first, and then use it in the block.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "STRONG_SELF_NOT_CHECKED",
     "name": "strong self not checked",
     "description": "Reported as StrongSelf Not CheckedStrongSelf Not Checked by self-in-block.\nWhen a block captures `weakSelf` in the following pattern:\nthe variable `strongSelf` should be checked for `null` before being used, otherwise this could cause a crash because the weak pointer `weakSelf` could be `null`.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "WEAK_SELF_IN_NO_ESCAPE_BLOCK",
     "name": "weak self in no escape block",
     "description": "WEAK_SELF_IN_NO_ESCAPE_BLOCK",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE",
     "name": "autoreleasepool size complexity increase",
     "description": "Reported as Autoreleasepool Size Complexity IncreaseAutoreleasepool Size Complexity Increase by cost.\n[EXPERIMENTAL] Infer reports this issue when the ObjC autoreleasepool s size complexity of a program increases in degree: e.g. from constant to linear or from logarithmic to quadratic. This issue type is only reported in differential mode: i.e when we are comparing the analysis results of two runs of infer on a file.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE_UI_THREAD",
     "name": "autoreleasepool size complexity increase ui thread",
     "description": "Reported as Autoreleasepool Size Complexity Increase Ui ThreadAutoreleasepool Size Complexity Increase Ui Thread by cost.\n[EXPERIMENTAL] Infer reports this issue when the ObjC autoreleasepool s complexity of the procedure increases in degree and the procedure runs on the UI (main) thread.\nInfer considers a method as running on the UI thread whenever:\n - The method, one of its overrides, its class, or an ancestral class, is annotated with `@UiThread`.\n - The method, or one of its overrides is annotated with `@OnEvent`, `@OnClick`, etc.\n - The method or its callees call a `Litho.ThreadUtils` method such as `assertMainThread`.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "AUTORELEASEPOOL_SIZE_UNREACHABLE_AT_EXIT",
     "name": "autoreleasepool size unreachable at exit",
     "description": "Reported as Autoreleasepool Size Unreachable At ExitAutoreleasepool Size Unreachable At Exit by cost.\n[EXPERIMENTAL] This issue type indicates that the program s execution doesn t reach the exit node. Hence, we cannot compute a static bound of ObjC autoreleasepool s size for the procedure.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "EXECUTION_TIME_COMPLEXITY_INCREASE",
     "name": "execution time complexity increase",
     "description": "Reported as Execution Time Complexity IncreaseExecution Time Complexity Increase by cost.\nInfer reports this issue when the execution time complexity of a program increases in degree: e.g. from constant to linear or from logarithmic to quadratic. This issue type is only reported in differential mode: i.e when we are comparing the analysis results of two runs of infer on a file.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "EXECUTION_TIME_COMPLEXITY_INCREASE_UI_THREAD",
     "name": "execution time complexity increase ui thread",
     "description": "Reported as Execution Time Complexity Increase Ui ThreadExecution Time Complexity Increase Ui Thread by cost.\nInfer reports this issue when the execution time complexity of the procedure increases in degree and the procedure runs on the UI (main) thread.\nInfer considers a method as running on the UI thread whenever:\n - The method, one of its overrides, its class, or an ancestral class, is  annotated with `@UiThread`.\n - The method, or one of its overrides is annotated with `@OnEvent`, `@OnClick`,  etc.\n - The method or its callees call a `Litho.ThreadUtils` method such as  `assertMainThread`.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "EXECUTION_TIME_UNREACHABLE_AT_EXIT",
     "name": "execution time unreachable at exit",
     "description": "Reported as Execution Time Unreachable At ExitExecution Time Unreachable At Exit by cost.\nThis issue type indicates that the program s execution doesn t reach the exit node. Hence, we cannot compute a static bound for the procedure.\nExamples:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFINITE_AUTORELEASEPOOL_SIZE",
     "name": "infinite autoreleasepool size",
     "description": "Reported as Infinite Autoreleasepool SizeInfinite Autoreleasepool Size by cost.\n[EXPERIMENTAL] This warning indicates that Infer was not able to determine a static upper bound on the ObjC autoreleasepool s size in the procedure. By default, this issue type is disabled.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFINITE_EXECUTION_TIME",
     "name": "infinite execution time",
     "description": "Reported as Infinite Execution TimeInfinite Execution Time by cost.\nThis warning indicates that Infer was not able to determine a static upper bound on the execution cost of the procedure. By default, this issue type is disabled.\nFor instance, Inferbo s interval analysis is limited to affine expressions. Hence, we can t statically estimate an upper bound on the below example and obtain T(unknown) cost:\nConsequently, we report an `INFINITE_EXECUTION_TIME`, corresponding to the biggest bound T.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CHECKERS_ALLOCATES_MEMORY",
     "name": "checkers allocates memory",
     "description": "Reported as Allocates MemoryAllocates Memory by annotation-reachability.\nA method annotated with `@NoAllocation` transitively calls `new`.\nExample:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CHECKERS_ANNOTATION_REACHABILITY_ERROR",
     "name": "checkers annotation reachability error",
     "description": "Reported as Annotation Reachability ErrorAnnotation Reachability Error by annotation-reachability.\nA method annotated with an annotation `@A` transitively calls a method annotated `@B` where the combination of annotations is forbidden (for example, `@UiThread` calling `@WorkerThread`).\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CHECKERS_CALLS_EXPENSIVE_METHOD",
     "name": "checkers calls expensive method",
     "description": "Reported as Expensive Method CalledExpensive Method Called by annotation-reachability.\nA method annotated with `@PerformanceCritical` transitively calls a method annotated `@Expensive`.\nExample:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED",
     "name": "checkers expensive overrides unannotated",
     "description": "Reported as Expensive Overrides UnannotatedExpensive Overrides Unannotated by annotation-reachability.\nA method annotated with `@Expensive` overrides an un-annotated method.\nExample:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "EXPENSIVE_LOOP_INVARIANT_CALL",
     "name": "expensive loop invariant call",
     "description": "Reported as Expensive Loop Invariant CallExpensive Loop Invariant Call by loop-hoisting.\nWe report this issue type when a function is loop-invariant and also expensive (i.e. at least has linear complexity as determined by the cost analysis).\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INVARIANT_CALL",
     "name": "invariant call",
     "description": "Reported as Invariant CallInvariant Call by loop-hoisting.\nWe report this issue type when a function call is loop-invariant and hoistable, i.e. - the function has no side side effects (pure) - has invariant arguments and result (i.e. have the same value in all loop iterations) - it is guaranteed to execute, i.e. it dominates all loop sources\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "ASSIGN_POINTER_WARNING",
     "name": "assign pointer warning",
     "description": "Reported as Assign Pointer WarningAssign Pointer Warning by linters.\nThis check fires when a pointer to an Obj-C object is tagged with an `assign` property (similar to the `-Warc-unsafe-retained-assign` compiler flag). Not holding a strong reference to the object makes it easy to accidentally create and use a dangling pointer.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BAD_POINTER_COMPARISON",
     "name": "bad pointer comparison",
     "description": "Reported as Bad Pointer ComparisonBad Pointer Comparison by linters.\nInfer reports these warnings in Objective-C when a boxed primitive type such as `NSNumber *` is coerced to a boolean in a comparison. For example, consider the code\nThe branch in the above code will be taken when the pointer `n` is non-`nil`, but the programmer might have actually wanted the branch to be taken when the integer pointed to by `n` is nonzero (e.g., she may have meant to call an accessor like `[n intValue]` instead). Infer will ask the programmer explicitly compare `n` to `nil` or call an accessor to clarify her intention.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "COMPONENT_WITH_MULTIPLE_FACTORY_METHODS",
     "name": "component with multiple factory methods",
     "description": "Reported as Component With Multiple Factory MethodsComponent With Multiple Factory Methods by linters.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CXX_REFERENCE_CAPTURED_IN_OBJC_BLOCK",
     "name": "cxx reference captured in objc block",
     "description": "Reported as Cxx Reference Captured In Objc BlockCxx Reference Captured In Objc Block by linters.\nWith this check, Infer detects C++ references captured in a block. Doing this is almost always wrong. The reason is that C++ references are not managed pointers (like ARC pointers) and so the referent is likely to be gone by the time the block gets executed. One solution is to do a local copy of the reference and pass that to the block. Example:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "DIRECT_ATOMIC_PROPERTY_ACCESS",
     "name": "direct atomic property access",
     "description": "Reported as Direct Atomic Property AccessDirect Atomic Property Access by linters.\nThis check warns you when you are accessing an atomic property directly with an ivar. This makes the atomic property not atomic anymore. So potentially you may get a race condition.\nTo fix the problem you need to access properties with their getter or setter.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "DISCOURAGED_WEAK_PROPERTY_CUSTOM_SETTER",
     "name": "discouraged weak property custom setter",
     "description": "Reported as Discouraged Weak Property Custom SetterDiscouraged Weak Property Custom Setter by linters.\nThis check warns you when you have a custom setter for a weak property. When compiled with Automatic Reference Counting (ARC, `-fobj-arc`) ARC may set the property to `nil` without invoking the setter, for example:\nThis prints:\nNote that the custom setter was only invoked once.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL",
     "name": "global variable initialized with function or method call",
     "description": "Reported as Global Variable Initialized With Function Or Method CallGlobal Variable Initialized With Function Or Method Call by linters.\nThis checker warns you when the initialization of global variable contain a method or function call. The warning wants to make you aware that some functions are expensive. As the global variables are initialized before main() is called, these initializations can slow down the start-up time of an app.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "MUTABLE_LOCAL_VARIABLE_IN_COMPONENT_FILE",
     "name": "mutable local variable in component file",
     "description": "Reported as Mutable Local Variable In Component FileMutable Local Variable In Component File by linters.\nDoc in ComponentKit page\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "POINTER_TO_CONST_OBJC_CLASS",
     "name": "pointer to const objc class",
     "description": "Reported as Pointer To Const Objc ClassPointer To Const Objc Class by linters.\nIn Objective-C, `const Class *` represents a mutable pointer pointing to an Objective-C class where the ivars cannot be changed. More useful is `Class *const` instead, meaning the destination of the pointer cannot be changed.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "STRONG_DELEGATE_WARNING",
     "name": "strong delegate warning",
     "description": "Reported as Strong Delegate WarningStrong Delegate Warning by linters.\nThis check warns you when you have a property called delegate or variations thereof which is declared strong. The idea is that delegates should generally be weak, otherwise this may cause retain cycles.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CREATE_INTENT_FROM_URI",
     "name": "create intent from uri",
     "description": "Reported as Create Intent From UriCreate Intent From Uri by quandary.\nCreate an intent/start a component using a (possibly user-controlled) URI. may or may not be an issue depending on where the URI comes from.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CROSS_SITE_SCRIPTING",
     "name": "cross site scripting",
     "description": "Reported as Cross Site ScriptingCross Site Scripting by quandary.\nUntrusted data flows into HTML; XSS risk.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "EXPOSED_INSECURE_INTENT_HANDLING",
     "name": "exposed insecure intent handling",
     "description": "Reported as Exposed Insecure Intent HandlingExposed Insecure Intent Handling by quandary.\nUndocumented.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INSECURE_INTENT_HANDLING",
     "name": "insecure intent handling",
     "description": "Reported as Insecure Intent HandlingInsecure Intent Handling by quandary.\nUndocumented.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "JAVASCRIPT_INJECTION",
     "name": "javascript injection",
     "description": "Reported as Javascript InjectionJavascript Injection by quandary.\nUntrusted data flows into JavaScript.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "LOGGING_PRIVATE_DATA",
     "name": "logging private data",
     "description": "Reported as Logging Private DataLogging Private Data by quandary.\nUndocumented.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "QUANDARY_TAINT_ERROR",
     "name": "quandary taint error",
     "description": "Reported as Taint ErrorTaint Error by quandary.\nGeneric taint error when nothing else fits.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "SHELL_INJECTION",
     "name": "shell injection",
     "description": "Reported as Shell InjectionShell Injection by quandary.\nEnvironment variable or file data flowing to shell.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "SHELL_INJECTION_RISK",
     "name": "shell injection risk",
     "description": "Reported as Shell Injection RiskShell Injection Risk by quandary.\nCode injection if the caller of the endpoint doesn t sanitize on its end.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "SQL_INJECTION",
     "name": "sql injection",
     "description": "Reported as Sql InjectionSql Injection by quandary.\nUntrusted and unescaped data flows to SQL.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "SQL_INJECTION_RISK",
     "name": "sql injection risk",
     "description": "Reported as Sql Injection RiskSql Injection Risk by quandary.\nUntrusted and unescaped data flows to SQL.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_BUFFER_ACCESS",
     "name": "untrusted buffer access",
     "description": "Reported as Untrusted Buffer AccessUntrusted Buffer Access by quandary.\nUntrusted data of any kind flowing to buffer.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_DESERIALIZATION",
     "name": "untrusted deserialization",
     "description": "Reported as Untrusted DeserializationUntrusted Deserialization by quandary.\nUser-controlled deserialization.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_DESERIALIZATION_RISK",
     "name": "untrusted deserialization risk",
     "description": "Reported as Untrusted Deserialization RiskUntrusted Deserialization Risk by quandary.\nUser-controlled deserialization\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_ENVIRONMENT_CHANGE_RISK",
     "name": "untrusted environment change risk",
     "description": "Reported as Untrusted Environment Change RiskUntrusted Environment Change Risk by quandary.\nUser-controlled environment mutation.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_FILE",
     "name": "untrusted file",
     "description": "Reported as Untrusted FileUntrusted File by quandary.\nUser-controlled file creation; may be vulnerable to path traversal and more.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_FILE_RISK",
     "name": "untrusted file risk",
     "description": "Reported as Untrusted File RiskUntrusted File Risk by quandary.\nUser-controlled file creation; may be vulnerable to path traversal and more.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_HEAP_ALLOCATION",
     "name": "untrusted heap allocation",
     "description": "Reported as Untrusted Heap AllocationUntrusted Heap Allocation by quandary.\nUntrusted data of any kind flowing to heap allocation. this can cause crashes or DOS.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_INTENT_CREATION",
     "name": "untrusted intent creation",
     "description": "Reported as Untrusted Intent CreationUntrusted Intent Creation by quandary.\nCreating an Intent from user-controlled data.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_URL_RISK",
     "name": "untrusted url risk",
     "description": "Reported as Untrusted Url RiskUntrusted Url Risk by quandary.\nUntrusted flag, environment variable, or file data flowing to URL.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNTRUSTED_VARIABLE_LENGTH_ARRAY",
     "name": "untrusted variable length array",
     "description": "Reported as Untrusted Variable Length ArrayUntrusted Variable Length Array by quandary.\nUntrusted data of any kind flowing to stack buffer allocation. Trying to allocate a stack buffer that s too large will cause a stack overflow.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "USER_CONTROLLED_SQL_RISK",
     "name": "user controlled sql risk",
     "description": "Reported as User Controlled Sql RiskUser Controlled Sql Risk by quandary.\nUntrusted data flows to SQL (no injection risk).\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNINITIALIZED_VALUE",
     "name": "uninitialized value",
     "description": "Reported as Uninitialized ValueUninitialized Value by uninit.\nA value is read before it has been initialized. For example, in C:\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "BUG"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_L1",
     "name": "buffer overrun l1",
     "description": "Reported as Buffer Overrun L1Buffer Overrun L1 by bufferoverrun.\nBuffer overrun reports fall into several bucketsbuckets corresponding to the expected precision of the report. The higher the number, the more likely it is to be a false positive.\n - `L1`: The most faithful report, when it must be unsafe. For example, array size: `[5,5]`, offset: `[3,3]`.\n - `L2`: Less faithful report than `L1`, when it may be unsafe. For example, array size:`[5,5]`, offset: `[0,5]`. Note that the offset may be a safe value in the real execution, i.e. 0, 1, 2, 3, 4.\n - `L5`: The least faithful report, when there is an interval top. For example, array size: `[5,5]`, offset: `[-oo,+oo]`.\n - `L4`: More faithful report than `L5`, when there is an infinity value. For example, array size: `[5,5]`, offset: `[0, +oo]`.\n - `L3`: The reports that are not included in the above cases.\n - `S2`: An array access is unsafe by symbolic values. For example, array size: `[n,n]`, offset `[n,+oo]`.\n - `U5`: An array access is unsafe by unknown values, which are usually from unknown function calls.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_L2",
     "name": "buffer overrun l2",
     "description": "Reported as Buffer Overrun L2Buffer Overrun L2 by bufferoverrun.\nSee BUFFER_OVERRUN_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_L3",
     "name": "buffer overrun l3",
     "description": "Reported as Buffer Overrun L3Buffer Overrun L3 by bufferoverrun.\nSee BUFFER_OVERRUN_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_L4",
     "name": "buffer overrun l4",
     "description": "Reported as Buffer Overrun L4Buffer Overrun L4 by bufferoverrun.\nSee BUFFER_OVERRUN_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_L5",
     "name": "buffer overrun l5",
     "description": "Reported as Buffer Overrun L5Buffer Overrun L5 by bufferoverrun.\nSee BUFFER_OVERRUN_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_S2",
     "name": "buffer overrun s2",
     "description": "Reported as Buffer Overrun S2Buffer Overrun S2 by bufferoverrun.\nSee BUFFER_OVERRUN_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "BUFFER_OVERRUN_U5",
     "name": "buffer overrun u5",
     "description": "Reported as Buffer Overrun U5Buffer Overrun U5 by bufferoverrun.\nSee BUFFER_OVERRUN_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CONDITION_ALWAYS_FALSE",
     "name": "condition always false",
     "description": "Reported as Condition Always FalseCondition Always False by bufferoverrun.\nA condition expression is always evaluated to false.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "CONDITION_ALWAYS_TRUE",
     "name": "condition always true",
     "description": "Reported as Condition Always TrueCondition Always True by bufferoverrun.\nA condition expression is always evaluated to true.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFERBO_ALLOC_IS_BIG",
     "name": "inferbo alloc is big",
     "description": "Reported as Inferbo Alloc Is BigInferbo Alloc Is Big by bufferoverrun.\n`malloc` is passed a large constant value.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFERBO_ALLOC_IS_NEGATIVE",
     "name": "inferbo alloc is negative",
     "description": "Reported as Inferbo Alloc Is NegativeInferbo Alloc Is Negative by bufferoverrun.\n`malloc` is called with a negative size.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFERBO_ALLOC_IS_ZERO",
     "name": "inferbo alloc is zero",
     "description": "Reported as Inferbo Alloc Is ZeroInferbo Alloc Is Zero by bufferoverrun.\n`malloc` is called with a zero size.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFERBO_ALLOC_MAY_BE_BIG",
     "name": "inferbo alloc may be big",
     "description": "Reported as Inferbo Alloc May Be BigInferbo Alloc May Be Big by bufferoverrun.\n`malloc` may be called with a large value.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INFERBO_ALLOC_MAY_BE_NEGATIVE",
     "name": "inferbo alloc may be negative",
     "description": "Reported as Inferbo Alloc May Be NegativeInferbo Alloc May Be Negative by bufferoverrun.\n`malloc` may be called with a negative value.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INTEGER_OVERFLOW_L1",
     "name": "integer overflow l1",
     "description": "Reported as Integer Overflow L1Integer Overflow L1 by bufferoverrun.\nInteger overflows reports fall into several bucketsbuckets corresponding to the expected precision of the report. The higher the number, the more likely it is to be a false positive.\n - `L1`: The most faithful report, when it must be unsafe. For example, `[2147483647,2147483647] + [1,1]` in 32-bit signed integer type.\n - `L2`: Less faithful report than `L1`, when it may be unsafe. For example, `[2147483647,2147483647] + [0,1]` in 32-bit signed integer type. Note that the integer of RHS can be 0, which is safe.\n - `L5`: The reports that are not included in the above cases.\n - `U5`: A binary integer operation is unsafe by unknown values, which are usually from unknown function calls.\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INTEGER_OVERFLOW_L2",
     "name": "integer overflow l2",
     "description": "Reported as Integer Overflow L2Integer Overflow L2 by bufferoverrun.\nSee INTEGER_OVERFLOW_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INTEGER_OVERFLOW_L5",
     "name": "integer overflow l5",
     "description": "Reported as Integer Overflow L5Integer Overflow L5 by bufferoverrun.\nSee INTEGER_OVERFLOW_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "INTEGER_OVERFLOW_U5",
     "name": "integer overflow u5",
     "description": "Reported as Integer Overflow U5Integer Overflow U5 by bufferoverrun.\nSee INTEGER_OVERFLOW_L1\n",
-    "severity": "CRITICAL"
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
   },
   {
     "category": "Infer",
     "key": "UNREACHABLE_CODE",
     "name": "unreachable code",
     "description": "Reported as Unreachable CodeUnreachable Code by bufferoverrun.\nA program point is unreachable.\n",
-    "severity": "CRITICAL"
-  }
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
+  },
+  {
+    "category": "Infer",
+    "key": "UNSAFE_CALL_TO_OPTIONAL_METHOD",
+    "name": "unsafe call to optional method",
+    "description": "UNSAFE_CALL_TO_OPTIONAL_METHOD",
+    "severity": "CRITICAL",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "POINTER_TO_INTEGRAL_IMPLICIT_CAST",
+    "name": "pointer to integral implicit cast",
+    "description": "POINTER_TO_INTEGRAL_IMPLICIT_CAST",
+    "severity": "CRITICAL",
+    "type": "CODE_SMELL"
+  },
+
+
 ]

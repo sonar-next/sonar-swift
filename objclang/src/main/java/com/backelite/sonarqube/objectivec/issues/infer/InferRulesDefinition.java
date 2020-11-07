@@ -7,6 +7,7 @@ import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.SonarRuntime;
+import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
@@ -15,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
 /**
  * @author Harry
@@ -40,8 +42,10 @@ public class InferRulesDefinition implements RulesDefinition {
             if (slRules != null) {
                 for (Object obj : slRules) {
                     JSONObject slRule = (JSONObject) obj;
+                    RuleType ruleType = Optional.of(RuleType.valueOf((String) slRule.get("type"))).orElse(RuleType.CODE_SMELL);
                     repository.createRule((String) slRule.get("key"))
                             .setName((String) slRule.get("name"))
+                            .setType(ruleType)
                             .setSeverity((String) slRule.get("severity"))
                             .setHtmlDescription((String) slRule.get("description"));
                 }
