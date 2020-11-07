@@ -1188,6 +1188,32 @@
                     <txt>min</txt>
                 </prop>
             </chc>
+            <chc>
+                <rule-repo>Infer</rule-repo>
+                <rule-key>UNSAFE_CALL_TO_OPTIONAL_METHOD</rule-key>
+                <prop>
+                    <key>remediationFunction</key>
+                    <txt>CONSTANT_ISSUE</txt>
+                </prop>
+                <prop>
+                    <key>offset</key>
+                    <val>10</val>
+                    <txt>min</txt>
+                </prop>
+            </chc>
+            <chc>
+                <rule-repo>Infer</rule-repo>
+                <rule-key>POINTER_TO_INTEGRAL_IMPLICIT_CAST</rule-key>
+                <prop>
+                    <key>remediationFunction</key>
+                    <txt>CONSTANT_ISSUE</txt>
+                </prop>
+                <prop>
+                    <key>offset</key>
+                    <val>10</val>
+                    <txt>min</txt>
+                </prop>
+            </chc>
         </chc>
     </chc>
 </sqale>
