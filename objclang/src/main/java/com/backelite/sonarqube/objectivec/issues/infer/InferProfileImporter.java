@@ -11,7 +11,7 @@ import org.sonar.api.utils.ValidationMessages;
 import java.io.Reader;
 
 /**
- * @author Harry
+ * @author wuwenguang
  * @date 2020/10/27
  */
 public class InferProfileImporter extends ProfileImporter {

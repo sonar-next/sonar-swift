@@ -8,11 +8,11 @@ The following is a set of guidelines for contributing to _SonarQube Plugin for S
 
 Before submitting a new GitHub issue, please make sure to
 
-- Check out the [documentation](https://github.com/Backelite/sonar-swift/tree/develop/docs).
+- Check out the [documentation](https://github.com/tal-tech/sonar-swift/tree/develop/docs).
 - Check out the README and especially the usage guide.
-- Search for [existing GitHub issues](https://github.com/Backelite/sonar-swift/issues).
+- Search for [existing GitHub issues](https://github.com/tal-tech/sonar-swift/issues).
 
-If the above doesn't help, please [submit an issue](https://github.com/Backelite/sonar-swift/issues) on GitHub and provide information about your setup (SonarQube version, etc.)
+If the above doesn't help, please [submit an issue](https://github.com/tal-tech/sonar-swift/issues) on GitHub and provide information about your setup (SonarQube version, etc.)
 
 **Note**: If you want to report a regression in *SonarQube Plugin for Swift* (something that has worked before, but broke with a new release), please mark your issue title as such using `[Regression] Your title here`. This enables us to quickly detect and fix regressions.
 
@@ -20,11 +20,11 @@ If the above doesn't help, please [submit an issue](https://github.com/Backelite
 
 ### Prerequisites
 
-To develop _SonarQube Plugin for Swift_, you will need to meet the prerequisites as specified in the [README](https://github.com/Backelite/sonar-swift#prerequisites).
+To develop _SonarQube Plugin for Swift_, you will need to meet the prerequisites as specified in the [README](https://github.com/tal-tech/sonar-swift#prerequisites).
 
 ### Checking out the repository
 
-- Make sure you are on the *develop* branch: https://github.com/Backelite/sonar-swift/tree/develop
+- Make sure you are on the *develop* branch: https://github.com/tal-tech/sonar-swift/tree/develop
 - Click the “Fork” button in the upper right corner of repo
 - Clone your fork:
     - `git clone https://github.com/<YOUR_GITHUB_USERNAME>/sonar-swift.git`
@@ -49,7 +49,7 @@ Before opening a pull request, please make sure your changes don't break things.
 
 ### Submitting the PR
 
-When the coding is done and you’ve finished testing your changes, you are ready to submit the PR to the [main repo](https://github.com/Backelite/sonar-swift). Again, make sure you submit your PR to the *develop* branch: https://github.com/Backelite/sonar-swift/tree/develop
+When the coding is done and you’ve finished testing your changes, you are ready to submit the PR to the [main repo](https://github.com/tal-tech/sonar-swift). Again, make sure you submit your PR to the *develop* branch: https://github.com/tal-tech/sonar-swift/tree/develop
 
 Some best practices are:
 

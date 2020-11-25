@@ -14,7 +14,7 @@ import org.sonar.api.batch.sensor.SensorDescriptor;
 import java.io.File;
 
 /**
- * @author Harry
+ * @author wuwenguang magaofei
  * @date 2020/10/27
  */
 public class InferSensor implements Sensor {

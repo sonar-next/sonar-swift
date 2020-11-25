@@ -2,7 +2,7 @@
 <!--
 
     Swift SonarQube Plugin - Objective-C module - Enables analysis of Swift and Objective-C projects into SonarQube.
-    Copyright © 2015 Backelite (${email})
+    Copyright © 2015 TAL (${email})
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -22,22 +22,21 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>backelite-swift</artifactId>
-        <groupId>com.backelite.sonarqube</groupId>
-        <version>0.4.6</version>
+        <artifactId>sonar-swift</artifactId>
+        <groupId>com.tal.sonarqube</groupId>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.backelite.sonarqube</groupId>
     <artifactId>objc-lang</artifactId>
     <name>Swift SonarQube Plugin - Objective-C module</name>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.backelite.sonarqube</groupId>
+            <groupId>com.tal.sonarqube</groupId>
             <artifactId>commons</artifactId>
-            <version>0.4.6</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>

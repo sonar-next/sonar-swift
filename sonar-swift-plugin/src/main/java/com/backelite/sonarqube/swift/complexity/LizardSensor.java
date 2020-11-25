@@ -28,10 +28,6 @@ import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class LizardSensor implements Sensor {
     private static final Logger LOGGER = LoggerFactory.getLogger(LizardSensor.class);

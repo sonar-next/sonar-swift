@@ -9,9 +9,9 @@ about: If a recent release broke a feature 😬 (Please make sure you know the l
 ### New Regression Checklist
 
 - [ ] Updated the plugin to the latest version 
-- [ ] I read the [Contribution Guidelines](https://github.com/Backelite/sonar-swift/blob/master/CONTRIBUTING.md)
-- [ ] I read the [documentation](https://github.com/Backelite/sonar-swift/wiki)
-- [ ] I searched for existing [GitHub issues](https://github.com/Backelite/sonar-swift/issues)
+- [ ] I read the [Contribution Guidelines](https://github.com/tal-tech/sonar-swift/blob/master/CONTRIBUTING.md)
+- [ ] I read the [documentation](https://github.com/tal-tech/sonar-swift/wiki)
+- [ ] I searched for existing [GitHub issues](https://github.com/tal-tech/sonar-swift/issues)
 
 ### Regression Information
 <!-- Knowing the breaking versions and last working versions helps us track down the regression easier -->

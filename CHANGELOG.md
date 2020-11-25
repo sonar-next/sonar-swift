@@ -18,6 +18,9 @@
 
 - None.
 
+## v1.0.0
+support import issue from Facebook Infer
+
 ## v0.4.6
 
 #### Breaking

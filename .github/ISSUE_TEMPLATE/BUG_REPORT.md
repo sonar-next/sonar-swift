@@ -9,9 +9,9 @@ about: If something isn't working as expected 🤔
 ### New Issue Checklist
 
 - [ ] Updated the plugin to the latest version 
-- [ ] I read the [Contribution Guidelines](https://github.com/Backelite/sonar-swift/blob/master/CONTRIBUTING.md)
-- [ ] I read the [documentation](https://github.com/Backelite/sonar-swift/wiki)
-- [ ] I searched for existing [GitHub issues](https://github.com/Backelite/sonar-swift/issues)
+- [ ] I read the [Contribution Guidelines](https://github.com/tal-tech/sonar-swift/blob/master/CONTRIBUTING.md)
+- [ ] I read the [documentation](https://github.com/tal-tech/sonar-swift/wiki)
+- [ ] I searched for existing [GitHub issues](https://github.com/tal-tech/sonar-swift/issues)
 
 ### Issue Description
 <!-- Please include what's happening, expected behavior, and any relevant code samples -->

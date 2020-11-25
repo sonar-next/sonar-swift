@@ -7,9 +7,9 @@ about: Not sure how something works or how to implement some functionality? Ask 
 ### Question Checklist
 
 - [ ] Updated the plugin to the latest version 
-- [ ] I read the [Contribution Guidelines](https://github.com/Backelite/sonar-swift/blob/master/CONTRIBUTING.md)
-- [ ] I read the [documentation](https://github.com/Backelite/sonar-swift/wiki)
-- [ ] I searched for existing [GitHub issues](https://github.com/Backelite/sonar-swift/issues)
+- [ ] I read the [Contribution Guidelines](https://github.com/tal-tech/sonar-swift/blob/master/CONTRIBUTING.md)
+- [ ] I read the [documentation](https://github.com/tal-tech/sonar-swift/wiki)
+- [ ] I searched for existing [GitHub issues](https://github.com/tal-tech/sonar-swift/issues)
 
 ### Question Subject
 

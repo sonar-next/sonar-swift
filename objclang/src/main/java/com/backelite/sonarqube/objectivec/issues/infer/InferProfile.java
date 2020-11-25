@@ -13,9 +13,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 /**
- * @author Harry
+ * @author wuwenguang magaofei
  * @date 2020/10/27
- * infer 简介
+ * infer
  */
 public class InferProfile implements BuiltInQualityProfilesDefinition {
 

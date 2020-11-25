@@ -9,7 +9,7 @@ import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.utils.Version;
 
 /**
- * @author Harry
+ * @author wuwenguang
  * @date 2020/10/28
  */
 public class InferTest {

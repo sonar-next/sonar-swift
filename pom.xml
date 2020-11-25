@@ -37,15 +37,15 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <groupId>com.backelite.sonarqube</groupId>
-    <artifactId>backelite-swift</artifactId>
-    <version>0.4.6</version>
+    <groupId>com.tal.sonarqube</groupId>
+    <artifactId>sonar-swift</artifactId>
+    <version>1.0.0</version>
 
     <packaging>pom</packaging>
 
     <name>Swift SonarQube Plugin</name>
     <description>Enables analysis of Swift and Objective-C projects into SonarQube.</description>
-    <url>https://github.com/Backelite/sonar-swift</url>
+    <url>https://github.com/tal-tech/sonar-swift</url>
 
     <modules>
         <module>sonar-swift-plugin</module>
@@ -57,7 +57,7 @@
 
     <inceptionYear>2015</inceptionYear>
     <organization>
-        <name>Backelite</name>
+        <name>TAL</name>
     </organization>
     <licenses>
         <license>
@@ -67,23 +67,14 @@
         </license>
     </licenses>
 
-    <developers>
-        <developer>
-            <id>zippy1978</id>
-            <name>Gilles Grousset</name>
-            <organization>Backelite</organization>
-        </developer>
-    </developers>
-
     <scm>
-        <connection>scm:git:git@github.com:Backelite/sonar-swift.git</connection>
-        <developerConnection>scm:git:git@github.com:Backelite/sonar-swift.git</developerConnection>
-        <url>https://github.com/Backelite/sonar-swift</url>
+        <connection>scm:git:git@github.com:tal-tech/sonar-swift.git</connection>
+        <developerConnection>scm:git:git@github.com:tal-tech/sonar-swift.git</developerConnection>
+        <url>https://github.com/tal-tech/sonar-swift</url>
     </scm>
 
     <properties>
-        <license.owner>Backelite</license.owner>
-        <license.email>contact@backelite.com</license.email>
+        <license.owner>TAL</license.owner>
         <license.title>SonarQube Swift Plugin</license.title>
 
         <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
@@ -247,7 +238,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <pluginClass>SwiftPlugin</pluginClass>
-                    <pluginName>Swift (Backelite)</pluginName>
+                    <pluginName>Swift (TAL)</pluginName>
                 </configuration>
             </plugin>
             <plugin>
@@ -258,7 +249,6 @@
                     <header>com/mycila/maven/plugin/license/templates/LGPL-3.txt</header>
                     <properties>
                         <owner>${license.owner}</owner>
-                        <title>${license.email}</title>
                         <title>${license.title}</title>
                     </properties>
                     <excludes>

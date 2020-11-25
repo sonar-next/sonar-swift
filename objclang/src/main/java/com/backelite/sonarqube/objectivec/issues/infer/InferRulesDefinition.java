@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 /**
- * @author Harry magaofei
+ * @author wuwenguang magaofei
  * @date 2020/10/27
  */
 public class InferRulesDefinition implements RulesDefinition {
