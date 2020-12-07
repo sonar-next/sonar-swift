@@ -42,17 +42,17 @@ We reviewed the rules scanned by Infer within the company. The following is a li
 
 | Rule Key                       | Issue Type | use  | priority |
 | ------------------------------ | ---------- | ---- | -------- |
-| MULTIPLE_WEAKSELF              | Bug        | No   | 主要     |
-| UNSAFE_CALL_TO_OPTIONAL_METHOD | Bug        | Yes  | 主要     |
-| DEAD_STORE                     | Bug        | Yes  | 主要     |
-| MIXED_SELF_WEAKSELF            | Bug        | Yes  | 主要     |
-| NULL_DEREFERENCE               | Bug        | Yes  | 严重     |
-| CAPTURED_STRONG_SELF           | Bug        | Yes  | 主要     |
-| WEAK_SELF_IN_NO_ESCAPE_BLOCK   | Bug        | Yes  | 主要     |
-| STRONG_SELF_NOT_CHECKED        | Bug        | No   | 主要     |
-| RETAIN_CYCLE                   | Bug        | Yes  | 严重     |
-| RESOURCE_LEAK                  | Bug        | Yes  | 严重     |
-| UNINITIALIZED_VALUE            | Bug        | Yes  | 严重     |
+| MULTIPLE_WEAKSELF              | Bug        | No   | major    |
+| UNSAFE_CALL_TO_OPTIONAL_METHOD | Bug        | Yes  | major    |
+| DEAD_STORE                     | Bug        | Yes  | major    |
+| MIXED_SELF_WEAKSELF            | Bug        | Yes  | major    |
+| NULL_DEREFERENCE               | Bug        | Yes  | critical |
+| CAPTURED_STRONG_SELF           | Bug        | Yes  | major    |
+| WEAK_SELF_IN_NO_ESCAPE_BLOCK   | Bug        | Yes  | major    |
+| STRONG_SELF_NOT_CHECKED        | Bug        | No   | major    |
+| RETAIN_CYCLE                   | Bug        | Yes  | critical |
+| RESOURCE_LEAK                  | Bug        | Yes  | critical |
+| UNINITIALIZED_VALUE            | Bug        | Yes  | critical |
 
 
 
