@@ -11,6 +11,10 @@ SonarQube is a full-fledged static analysis service that provides plugin functio
 
 The repository is an iOS static analysis plugin for SonarQube, supporting Objective-C and Swift languages, and supports importing scan analysis results from SwiftLint, Infer, OCLint, Lizard, and Fauxpas tools.
 
+![](docs/quality-profiles.png)
+![](docs/quality-profiles-infer.png)
+![](docs/infer-bug.png)
+
 ## Rule Best Practices
 We invited other colleagues within the company to review the existing inference rules, and selected some rules to scan for your reference.
 ### [Rule Introduction](docs/rule.md)
