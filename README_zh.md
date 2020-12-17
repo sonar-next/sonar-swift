@@ -76,3 +76,8 @@ sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.s
 
 ## 要求
 扫描时必须在 macOS 操作系统上运行。
+
+## 联系我们
+你可以通过扫码进入微信群
+
+![](docs/wechat.jpg)

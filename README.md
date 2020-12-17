@@ -81,3 +81,6 @@ sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.s
 
 The scan must be run on the macOS operating system.
 
+
+## Contact 
+![](docs/wechat.jpg)
