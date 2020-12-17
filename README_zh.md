@@ -13,6 +13,10 @@ SonarQube 作为一款成熟的代码扫描服务，对外提供了插件功能�
 
 本仓库作为 SonarQube 的iOS代码扫描插件，支持 Objective-C 语言和 Swift 语言，支持导入 SwiftLint、Infer、OCLint、Lizard、Fauxpas 工具的扫描分析结果。
 
+![](docs/quality-profiles.png)
+![](docs/quality-profiles-infer.png)
+![](docs/infer-bug.png)
+
 ## 规则最佳实践
 我们在公司内部邀请其他同事共同Review了现有的Infer规则，筛选出了部分规则进行扫描，供大家参考。
 ### [规则介绍](docs/rule.md)
