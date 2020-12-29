@@ -26,7 +26,7 @@
     <parent>
         <groupId>com.tal.sonarqube</groupId>
         <artifactId>sonar-swift</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>tal-sonar-swift-plugin</artifactId>
@@ -39,12 +39,12 @@
         <dependency>
             <groupId>com.tal.sonarqube</groupId>
             <artifactId>swift-lang</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.tal.sonarqube</groupId>
             <artifactId>objc-lang</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 
         <dependency>
