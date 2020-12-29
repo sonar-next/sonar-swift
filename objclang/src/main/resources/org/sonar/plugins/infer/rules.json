@@ -742,6 +742,13 @@
     "description": "POINTER_TO_INTEGRAL_IMPLICIT_CAST",
     "severity": "MAJOR",
     "type": "CODE_SMELL"
+  },
+  {
+    "category": "Infer",
+    "key": "MEMORY_LEAK",
+    "name": "memory leak",
+    "description": "memory leak",
+    "severity": "CRITICAL",
+    "type": "BUG"
   }
-
 ]
