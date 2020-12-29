@@ -367,5 +367,9 @@
             <repositoryKey>Infer</repositoryKey>
             <key>UNREACHABLE_CODE</key>
         </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>MEMORY_LEAK</key>
+        </rule>
     </rules>
 </profile>
