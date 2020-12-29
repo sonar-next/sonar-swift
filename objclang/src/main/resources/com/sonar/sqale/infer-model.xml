@@ -1227,6 +1227,19 @@
                     <txt>min</txt>
                 </prop>
             </chc>
+            <chc>
+                <rule-repo>Infer</rule-repo>
+                <rule-key>REGISTERED_OBSERVER_BEING_DEALLOCATED</rule-key>
+                <prop>
+                    <key>remediationFunction</key>
+                    <txt>CONSTANT_ISSUE</txt>
+                </prop>
+                <prop>
+                    <key>offset</key>
+                    <val>10</val>
+                    <txt>min</txt>
+                </prop>
+            </chc>
         </chc>
     </chc>
 </sqale>
