@@ -57,7 +57,15 @@
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
+      <key>comment_spacing</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
       <key>compiler_protocol_init</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>computed_accessors_order</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
@@ -74,6 +82,10 @@
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
       <key>contains_over_first_not_nil</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>contains_over_range_nil_comparison</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
@@ -157,6 +169,14 @@
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
+      <key>enum_case_associated_values_count</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>expiring_todo</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
       <key>explicit_acl</key>
     </rule>
     <rule>
@@ -205,11 +225,19 @@
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
+      <key>file_name_no_space</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
       <key>file_types_order</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
       <key>first_where</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>flatmap_over_map_reduce</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
@@ -245,6 +273,10 @@
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
+      <key>ibinspectable_in_extension</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
       <key>identical_operands</key>
     </rule>
     <rule>
@@ -262,6 +294,14 @@
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
       <key>implicitly_unwrapped_optional</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>inclusive_language</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>indentation_width</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
@@ -433,6 +473,14 @@
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
+      <key>optional_enum_case_matching</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>orphaned_doc_comment</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
       <key>overridden_super_call</key>
     </rule>
     <rule>
@@ -442,6 +490,18 @@
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
       <key>pattern_matching_keywords</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>prefer_nimble</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>prefer_self_type_over_type_of_self</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>prefer_zero_over_explicit_init</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
@@ -486,6 +546,10 @@
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
       <key>quick_discouraged_pending_test</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>raw_value_for_camel_cased_codable_enum</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
@@ -586,6 +650,10 @@
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
       <key>syntactic_sugar</key>
+    </rule>
+    <rule>
+      <repositoryKey>SwiftLint</repositoryKey>
+      <key>test_case_accessibility</key>
     </rule>
     <rule>
       <repositoryKey>SwiftLint</repositoryKey>
