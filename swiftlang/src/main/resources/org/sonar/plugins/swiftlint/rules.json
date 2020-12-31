@@ -91,10 +91,24 @@
         "severity": "MINOR"
     },
     {
+        "key": "comment_spacing",
+        "category": "SwiftLint",
+        "name": "Comment Spacing",
+        "description": "Prefer at least one space after slashes for comments.",
+        "severity": "MINOR"
+    },
+    {
         "key": "compiler_protocol_init",
         "category": "SwiftLint",
         "name": "Compiler Protocol Init",
         "description": "The initializers declared in compiler protocols such as `ExpressibleByArrayLiteral` shouldn't be called directly.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "computed_accessors_order",
+        "category": "SwiftLint",
+        "name": "Computed Accessors Order",
+        "description": "Getter and setters in computed properties and subscripts should be in a consistent order.",
         "severity": "MINOR"
     },
     {
@@ -123,6 +137,13 @@
         "category": "SwiftLint",
         "name": "Contains over first not nil",
         "description": "Prefer `contains` over `first(where:) != nil` and `firstIndex(where:) != nil`.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "contains_over_range_nil_comparison",
+        "category": "SwiftLint",
+        "name": "Contains over range(of:) comparison to nil",
+        "description": "Prefer `contains` over `range(of:) != nil` and `range(of:) == nil`.",
         "severity": "MINOR"
     },
     {
@@ -234,7 +255,7 @@
         "key": "empty_enum_arguments",
         "category": "SwiftLint",
         "name": "Empty Enum Arguments",
-        "description": "Arguments can be omitted when matching enums with associated types if they are not used.",
+        "description": "Arguments can be omitted when matching enums with associated values if they are not used.",
         "severity": "MINOR"
     },
     {
@@ -263,6 +284,20 @@
         "category": "SwiftLint",
         "name": "Empty XCTest Method",
         "description": "Empty XCTest method should be avoided.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "enum_case_associated_values_count",
+        "category": "SwiftLint",
+        "name": "Enum Case Associated Values Count",
+        "description": "Number of associated values in an enum case should be low",
+        "severity": "MINOR"
+    },
+    {
+        "key": "expiring_todo",
+        "category": "SwiftLint",
+        "name": "ExpiringTodo",
+        "description": "TODOs and FIXMEs should be resolved prior to their expiry date.",
         "severity": "MINOR"
     },
     {
@@ -350,6 +385,13 @@
         "severity": "MINOR"
     },
     {
+        "key": "file_name_no_space",
+        "category": "SwiftLint",
+        "name": "File Name No Space",
+        "description": "File name should not contain any whitespace.",
+        "severity": "MINOR"
+    },
+    {
         "key": "file_types_order",
         "category": "SwiftLint",
         "name": "File Types Order",
@@ -361,6 +403,13 @@
         "category": "SwiftLint",
         "name": "First Where",
         "description": "Prefer using `.first(where:)` over `.filter { }.first` in collections.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "flatmap_over_map_reduce",
+        "category": "SwiftLint",
+        "name": "FlatMap over map and reduce",
+        "description": "Prefer `flatMap` over `map` followed by `reduce([], +)`.",
         "severity": "MINOR"
     },
     {
@@ -420,6 +469,13 @@
         "severity": "MINOR"
     },
     {
+        "key": "ibinspectable_in_extension",
+        "category": "SwiftLint",
+        "name": "IBInspectable in Extension",
+        "description": "Extensions shouldn't add @IBInspectable properties.",
+        "severity": "MINOR"
+    },
+    {
         "key": "identical_operands",
         "category": "SwiftLint",
         "name": "Identical Operands",
@@ -444,7 +500,7 @@
         "key": "implicit_return",
         "category": "SwiftLint",
         "name": "Implicit Return",
-        "description": "Prefer implicit returns in closures.",
+        "description": "Prefer implicit returns in closures, functions and getters.",
         "severity": "MINOR"
     },
     {
@@ -452,6 +508,20 @@
         "category": "SwiftLint",
         "name": "Implicitly Unwrapped Optional",
         "description": "Implicitly unwrapped optionals should be avoided when possible.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "inclusive_language",
+        "category": "SwiftLint",
+        "name": "Inclusive Language",
+        "description": "    Identifiers should use inclusive language that avoids discrimination against groups of people based on     race, gender, or socioeconomic status",
+        "severity": "MINOR"
+    },
+    {
+        "key": "indentation_width",
+        "category": "SwiftLint",
+        "name": "Indentation Width",
+        "description": "Indent code using either one tab or the configured amount of spaces, unindent to match previous indentations. Don't indent the first line.",
         "severity": "MINOR"
     },
     {
@@ -647,7 +717,7 @@
         "key": "nesting",
         "category": "SwiftLint",
         "name": "Nesting",
-        "description": "Types should be nested at most 1 level deep, and statements should be nested at most 5 levels deep.",
+        "description": "Types should be nested at most 1 level deep, and functions should be nested at most 2 levels deep.",
         "severity": "CRITICAL"
     },
     {
@@ -696,7 +766,7 @@
         "key": "nslocalizedstring_key",
         "category": "SwiftLint",
         "name": "NSLocalizedString Key",
-        "description": "Static strings should be used as key in NSLocalizedString in order to genstrings work.",
+        "description": "Static strings should be used as key/comment in NSLocalizedString in order for genstrings to work.",
         "severity": "MINOR"
     },
     {
@@ -749,6 +819,20 @@
         "severity": "MINOR"
     },
     {
+        "key": "optional_enum_case_matching",
+        "category": "SwiftLint",
+        "name": "Optional Enum Case Match",
+        "description": "Matching an enum case against an optional enum without '?' is supported on Swift 5.1 and above.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "orphaned_doc_comment",
+        "category": "SwiftLint",
+        "name": "Orphaned Doc Comment",
+        "description": "A doc comment should be attached to a declaration.",
+        "severity": "MINOR"
+    },
+    {
         "key": "overridden_super_call",
         "category": "SwiftLint",
         "name": "Overridden methods call super",
@@ -767,6 +851,27 @@
         "category": "SwiftLint",
         "name": "Pattern Matching Keywords",
         "description": "Combine multiple pattern matching bindings by moving keywords out of tuples.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "prefer_nimble",
+        "category": "SwiftLint",
+        "name": "Prefer Nimble",
+        "description": "Prefer Nimble matchers over XCTAssert functions.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "prefer_self_type_over_type_of_self",
+        "category": "SwiftLint",
+        "name": "Prefer Self Type Over Type of Self",
+        "description": "Prefer `Self` over `type(of: self)` when accessing properties or calling methods.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "prefer_zero_over_explicit_init",
+        "category": "SwiftLint",
+        "name": "Prefer Zero Over Explicit Init",
+        "description": "Prefer `.zero` over explicit init with zero parameters (e.g. `CGPoint(x: 0, y: 0)`)",
         "severity": "MINOR"
     },
     {
@@ -844,6 +949,13 @@
         "category": "SwiftLint",
         "name": "Quick Discouraged Pending Test",
         "description": "Discouraged pending test. This test won't run while it's marked as pending.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "raw_value_for_camel_cased_codable_enum",
+        "category": "SwiftLint",
+        "name": "Raw Value For Camel Cased Codable Enum",
+        "description": "Camel cased cases of Codable String enums should have raw value.",
         "severity": "MINOR"
     },
     {
@@ -1019,6 +1131,13 @@
         "category": "SwiftLint",
         "name": "Syntactic Sugar",
         "description": "Shorthand syntactic sugar should be used, i.e. [Int] instead of Array<Int>.",
+        "severity": "MINOR"
+    },
+    {
+        "key": "test_case_accessibility",
+        "category": "SwiftLint",
+        "name": "Test case accessibility",
+        "description": "Test cases should only contain private non-test members.",
         "severity": "MINOR"
     },
     {
