@@ -367,5 +367,13 @@
             <repositoryKey>Infer</repositoryKey>
             <key>UNREACHABLE_CODE</key>
         </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>MEMORY_LEAK</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>REGISTERED_OBSERVER_BEING_DEALLOCATED</key>
+        </rule>
     </rules>
 </profile>

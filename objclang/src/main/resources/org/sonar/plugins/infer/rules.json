@@ -742,6 +742,21 @@
     "description": "POINTER_TO_INTEGRAL_IMPLICIT_CAST",
     "severity": "MAJOR",
     "type": "CODE_SMELL"
+  },
+  {
+    "category": "Infer",
+    "key": "MEMORY_LEAK",
+    "name": "memory leak",
+    "description": "memory leak",
+    "severity": "CRITICAL",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "REGISTERED_OBSERVER_BEING_DEALLOCATED",
+    "name": "registered observer being deallocated",
+    "description": "registered observer being deallocated",
+    "severity": "MAJOR",
+    "type": "CODE_SMELL"
   }
-
 ]
