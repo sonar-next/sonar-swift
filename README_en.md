@@ -87,4 +87,4 @@ The scan must be run on the macOS operating system.
 
 
 ## Contact 
-![](docs/wechat.jpg)
+![](https://static0.xesimg.com/external/Wechat.jpeg)
