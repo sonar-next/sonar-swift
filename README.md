@@ -84,4 +84,4 @@ sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.s
 ## 联系我们
 你可以通过扫码进入微信群
 
-![](docs/wechat.jpg)
+![](https://static0.xesimg.com/external/Wechat.jpeg)
