@@ -45,7 +45,7 @@ OCLint 是一个针对于 C/C++/Objective-C 语言的静态代码分析工具，
 
 ### Fauxpas
 Faux Pas 是一款商业软件，支持对 Objective-C 语言进行扫描分析。
- 
+
 链接：http://fauxpasapp.com/
 
 ## 下载
@@ -85,3 +85,11 @@ sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.s
 你可以通过扫码进入微信群
 
 ![](https://static0.xesimg.com/external/Wechat.jpeg)
+
+## 已知用户
+> 欢迎用户将公司名在 https://github.com/tal-tech/sonar-swift/issues/9 登记（仅供用户参考）
+
+| <img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmuh5srzejj308002i744.jpg" alt="学而思网校" width="200"> | <img src ="https://tva1.sinaimg.cn/large/008eGmZEly1gmuh69mn30j303v01aglh.jpg" alt="励步" width="200"> | <img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmuh6ygdeyj31vt0hedg8.jpg" alt="小猴" width="200"> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmuhfzv3fmj31jl0agweq.jpg" alt="学而思·爱智康横版标准logo RGB" width="200" /> | <img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmuh7euh0hj307u0240sj.jpg" alt="少年得到" width="200"> |                                                              |
+
