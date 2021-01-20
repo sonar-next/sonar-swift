@@ -375,5 +375,41 @@
             <repositoryKey>Infer</repositoryKey>
             <key>REGISTERED_OBSERVER_BEING_DEALLOCATED</key>
         </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>CONSTANT_ADDRESS_DEREFERENCE</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>MEMORY_LEAK</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>NULLPTR_DEREFERENCE</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>OPTIONAL_EMPTY_ACCESS</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>STACK_VARIABLE_ADDRESS_ESCAPE</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>USE_AFTER_DELETE</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>USE_AFTER_FREE</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>USE_AFTER_LIFETIME</key>
+        </rule>
+        <rule>
+            <repositoryKey>Infer</repositoryKey>
+            <key>VECTOR_INVALIDATION</key>
+        </rule>
     </rules>
 </profile>

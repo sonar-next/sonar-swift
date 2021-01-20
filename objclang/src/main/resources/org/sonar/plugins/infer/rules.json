@@ -758,5 +758,69 @@
     "description": "registered observer being deallocated",
     "severity": "MAJOR",
     "type": "CODE_SMELL"
+  },
+  {
+    "category": "Infer",
+    "key": "CONSTANT_ADDRESS_DEREFERENCE",
+    "name": "constant address dereference",
+    "description": "constant address dereference",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "NULLPTR_DEREFERENCE",
+    "name": "nullptr dereference",
+    "description": "nullptr dereference",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "OPTIONAL_EMPTY_ACCESS",
+    "name": "optional empty access",
+    "description": "optional empty access",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "STACK_VARIABLE_ADDRESS_ESCAPE",
+    "name": "stack variable address escape",
+    "description": "stack variable address escape",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "USE_AFTER_DELETE",
+    "name": "use after delete",
+    "description": "use after delete",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "USE_AFTER_FREE",
+    "name": "use after free",
+    "description": "use after free",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "USE_AFTER_LIFETIME",
+    "name": "use after lifetime",
+    "description": "use after lifetime",
+    "severity": "MAJOR",
+    "type": "BUG"
+  },
+  {
+    "category": "Infer",
+    "key": "VECTOR_INVALIDATION",
+    "name": "vector invalidation",
+    "description": "vector invalidation",
+    "severity": "MAJOR",
+    "type": "BUG"
   }
 ]
