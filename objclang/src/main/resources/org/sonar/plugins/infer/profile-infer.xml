@@ -381,10 +381,6 @@
         </rule>
         <rule>
             <repositoryKey>Infer</repositoryKey>
-            <key>MEMORY_LEAK</key>
-        </rule>
-        <rule>
-            <repositoryKey>Infer</repositoryKey>
             <key>NULLPTR_DEREFERENCE</key>
         </rule>
         <rule>
