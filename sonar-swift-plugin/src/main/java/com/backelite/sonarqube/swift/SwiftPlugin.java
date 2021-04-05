@@ -19,6 +19,7 @@ package com.backelite.sonarqube.swift;
 
 import com.backelite.sonarqube.commons.TestFileFinders;
 import com.backelite.sonarqube.objectivec.ObjectiveCSquidSensor;
+import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.issues.ObjectiveCProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
@@ -167,6 +168,10 @@ public class SwiftPlugin implements Plugin {
                 // FauxPas quality profile
                 FauxPasProfile.class,
                 FauxPasProfileImporter.class,
+
+                // Duplications search
+//                SwiftCpdMapping.class,
+                ObjectiveCCpdAnalyzer.class,
 
                 // Code
                 SwiftSquidSensor.class,
