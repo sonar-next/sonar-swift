@@ -18,12 +18,14 @@
 package com.backelite.sonarqube.objectivec;
 
 import com.backelite.sonarqube.commons.MeasureUtil;
+import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.lang.ObjectiveCAstScanner;
 import com.backelite.sonarqube.objectivec.lang.ObjectiveCConfiguration;
 import com.backelite.sonarqube.objectivec.lang.api.ObjectiveCGrammar;
 import com.backelite.sonarqube.objectivec.lang.api.ObjectiveCMetric;
 import com.backelite.sonarqube.objectivec.lang.checks.CheckList;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
+import com.backelite.sonarqube.objectivec.lang.lexer.ObjectiveCLexer;
 import org.sonar.api.batch.fs.FilePredicate;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.rule.CheckFactory;
@@ -59,7 +61,7 @@ public class ObjectiveCSquidSensor implements Sensor {
 
     private final PathResolver pathResolver;
     private final Checks<SquidCheck<ObjectiveCGrammar>> checks;
-
+    private final ObjectiveCCpdAnalyzer objectiveCCpdAnalyzer;
 
     private SensorContext context;
     private AstScanner<ObjectiveCGrammar> scanner;
@@ -68,6 +70,7 @@ public class ObjectiveCSquidSensor implements Sensor {
         this.context = context;
         this.pathResolver = pathResolver;
         this.checks = checkFactory.<SquidCheck<ObjectiveCGrammar>>create(CheckList.REPOSITORY_KEY).addAnnotatedChecks((Iterable<Class>)CheckList.getChecks());
+        this.objectiveCCpdAnalyzer = new ObjectiveCCpdAnalyzer(context, ObjectiveCLexer.create());
     }
 
     private ObjectiveCConfiguration createConfiguration() {
@@ -90,6 +93,7 @@ public class ObjectiveCSquidSensor implements Sensor {
         MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.NCLOC, squidFile.getInt(ObjectiveCMetric.LINES_OF_CODE));
         MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.STATEMENTS, squidFile.getInt(ObjectiveCMetric.STATEMENTS));
         MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.COMMENT_LINES, squidFile.getInt(ObjectiveCMetric.COMMENT_LINES));
+        this.objectiveCCpdAnalyzer.pushCpdTokens(inputFile);
     }
 
     private void saveIssues(InputFile inputFile, SourceFile squidFile) {
