@@ -18,7 +18,6 @@
 package com.tal.sonarqube.java.lang;
 
 import com.sonar.sslr.impl.Parser;
-import com.sun.tools.javac.parser.JavacParser;
 import com.tal.sonarqube.java.lang.api.JavaGrammar;
 import com.tal.sonarqube.java.lang.api.JavaMetric;
 import com.tal.sonarqube.java.lang.parser.JavaParser;
