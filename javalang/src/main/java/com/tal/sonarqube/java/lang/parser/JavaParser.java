@@ -1,5 +1,5 @@
 /**
- * commons - Enables analysis of Swift and Objective-C projects into SonarQube.
+ * Swift SonarQube Plugin - Objective-C module - Enables analysis of Swift and Objective-C projects into SonarQube.
  * Copyright © 2015 Backelite (${email})
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,13 +15,25 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.backelite.sonarqube.commons;
+package com.tal.sonarqube.java.lang.parser;
 
-/**
- * Created by gillesgrousset on 23/08/2018.
- */
-public final class Constants {
-    public static final String PROPERTY_PREFIX = "sonar.swift";
+import com.sonar.sslr.impl.Parser;
+import com.tal.sonarqube.java.lang.JavaConfiguration;
+import com.tal.sonarqube.java.lang.api.JavaGrammar;
 
-    public static final String PROPERTY_JAVA_PREFIX = "sonar.java";
+public class JavaParser {
+
+    private JavaParser() {
+    }
+
+    public static Parser<JavaGrammar> create() {
+        return create(new JavaConfiguration());
+    }
+
+    public static Parser<JavaGrammar> create(JavaConfiguration conf) {
+        return Parser.builder((JavaGrammar) new JavaGrammarImpl())
+//                .withLexer(ObjectiveCLexer.create(conf))
+                .build();
+    }
+
 }

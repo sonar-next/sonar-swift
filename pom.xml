@@ -52,6 +52,7 @@
         <module>swiftlang</module>
         <module>objclang</module>
         <module>commons</module>
+        <module>javalang</module>
     </modules>
 
 

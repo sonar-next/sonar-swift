@@ -36,6 +36,13 @@
 
     <dependencies>
 
+
+        <dependency>
+            <groupId>com.tal.sonarqube</groupId>
+            <artifactId>java-lang</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
         <dependency>
             <groupId>com.tal.sonarqube</groupId>
             <artifactId>swift-lang</artifactId>

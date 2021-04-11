@@ -49,6 +49,10 @@ import com.backelite.sonarqube.swift.issues.tailor.TailorSensor;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
+import com.tal.sonarqube.java.JavaInferReportSensor;
+import com.tal.sonarqube.java.issues.JavaProfile;
+import com.tal.sonarqube.java.issues.infer.JavaInferSensor;
+import com.tal.sonarqube.java.lang.core.Java;
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
@@ -128,6 +132,9 @@ public class SwiftPlugin implements Plugin {
                 SwiftProfile.class,
                 ObjectiveC.class,
                 ObjectiveCProfile.class,
+                Java.class,
+                    JavaProfile.class,
+
 
                 // SwiftLint rules
                 SwiftLintSensor.class,
@@ -161,6 +168,14 @@ public class SwiftPlugin implements Plugin {
                 InferProfile.class,
                 InferProfileImporter.class,
 
+                // Infer Java rules
+                JavaInferSensor.class,
+                com.tal.sonarqube.java.issues.infer.InferRulesDefinition.class,
+
+                // Infer Java quality profile
+                com.tal.sonarqube.java.issues.infer.InferProfile.class,
+                com.tal.sonarqube.java.issues.infer.InferProfileImporter.class,
+
                 // FauxPas rules
                 FauxPasSensor.class,
                 FauxPasRulesDefinition.class,
@@ -176,6 +191,7 @@ public class SwiftPlugin implements Plugin {
                 // Code
                 SwiftSquidSensor.class,
                 ObjectiveCSquidSensor.class,
+                JavaInferReportSensor.class,
 
                 // Surefire
                 SurefireSensor.class,
