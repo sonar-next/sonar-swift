@@ -6,13 +6,13 @@ import com.tal.sonarqube.java.lang.JavaConfiguration;
 import com.tal.sonarqube.java.lang.api.JavaGrammar;
 import com.tal.sonarqube.java.lang.api.JavaMetric;
 import com.tal.sonarqube.java.lang.checks.CheckList;
-import com.tal.sonarqube.java.lang.core.Java;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.rule.CheckFactory;
 import org.sonar.api.batch.rule.Checks;
+import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
@@ -35,10 +35,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-public class JavaInferReportSensor extends JavaReportSensor {
+public class JavaInferReportSensor implements Sensor {
 
     private static final Logger LOG = LoggerFactory.getLogger(JavaInferReportSensor.class);
-
 
     private final Number[] FUNCTIONS_DISTRIB_BOTTOM_LIMITS = {1, 2, 4, 6, 8, 10, 12, 20, 30};
     private final Number[] FILES_DISTRIB_BOTTOM_LIMITS = {0, 5, 10, 20, 30, 60, 90};
@@ -51,7 +50,6 @@ public class JavaInferReportSensor extends JavaReportSensor {
     private AstScanner<JavaGrammar> scanner;
 
     public JavaInferReportSensor(SensorContext context, PathResolver pathResolver, CheckFactory checkFactory) {
-        super(context.config(), "infer");
         this.context = context;
         this.pathResolver = pathResolver;
         this.checks = checkFactory.<SquidCheck<JavaGrammar>>create(CheckList.REPOSITORY_KEY).addAnnotatedChecks((Iterable<Class>)CheckList.getChecks());
@@ -67,16 +65,8 @@ public class JavaInferReportSensor extends JavaReportSensor {
             String relativePath = pathResolver.relativePath(context.fileSystem().baseDir(), new java.io.File(squidFile.getKey()));
             InputFile inputFile = context.fileSystem().inputFile(context.fileSystem().predicates().hasRelativePath(relativePath));
 
-            saveMeasures(inputFile, squidFile);
             saveIssues(inputFile, squidFile);
         }
-    }
-
-    private void saveMeasures(InputFile inputFile, SourceFile squidFile) {
-        MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.LINES, squidFile.getInt(JavaMetric.LINES));
-        MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.NCLOC, squidFile.getInt(JavaMetric.LINES_OF_CODE));
-        MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.STATEMENTS, squidFile.getInt(JavaMetric.STATEMENTS));
-        MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.COMMENT_LINES, squidFile.getInt(JavaMetric.COMMENT_LINES));
     }
 
     private void saveIssues(InputFile inputFile, SourceFile squidFile) {
@@ -108,16 +98,15 @@ public class JavaInferReportSensor extends JavaReportSensor {
     @Override
     public void describe(SensorDescriptor descriptor) {
         descriptor
-                .onlyOnLanguage(Java.KEY)
-                .name("Java Infer ")
-                .onlyOnFileType(InputFile.Type.MAIN);
+                .onlyOnLanguage("java")
+                .name("Java Infer");
     }
 
     @Override
     public void execute(SensorContext context) {
-        FilePredicate hasObjC = context.fileSystem().predicates().hasLanguage(Java.KEY);
+        FilePredicate hasJava = context.fileSystem().predicates().hasLanguage("java");
         FilePredicate isMain = context.fileSystem().predicates().hasType(InputFile.Type.MAIN);
-        FilePredicate and = context.fileSystem().predicates().and(hasObjC, isMain);
+        FilePredicate and = context.fileSystem().predicates().and(hasJava, isMain);
         List<File> files = new ArrayList<>();
         for(InputFile inf : context.fileSystem().inputFiles(and)){
             files.add(inf.file());

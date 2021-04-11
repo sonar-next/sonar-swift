@@ -1,6 +1,5 @@
 package com.tal.sonarqube.java.issues.infer;
 
-import com.tal.sonarqube.java.lang.core.Java;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.profiles.ProfileImporter;
@@ -24,7 +23,7 @@ public class InferProfileImporter extends ProfileImporter {
 
     public InferProfileImporter(final XMLProfileParser xmlProfileParser) {
         super(InferRulesDefinition.REPOSITORY_KEY, InferRulesDefinition.REPOSITORY_KEY);
-        setSupportedLanguages(Java.KEY);
+        setSupportedLanguages("java");
         profileParser = xmlProfileParser;
     }
 

@@ -50,9 +50,7 @@ import com.backelite.sonarqube.swift.lang.core.Swift;
 import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
 import com.tal.sonarqube.java.JavaInferReportSensor;
-import com.tal.sonarqube.java.issues.JavaProfile;
 import com.tal.sonarqube.java.issues.infer.JavaInferSensor;
-import com.tal.sonarqube.java.lang.core.Java;
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
@@ -116,8 +114,14 @@ import java.util.Arrays;
                 name = "Path to Infer json formatted report",
                 description = "Relative to projects' root.",
                 global = false,
+                project = true),
+        @Property(
+                key = JavaInferSensor.REPORT_PATH_KEY,
+                defaultValue = JavaInferSensor.DEFAULT_REPORT_PATH,
+                name = "Path to Infer json formatted report",
+                description = "Relative to projects' root.",
+                global = false,
                 project = true)
-
 })
 public class SwiftPlugin implements Plugin {
 
@@ -132,9 +136,6 @@ public class SwiftPlugin implements Plugin {
                 SwiftProfile.class,
                 ObjectiveC.class,
                 ObjectiveCProfile.class,
-                Java.class,
-                    JavaProfile.class,
-
 
                 // SwiftLint rules
                 SwiftLintSensor.class,
