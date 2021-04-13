@@ -38,6 +38,11 @@ public class ObjectiveCCpdAnalyzer {
         File file = inputFile.file();
 //        highlighting.onFile(inputFile);
 
+        // not support .h file
+        if (inputFile.filename().endsWith(".h")) {
+            return;
+        }
+
         NewCpdTokens cpdTokens = context.newCpdTokens();
         cpdTokens.onFile(inputFile);
 
