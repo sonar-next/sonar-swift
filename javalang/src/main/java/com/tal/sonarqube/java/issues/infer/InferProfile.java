@@ -31,7 +31,7 @@ public class InferProfile implements BuiltInQualityProfilesDefinition {
 
     @Override
     public void define(Context context) {
-        logger.info("Creating Infer Profile");
+        logger.info("Creating Infer Java Profile");
         NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile(InferRulesDefinition.REPOSITORY_KEY, Java.KEY);
 
         try(Reader config = new InputStreamReader(getClass().getResourceAsStream(InferProfile.PROFILE_PATH))) {
