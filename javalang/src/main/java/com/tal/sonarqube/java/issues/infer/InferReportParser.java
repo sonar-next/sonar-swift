@@ -57,6 +57,7 @@ public class InferReportParser {
     private void recordIssue(final JSONObject jsonObject) {
 
         String filePath = (String) jsonObject.get("file");
+        logger.debug("record issue for java, path = {}", filePath);
         if (filePath != null) {
 
             JSONArray bugTraceJsonArray = (JSONArray) jsonObject.get("bug_trace");
@@ -85,7 +86,8 @@ public class InferReportParser {
             }
 
             String info = (String) jsonObject.get("qualifier");
-
+            // 规则名为了保持一致，增加 JAVA 前缀
+            String rule = "JAVA:" + jsonObject.get("bug_type");
             InputFile inputFile = context.fileSystem().inputFile(fp);
             assert inputFile != null;
             try {
@@ -94,7 +96,7 @@ public class InferReportParser {
                         .at(inputFile.selectLine(lineNum))
                         .message(info);
                 context.newIssue()
-                        .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, (String) jsonObject.get("bug_type")))
+                        .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, rule))
                         .addFlow(this.composeLocationList(filePath, bugTraceJsonArray))
                         .at(dil)
                         .save();

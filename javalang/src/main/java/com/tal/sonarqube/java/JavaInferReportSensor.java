@@ -21,6 +21,7 @@ import org.sonar.api.batch.sensor.issue.internal.DefaultIssueLocation;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.scan.filesystem.PathResolver;
+import org.sonar.java.externalreport.CheckstyleSensor;
 import org.sonar.squidbridge.AstScanner;
 import org.sonar.squidbridge.SquidAstVisitor;
 import org.sonar.squidbridge.api.CheckMessage;
@@ -108,8 +109,9 @@ public class JavaInferReportSensor implements Sensor {
         FilePredicate isMain = context.fileSystem().predicates().hasType(InputFile.Type.MAIN);
         FilePredicate and = context.fileSystem().predicates().and(hasJava, isMain);
         List<File> files = new ArrayList<>();
-        for(InputFile inf : context.fileSystem().inputFiles(and)){
-            files.add(inf.file());
+        for(InputFile inf : context.fileSystem().inputFiles(and)) {
+            File file = new File(inf.filename());
+            files.add(file);
         }
 
         List<SquidAstVisitor<JavaGrammar>> visitors = new ArrayList<>(checks.all());

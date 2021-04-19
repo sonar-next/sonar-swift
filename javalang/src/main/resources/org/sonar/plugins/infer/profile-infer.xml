@@ -5,407 +5,407 @@
     <rules>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BIABDUCTION_MEMORY_LEAK</key>
+            <key>JAVA:BIABDUCTION_MEMORY_LEAK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>DANGLING_POINTER_DEREFERENCE</key>
+            <key>JAVA:DANGLING_POINTER_DEREFERENCE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>DIVIDE_BY_ZERO</key>
+            <key>JAVA:DIVIDE_BY_ZERO</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>EMPTY_VECTOR_ACCESS</key>
+            <key>JAVA:EMPTY_VECTOR_ACCESS</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>IVAR_NOT_NULL_CHECKED</key>
+            <key>JAVA:IVAR_NOT_NULL_CHECKED</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>NULL_DEREFERENCE</key>
+            <key>JAVA:NULL_DEREFERENCE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>PARAMETER_NOT_NULL_CHECKED</key>
+            <key>JAVA:PARAMETER_NOT_NULL_CHECKED</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>PREMATURE_NIL_TERMINATION_ARGUMENT</key>
+            <key>JAVA:PREMATURE_NIL_TERMINATION_ARGUMENT</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>RESOURCE_LEAK</key>
+            <key>JAVA:RESOURCE_LEAK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>RETAIN_CYCLE</key>
+            <key>JAVA:RETAIN_CYCLE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>DEAD_STORE</key>
+            <key>JAVA:DEAD_STORE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>GUARDEDBY_VIOLATION</key>
+            <key>JAVA:GUARDEDBY_VIOLATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INTERFACE_NOT_THREAD_SAFE</key>
+            <key>JAVA:INTERFACE_NOT_THREAD_SAFE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>LOCK_CONSISTENCY_VIOLATION</key>
+            <key>JAVA:LOCK_CONSISTENCY_VIOLATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>THREAD_SAFETY_VIOLATION</key>
+            <key>JAVA:THREAD_SAFETY_VIOLATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>STATIC_INITIALIZATION_ORDER_FIASCO</key>
+            <key>JAVA:STATIC_INITIALIZATION_ORDER_FIASCO</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>DEADLOCK</key>
+            <key>JAVA:DEADLOCK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>LOCKLESS_VIOLATION</key>
+            <key>JAVA:LOCKLESS_VIOLATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>STARVATION</key>
+            <key>JAVA:STARVATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>STRICT_MODE_VIOLATION</key>
+            <key>JAVA:STRICT_MODE_VIOLATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CAPTURED_STRONG_SELF</key>
+            <key>JAVA:CAPTURED_STRONG_SELF</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>MIXED_SELF_WEAKSELF</key>
+            <key>JAVA:MIXED_SELF_WEAKSELF</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>MULTIPLE_WEAKSELF</key>
+            <key>JAVA:MULTIPLE_WEAKSELF</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>STRONG_SELF_NOT_CHECKED</key>
+            <key>JAVA:STRONG_SELF_NOT_CHECKED</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>WEAK_SELF_IN_NO_ESCAPE_BLOCK</key>
+            <key>JAVA:WEAK_SELF_IN_NO_ESCAPE_BLOCK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE</key>
+            <key>JAVA:AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE_UI_THREAD</key>
+            <key>JAVA:AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE_UI_THREAD</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>AUTORELEASEPOOL_SIZE_UNREACHABLE_AT_EXIT</key>
+            <key>JAVA:AUTORELEASEPOOL_SIZE_UNREACHABLE_AT_EXIT</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>EXECUTION_TIME_COMPLEXITY_INCREASE</key>
+            <key>JAVA:EXECUTION_TIME_COMPLEXITY_INCREASE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>EXECUTION_TIME_COMPLEXITY_INCREASE_UI_THREAD</key>
+            <key>JAVA:EXECUTION_TIME_COMPLEXITY_INCREASE_UI_THREAD</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>EXECUTION_TIME_UNREACHABLE_AT_EXIT</key>
+            <key>JAVA:EXECUTION_TIME_UNREACHABLE_AT_EXIT</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFINITE_AUTORELEASEPOOL_SIZE</key>
+            <key>JAVA:INFINITE_AUTORELEASEPOOL_SIZE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFINITE_EXECUTION_TIME</key>
+            <key>JAVA:INFINITE_EXECUTION_TIME</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CHECKERS_ALLOCATES_MEMORY</key>
+            <key>JAVA:CHECKERS_ALLOCATES_MEMORY</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CHECKERS_ANNOTATION_REACHABILITY_ERROR</key>
+            <key>JAVA:CHECKERS_ANNOTATION_REACHABILITY_ERROR</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CHECKERS_CALLS_EXPENSIVE_METHOD</key>
+            <key>JAVA:CHECKERS_CALLS_EXPENSIVE_METHOD</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED</key>
+            <key>JAVA:CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>EXPENSIVE_LOOP_INVARIANT_CALL</key>
+            <key>JAVA:EXPENSIVE_LOOP_INVARIANT_CALL</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INVARIANT_CALL</key>
+            <key>JAVA:INVARIANT_CALL</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>ASSIGN_POINTER_WARNING</key>
+            <key>JAVA:ASSIGN_POINTER_WARNING</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BAD_POINTER_COMPARISON</key>
+            <key>JAVA:BAD_POINTER_COMPARISON</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>COMPONENT_WITH_MULTIPLE_FACTORY_METHODS</key>
+            <key>JAVA:COMPONENT_WITH_MULTIPLE_FACTORY_METHODS</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CXX_REFERENCE_CAPTURED_IN_OBJC_BLOCK</key>
+            <key>JAVA:CXX_REFERENCE_CAPTURED_IN_OBJC_BLOCK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>DIRECT_ATOMIC_PROPERTY_ACCESS</key>
+            <key>JAVA:DIRECT_ATOMIC_PROPERTY_ACCESS</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>DISCOURAGED_WEAK_PROPERTY_CUSTOM_SETTER</key>
+            <key>JAVA:DISCOURAGED_WEAK_PROPERTY_CUSTOM_SETTER</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL</key>
+            <key>JAVA:GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>MUTABLE_LOCAL_VARIABLE_IN_COMPONENT_FILE</key>
+            <key>JAVA:MUTABLE_LOCAL_VARIABLE_IN_COMPONENT_FILE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>POINTER_TO_CONST_OBJC_CLASS</key>
+            <key>JAVA:POINTER_TO_CONST_OBJC_CLASS</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>STRONG_DELEGATE_WARNING</key>
+            <key>JAVA:STRONG_DELEGATE_WARNING</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CREATE_INTENT_FROM_URI</key>
+            <key>JAVA:CREATE_INTENT_FROM_URI</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CROSS_SITE_SCRIPTING</key>
+            <key>JAVA:CROSS_SITE_SCRIPTING</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>EXPOSED_INSECURE_INTENT_HANDLING</key>
+            <key>JAVA:EXPOSED_INSECURE_INTENT_HANDLING</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INSECURE_INTENT_HANDLING</key>
+            <key>JAVA:INSECURE_INTENT_HANDLING</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>JAVASCRIPT_INJECTION</key>
+            <key>JAVA:JAVASCRIPT_INJECTION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>LOGGING_PRIVATE_DATA</key>
+            <key>JAVA:LOGGING_PRIVATE_DATA</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>QUANDARY_TAINT_ERROR</key>
+            <key>JAVA:QUANDARY_TAINT_ERROR</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>SHELL_INJECTION</key>
+            <key>JAVA:SHELL_INJECTION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>SHELL_INJECTION_RISK</key>
+            <key>JAVA:SHELL_INJECTION_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>SQL_INJECTION</key>
+            <key>JAVA:SQL_INJECTION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>SQL_INJECTION_RISK</key>
+            <key>JAVA:SQL_INJECTION_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_BUFFER_ACCESS</key>
+            <key>JAVA:UNTRUSTED_BUFFER_ACCESS</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_DESERIALIZATION</key>
+            <key>JAVA:UNTRUSTED_DESERIALIZATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_DESERIALIZATION_RISK</key>
+            <key>JAVA:UNTRUSTED_DESERIALIZATION_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_ENVIRONMENT_CHANGE_RISK</key>
+            <key>JAVA:UNTRUSTED_ENVIRONMENT_CHANGE_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_FILE</key>
+            <key>JAVA:UNTRUSTED_FILE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_FILE_RISK</key>
+            <key>JAVA:UNTRUSTED_FILE_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_HEAP_ALLOCATION</key>
+            <key>JAVA:UNTRUSTED_HEAP_ALLOCATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_INTENT_CREATION</key>
+            <key>JAVA:UNTRUSTED_INTENT_CREATION</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_URL_RISK</key>
+            <key>JAVA:UNTRUSTED_URL_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNTRUSTED_VARIABLE_LENGTH_ARRAY</key>
+            <key>JAVA:UNTRUSTED_VARIABLE_LENGTH_ARRAY</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>USER_CONTROLLED_SQL_RISK</key>
+            <key>JAVA:USER_CONTROLLED_SQL_RISK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNINITIALIZED_VALUE</key>
+            <key>JAVA:UNINITIALIZED_VALUE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_L1</key>
+            <key>JAVA:BUFFER_OVERRUN_L1</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_L2</key>
+            <key>JAVA:BUFFER_OVERRUN_L2</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_L3</key>
+            <key>JAVA:BUFFER_OVERRUN_L3</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_L4</key>
+            <key>JAVA:BUFFER_OVERRUN_L4</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_L5</key>
+            <key>JAVA:BUFFER_OVERRUN_L5</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_S2</key>
+            <key>JAVA:BUFFER_OVERRUN_S2</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>BUFFER_OVERRUN_U5</key>
+            <key>JAVA:BUFFER_OVERRUN_U5</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CONDITION_ALWAYS_FALSE</key>
+            <key>JAVA:CONDITION_ALWAYS_FALSE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CONDITION_ALWAYS_TRUE</key>
+            <key>JAVA:CONDITION_ALWAYS_TRUE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFERBO_ALLOC_IS_BIG</key>
+            <key>JAVA:INFERBO_ALLOC_IS_BIG</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFERBO_ALLOC_IS_NEGATIVE</key>
+            <key>JAVA:INFERBO_ALLOC_IS_NEGATIVE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFERBO_ALLOC_IS_ZERO</key>
+            <key>JAVA:INFERBO_ALLOC_IS_ZERO</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFERBO_ALLOC_MAY_BE_BIG</key>
+            <key>JAVA:INFERBO_ALLOC_MAY_BE_BIG</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INFERBO_ALLOC_MAY_BE_NEGATIVE</key>
+            <key>JAVA:INFERBO_ALLOC_MAY_BE_NEGATIVE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INTEGER_OVERFLOW_L1</key>
+            <key>JAVA:INTEGER_OVERFLOW_L1</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INTEGER_OVERFLOW_L2</key>
+            <key>JAVA:INTEGER_OVERFLOW_L2</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INTEGER_OVERFLOW_L5</key>
+            <key>JAVA:INTEGER_OVERFLOW_L5</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>INTEGER_OVERFLOW_U5</key>
+            <key>JAVA:INTEGER_OVERFLOW_U5</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>UNREACHABLE_CODE</key>
+            <key>JAVA:UNREACHABLE_CODE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>MEMORY_LEAK</key>
+            <key>JAVA:MEMORY_LEAK</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>REGISTERED_OBSERVER_BEING_DEALLOCATED</key>
+            <key>JAVA:REGISTERED_OBSERVER_BEING_DEALLOCATED</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>CONSTANT_ADDRESS_DEREFERENCE</key>
+            <key>JAVA:CONSTANT_ADDRESS_DEREFERENCE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>NULLPTR_DEREFERENCE</key>
+            <key>JAVA:NULLPTR_DEREFERENCE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>OPTIONAL_EMPTY_ACCESS</key>
+            <key>JAVA:OPTIONAL_EMPTY_ACCESS</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>STACK_VARIABLE_ADDRESS_ESCAPE</key>
+            <key>JAVA:STACK_VARIABLE_ADDRESS_ESCAPE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>USE_AFTER_DELETE</key>
+            <key>JAVA:USE_AFTER_DELETE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>USE_AFTER_FREE</key>
+            <key>JAVA:USE_AFTER_FREE</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>USE_AFTER_LIFETIME</key>
+            <key>JAVA:USE_AFTER_LIFETIME</key>
         </rule>
         <rule>
             <repositoryKey>Infer Java</repositoryKey>
-            <key>VECTOR_INVALIDATION</key>
+            <key>JAVA:VECTOR_INVALIDATION</key>
         </rule>
     </rules>
 </profile>

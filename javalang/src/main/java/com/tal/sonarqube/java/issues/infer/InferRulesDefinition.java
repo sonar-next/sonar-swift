@@ -45,7 +45,6 @@ public class InferRulesDefinition implements RulesDefinition {
                     repository.createRule((String) slRule.get("key"))
                             .setName((String) slRule.get("name"))
                             .setType(ruleType)
-                            .setActivatedByDefault(true)
                             .setSeverity((String) slRule.get("severity"))
                             .setHtmlDescription((String) slRule.get("description"));
                 }
