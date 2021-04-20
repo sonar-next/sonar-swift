@@ -24,8 +24,8 @@ import java.util.Optional;
 public class InferRulesDefinition implements RulesDefinition {
 
     private static final Logger logger = LoggerFactory.getLogger(InferRulesDefinition.class);
-    public static final String REPOSITORY_KEY = "Infer Java";
-    public static final String REPOSITORY_NAME = REPOSITORY_KEY;
+    public static final String REPOSITORY_KEY = "infer-java";
+    public static final String REPOSITORY_NAME = "Infer Java";
     private static final String RULES_FILE = "/org/sonar/plugins/infer/java-rules.json";
 
     private final SonarRuntime sonarRuntime;

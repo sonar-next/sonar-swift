@@ -6,8 +6,8 @@
             <key>READABILITY</key>
             <name>Readability</name>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BIABDUCTION_MEMORY_LEAK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BIABDUCTION_MEMORY_LEAK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -19,8 +19,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:DANGLING_POINTER_DEREFERENCE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>DANGLING_POINTER_DEREFERENCE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -32,8 +32,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:DIVIDE_BY_ZERO</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>DIVIDE_BY_ZERO</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -45,8 +45,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:EMPTY_VECTOR_ACCESS</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>EMPTY_VECTOR_ACCESS</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -58,8 +58,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:IVAR_NOT_NULL_CHECKED</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>IVAR_NOT_NULL_CHECKED</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -71,8 +71,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:NULL_DEREFERENCE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>NULL_DEREFERENCE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -84,8 +84,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:PARAMETER_NOT_NULL_CHECKED</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>PARAMETER_NOT_NULL_CHECKED</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -97,8 +97,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:PREMATURE_NIL_TERMINATION_ARGUMENT</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>PREMATURE_NIL_TERMINATION_ARGUMENT</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -110,8 +110,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:RESOURCE_LEAK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>RESOURCE_LEAK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -123,8 +123,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:RETAIN_CYCLE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>RETAIN_CYCLE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -136,8 +136,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:DEAD_STORE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>DEAD_STORE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -149,8 +149,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:GUARDEDBY_VIOLATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>GUARDEDBY_VIOLATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -162,8 +162,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INTERFACE_NOT_THREAD_SAFE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INTERFACE_NOT_THREAD_SAFE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -175,8 +175,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:LOCK_CONSISTENCY_VIOLATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>LOCK_CONSISTENCY_VIOLATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -188,8 +188,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:THREAD_SAFETY_VIOLATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>THREAD_SAFETY_VIOLATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -201,8 +201,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:STATIC_INITIALIZATION_ORDER_FIASCO</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>STATIC_INITIALIZATION_ORDER_FIASCO</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -214,8 +214,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:DEADLOCK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>DEADLOCK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -227,8 +227,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:LOCKLESS_VIOLATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>LOCKLESS_VIOLATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -240,8 +240,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:STARVATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>STARVATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -253,8 +253,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:STRICT_MODE_VIOLATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>STRICT_MODE_VIOLATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -266,8 +266,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CAPTURED_STRONG_SELF</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CAPTURED_STRONG_SELF</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -279,8 +279,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:MIXED_SELF_WEAKSELF</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>MIXED_SELF_WEAKSELF</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -292,8 +292,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:MULTIPLE_WEAKSELF</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>MULTIPLE_WEAKSELF</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -305,8 +305,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:STRONG_SELF_NOT_CHECKED</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>STRONG_SELF_NOT_CHECKED</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -318,8 +318,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:WEAK_SELF_IN_NO_ESCAPE_BLOCK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>WEAK_SELF_IN_NO_ESCAPE_BLOCK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -331,8 +331,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -344,8 +344,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE_UI_THREAD</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>AUTORELEASEPOOL_SIZE_COMPLEXITY_INCREASE_UI_THREAD</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -357,8 +357,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:AUTORELEASEPOOL_SIZE_UNREACHABLE_AT_EXIT</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>AUTORELEASEPOOL_SIZE_UNREACHABLE_AT_EXIT</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -370,8 +370,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:EXECUTION_TIME_COMPLEXITY_INCREASE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>EXECUTION_TIME_COMPLEXITY_INCREASE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -383,8 +383,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:EXECUTION_TIME_COMPLEXITY_INCREASE_UI_THREAD</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>EXECUTION_TIME_COMPLEXITY_INCREASE_UI_THREAD</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -396,8 +396,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:EXECUTION_TIME_UNREACHABLE_AT_EXIT</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>EXECUTION_TIME_UNREACHABLE_AT_EXIT</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -409,8 +409,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFINITE_AUTORELEASEPOOL_SIZE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFINITE_AUTORELEASEPOOL_SIZE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -422,8 +422,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFINITE_EXECUTION_TIME</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFINITE_EXECUTION_TIME</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -435,8 +435,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CHECKERS_ALLOCATES_MEMORY</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CHECKERS_ALLOCATES_MEMORY</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -448,8 +448,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CHECKERS_ANNOTATION_REACHABILITY_ERROR</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CHECKERS_ANNOTATION_REACHABILITY_ERROR</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -461,8 +461,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CHECKERS_CALLS_EXPENSIVE_METHOD</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CHECKERS_CALLS_EXPENSIVE_METHOD</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -474,8 +474,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -487,8 +487,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:EXPENSIVE_LOOP_INVARIANT_CALL</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>EXPENSIVE_LOOP_INVARIANT_CALL</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -500,8 +500,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INVARIANT_CALL</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INVARIANT_CALL</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -513,8 +513,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:ASSIGN_POINTER_WARNING</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>ASSIGN_POINTER_WARNING</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -526,8 +526,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BAD_POINTER_COMPARISON</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BAD_POINTER_COMPARISON</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -539,8 +539,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:COMPONENT_WITH_MULTIPLE_FACTORY_METHODS</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>COMPONENT_WITH_MULTIPLE_FACTORY_METHODS</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -552,8 +552,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CXX_REFERENCE_CAPTURED_IN_OBJC_BLOCK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CXX_REFERENCE_CAPTURED_IN_OBJC_BLOCK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -565,8 +565,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:DIRECT_ATOMIC_PROPERTY_ACCESS</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>DIRECT_ATOMIC_PROPERTY_ACCESS</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -578,8 +578,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:DISCOURAGED_WEAK_PROPERTY_CUSTOM_SETTER</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>DISCOURAGED_WEAK_PROPERTY_CUSTOM_SETTER</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -591,8 +591,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -604,8 +604,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:MUTABLE_LOCAL_VARIABLE_IN_COMPONENT_FILE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>MUTABLE_LOCAL_VARIABLE_IN_COMPONENT_FILE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -617,8 +617,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:POINTER_TO_CONST_OBJC_CLASS</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>POINTER_TO_CONST_OBJC_CLASS</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -630,8 +630,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:STRONG_DELEGATE_WARNING</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>STRONG_DELEGATE_WARNING</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -643,8 +643,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CREATE_INTENT_FROM_URI</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CREATE_INTENT_FROM_URI</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -656,8 +656,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CROSS_SITE_SCRIPTING</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CROSS_SITE_SCRIPTING</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -669,8 +669,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:EXPOSED_INSECURE_INTENT_HANDLING</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>EXPOSED_INSECURE_INTENT_HANDLING</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -682,8 +682,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INSECURE_INTENT_HANDLING</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INSECURE_INTENT_HANDLING</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -695,8 +695,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:JAVASCRIPT_INJECTION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>JAVASCRIPT_INJECTION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -708,8 +708,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:LOGGING_PRIVATE_DATA</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>LOGGING_PRIVATE_DATA</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -721,8 +721,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:QUANDARY_TAINT_ERROR</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>QUANDARY_TAINT_ERROR</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -734,8 +734,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:SHELL_INJECTION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>SHELL_INJECTION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -747,8 +747,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:SHELL_INJECTION_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>SHELL_INJECTION_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -760,8 +760,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:SQL_INJECTION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>SQL_INJECTION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -773,8 +773,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:SQL_INJECTION_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>SQL_INJECTION_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -786,8 +786,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_BUFFER_ACCESS</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_BUFFER_ACCESS</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -799,8 +799,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_DESERIALIZATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_DESERIALIZATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -812,8 +812,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_DESERIALIZATION_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_DESERIALIZATION_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -825,8 +825,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_ENVIRONMENT_CHANGE_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_ENVIRONMENT_CHANGE_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -838,8 +838,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_FILE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_FILE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -851,8 +851,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_FILE_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_FILE_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -864,8 +864,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_HEAP_ALLOCATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_HEAP_ALLOCATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -877,8 +877,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_INTENT_CREATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_INTENT_CREATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -890,8 +890,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_URL_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_URL_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -903,8 +903,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNTRUSTED_VARIABLE_LENGTH_ARRAY</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNTRUSTED_VARIABLE_LENGTH_ARRAY</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -916,8 +916,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:USER_CONTROLLED_SQL_RISK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>USER_CONTROLLED_SQL_RISK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -929,8 +929,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNINITIALIZED_VALUE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNINITIALIZED_VALUE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -942,8 +942,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_L1</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_L1</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -955,8 +955,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_L2</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_L2</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -968,8 +968,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_L3</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_L3</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -981,8 +981,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_L4</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_L4</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -994,8 +994,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_L5</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_L5</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1007,8 +1007,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_S2</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_S2</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1020,8 +1020,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:BUFFER_OVERRUN_U5</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>BUFFER_OVERRUN_U5</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1033,8 +1033,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CONDITION_ALWAYS_FALSE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CONDITION_ALWAYS_FALSE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1046,8 +1046,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CONDITION_ALWAYS_TRUE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CONDITION_ALWAYS_TRUE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1059,8 +1059,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFERBO_ALLOC_IS_BIG</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFERBO_ALLOC_IS_BIG</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1072,8 +1072,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFERBO_ALLOC_IS_NEGATIVE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFERBO_ALLOC_IS_NEGATIVE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1085,8 +1085,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFERBO_ALLOC_IS_ZERO</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFERBO_ALLOC_IS_ZERO</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1098,8 +1098,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFERBO_ALLOC_MAY_BE_BIG</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFERBO_ALLOC_MAY_BE_BIG</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1111,8 +1111,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INFERBO_ALLOC_MAY_BE_NEGATIVE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INFERBO_ALLOC_MAY_BE_NEGATIVE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1124,8 +1124,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INTEGER_OVERFLOW_L1</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INTEGER_OVERFLOW_L1</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1137,8 +1137,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INTEGER_OVERFLOW_L2</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INTEGER_OVERFLOW_L2</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1150,8 +1150,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INTEGER_OVERFLOW_L5</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INTEGER_OVERFLOW_L5</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1163,8 +1163,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:INTEGER_OVERFLOW_U5</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>INTEGER_OVERFLOW_U5</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1176,8 +1176,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNREACHABLE_CODE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNREACHABLE_CODE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1189,8 +1189,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:UNSAFE_CALL_TO_OPTIONAL_METHOD</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>UNSAFE_CALL_TO_OPTIONAL_METHOD</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1202,8 +1202,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:POINTER_TO_INTEGRAL_IMPLICIT_CAST</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>POINTER_TO_INTEGRAL_IMPLICIT_CAST</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1215,8 +1215,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:MEMORY_LEAK</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>MEMORY_LEAK</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1228,8 +1228,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:REGISTERED_OBSERVER_BEING_DEALLOCATED</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>REGISTERED_OBSERVER_BEING_DEALLOCATED</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1241,8 +1241,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:USE_AFTER_LIFETIME</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>USE_AFTER_LIFETIME</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1254,8 +1254,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:CONSTANT_ADDRESS_DEREFERENCE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>CONSTANT_ADDRESS_DEREFERENCE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1267,8 +1267,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:NULLPTR_DEREFERENCE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>NULLPTR_DEREFERENCE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1280,8 +1280,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:OPTIONAL_EMPTY_ACCESS</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>OPTIONAL_EMPTY_ACCESS</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1293,8 +1293,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:STACK_VARIABLE_ADDRESS_ESCAPE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>STACK_VARIABLE_ADDRESS_ESCAPE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1306,8 +1306,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:USE_AFTER_DELETE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>USE_AFTER_DELETE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1319,8 +1319,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:USE_AFTER_FREE</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>USE_AFTER_FREE</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>
@@ -1332,8 +1332,8 @@
                 </prop>
             </chc>
             <chc>
-                <rule-repo>Infer Java</rule-repo>
-                <rule-key>JAVA:VECTOR_INVALIDATION</rule-key>
+                <rule-repo>infer-java</rule-repo>
+                <rule-key>VECTOR_INVALIDATION</rule-key>
                 <prop>
                     <key>remediationFunction</key>
                     <txt>CONSTANT_ISSUE</txt>

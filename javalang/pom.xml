@@ -31,12 +31,6 @@
             <version>1.7.0.243</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.sonarsource.analyzer-commons</groupId>-->
-<!--            <artifactId>sonar-analyzer-commons</artifactId>-->
-<!--            <version>1.7.0.243</version>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>external-reports</artifactId>
