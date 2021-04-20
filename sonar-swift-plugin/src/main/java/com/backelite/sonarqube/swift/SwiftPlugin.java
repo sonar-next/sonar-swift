@@ -49,6 +49,7 @@ import com.backelite.sonarqube.swift.issues.tailor.TailorSensor;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
+import com.tal.sonarqube.java.issues.infer.JavaInferSensor;
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
@@ -112,8 +113,14 @@ import java.util.Arrays;
                 name = "Path to Infer json formatted report",
                 description = "Relative to projects' root.",
                 global = false,
+                project = true),
+        @Property(
+                key = JavaInferSensor.REPORT_PATH_KEY,
+                defaultValue = JavaInferSensor.DEFAULT_REPORT_PATH,
+                name = "Path to Infer json formatted report",
+                description = "Relative to projects' root.",
+                global = false,
                 project = true)
-
 })
 public class SwiftPlugin implements Plugin {
 
@@ -160,6 +167,14 @@ public class SwiftPlugin implements Plugin {
                 // Infer OC quality profile
                 InferProfile.class,
                 InferProfileImporter.class,
+
+                // Infer Java rules
+                JavaInferSensor.class,
+                com.tal.sonarqube.java.issues.infer.InferRulesDefinition.class,
+
+                // Infer Java quality profile
+                com.tal.sonarqube.java.issues.infer.InferProfile.class,
+                com.tal.sonarqube.java.issues.infer.InferProfileImporter.class,
 
                 // FauxPas rules
                 FauxPasSensor.class,

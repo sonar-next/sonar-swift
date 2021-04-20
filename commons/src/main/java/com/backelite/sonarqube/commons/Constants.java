@@ -22,4 +22,6 @@ package com.backelite.sonarqube.commons;
  */
 public final class Constants {
     public static final String PROPERTY_PREFIX = "sonar.swift";
+
+    public static final String PROPERTY_JAVA_PREFIX = "sonar.java";
 }

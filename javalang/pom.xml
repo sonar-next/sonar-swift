@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-    Swift SonarQube Plugin - Swift module - Enables analysis of Swift and Objective-C projects into SonarQube.
-    Copyright © 2015 Backelite (${email})
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
--->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>sonar-swift</artifactId>
@@ -28,8 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>swift-lang</artifactId>
-    <name>Swift SonarQube Plugin - Swift module</name>
+    <artifactId>java-lang</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
 
     <dependencies>
 
@@ -37,6 +23,18 @@
             <groupId>com.tal.sonarqube</groupId>
             <artifactId>commons</artifactId>
             <version>1.5.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.sonarsource.analyzer-commons</groupId>
+            <artifactId>sonar-analyzer-commons</artifactId>
+            <version>1.7.0.243</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>external-reports</artifactId>
+            <version>5.6.1.15064</version>
         </dependency>
 
         <dependency>
@@ -63,8 +61,6 @@
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
         </dependency>
-
-        <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -104,8 +100,18 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.woodstox</groupId>
+                    <artifactId>wstx-asl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
-
 
 </project>
