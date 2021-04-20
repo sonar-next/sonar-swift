@@ -32,7 +32,7 @@ public class JavaInferSensor implements Sensor {
     public void describe(SensorDescriptor descriptor) {
         descriptor
                 .onlyOnLanguage(Java.KEY)
-                .name("Infer")
+                .name("Infer Java")
                 .onlyOnFileType(InputFile.Type.MAIN);
     }
 

@@ -49,7 +49,6 @@ import com.backelite.sonarqube.swift.issues.tailor.TailorSensor;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
-import com.tal.sonarqube.java.JavaInferReportSensor;
 import com.tal.sonarqube.java.issues.infer.JavaInferSensor;
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
@@ -192,7 +191,6 @@ public class SwiftPlugin implements Plugin {
                 // Code
                 SwiftSquidSensor.class,
                 ObjectiveCSquidSensor.class,
-                JavaInferReportSensor.class,
 
                 // Surefire
                 SurefireSensor.class,

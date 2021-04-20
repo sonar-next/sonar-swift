@@ -21,7 +21,7 @@ public class InferProfile implements BuiltInQualityProfilesDefinition {
 
     private static final Logger logger = LoggerFactory.getLogger(InferProfile.class);
 
-    public static final String PROFILE_PATH = "/org/sonar/plugins/infer/profile-infer.xml";
+    public static final String PROFILE_PATH = "/org/sonar/plugins/infer/java-profile-infer.xml";
 
     private final InferProfileImporter profileImporter;
 

@@ -26,7 +26,7 @@ public class InferRulesDefinition implements RulesDefinition {
     private static final Logger logger = LoggerFactory.getLogger(InferRulesDefinition.class);
     public static final String REPOSITORY_KEY = "Infer Java";
     public static final String REPOSITORY_NAME = REPOSITORY_KEY;
-    private static final String RULES_FILE = "/org/sonar/plugins/infer/rules.json";
+    private static final String RULES_FILE = "/org/sonar/plugins/infer/java-rules.json";
 
     private final SonarRuntime sonarRuntime;
     public InferRulesDefinition(SonarRuntime sonarRuntime) {
@@ -53,7 +53,7 @@ public class InferRulesDefinition implements RulesDefinition {
             logger.error("Failed to load infer rules", e);
         }
 
-        SqaleXmlLoader.load(repository, "/com/sonar/sqale/infer-model.xml");
+        SqaleXmlLoader.load(repository, "/com/sonar/sqale/java-infer-model.xml");
         repository.done();
 
     }

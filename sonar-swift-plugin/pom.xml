@@ -36,7 +36,6 @@
 
     <dependencies>
 
-
         <dependency>
             <groupId>com.tal.sonarqube</groupId>
             <artifactId>java-lang</artifactId>
