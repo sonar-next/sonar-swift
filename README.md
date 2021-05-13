@@ -24,7 +24,7 @@ SonarQube 作为一款成熟的代码扫描服务，对外提供了插件功能�
 ## 支持的工具介绍
 
 ### Infer 
-Infer 是由Facebook公司推出的静态代码扫描工具，支持 C/C++/Java 语言的扫描。
+Infer 是由Facebook公司推出的静态代码扫描工具，支持 C/C++/Java/Objective-C 语言的扫描。
 
 链接：https://github.com/facebook/infer 
 
@@ -72,10 +72,17 @@ xcpretty -r json-compilation-database -o compile_commands.json < xcodebuild.log 
 infer run --skip-analysis-in-path Pods --compilation-database compile_commands.json
 
 # 可选，如果有 swift 语言使用
-swiftlint lint > swiftlint.txt
+# swiftlint lint > swiftlint.txt
 
-lizard --xml > lizard-report.xml
-sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.sources=. -Dsonar.swift.swiftlint.report=swiftlint.txt -Dsonar.swift.lizard.report=lizard-report.xml -Dsonar.swift.infer.report=infer-out/report.json
+# 可选，Java 语言
+# infer run -- ./gradlew build
+# 在命令后添加 -Dsonar.java.infer.report=infer-out/report.json
+
+# 可选，如果想计算 复杂度 使用
+# lizard --xml > lizard-report.xml
+# 在命令后添加 -Dsonar.swift.lizard.report=lizard-report.xml
+sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.sources=. -Dsonar.swift.swiftlint.report=swiftlint.txt  -Dsonar.swift.infer.report=infer-out/report.json
+
 ```
 
 ## 要求
