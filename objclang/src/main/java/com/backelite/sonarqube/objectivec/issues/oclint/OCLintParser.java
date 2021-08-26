@@ -20,6 +20,8 @@ package com.backelite.sonarqube.objectivec.issues.oclint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.FilePredicates;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
@@ -85,27 +87,39 @@ final class OCLintParser {
 
     private void collectFileViolations(String filePath, NodeList nodeList) {
         File file = new File(filePath);
-        FilePredicate fp = context.fileSystem().predicates().hasAbsolutePath(file.getAbsolutePath());
-        if(!context.fileSystem().hasFiles(fp)){
-            LOGGER.warn("file not included in sonar {}", filePath);
-        } else {
-            InputFile inputFile = context.fileSystem().inputFile(fp);
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element element = (Element) node;
-                    NewIssueLocation dil = new DefaultIssueLocation()
-                            .on(inputFile)
-                            .at(inputFile.selectLine(Integer.valueOf(element.getAttribute(LINE))))
-                            .message(element.getTextContent());
-                    context.newIssue()
-                            .forRule(RuleKey.of(OCLintRulesDefinition.REPOSITORY_KEY, element.getAttribute(RULE)))
-                            .at(dil)
-                            .save();
+        FilePredicates predicates = context.fileSystem().predicates();
+        FilePredicate fp = predicates.or(predicates.hasAbsolutePath(filePath), predicates.hasRelativePath(filePath));
+
+        InputFile inputFile = null;
+        if (!context.fileSystem().hasFiles(fp)) {
+            FileSystem fs = context.fileSystem();
+            //Search for path _ending_ with the filename
+            for (InputFile f : fs.inputFiles(fs.predicates().hasType(InputFile.Type.MAIN))) {
+                if (filePath.endsWith(f.relativePath())) {
+                    inputFile = f;
+                    break;
                 }
             }
+        } else {
+            inputFile = context.fileSystem().inputFile(fp);
         }
-
-
+        if (inputFile == null) {
+            LOGGER.warn("file not included in sonar {}", filePath);
+            return;
+        }
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                NewIssueLocation dil = new DefaultIssueLocation()
+                        .on(inputFile)
+                        .at(inputFile.selectLine(Integer.valueOf(element.getAttribute(LINE))))
+                        .message(element.getTextContent());
+                context.newIssue()
+                        .forRule(RuleKey.of(OCLintRulesDefinition.REPOSITORY_KEY, element.getAttribute(RULE)))
+                        .at(dil)
+                        .save();
+            }
+        }
     }
 }
