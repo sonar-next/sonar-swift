@@ -6,6 +6,8 @@ import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.FilePredicates;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
@@ -77,16 +79,28 @@ public class InferReportParser {
                 return;
             }
 
-            FilePredicate fp = context.fileSystem().predicates().hasRelativePath(filePath);
+            FilePredicates predicates = context.fileSystem().predicates();
+            FilePredicate fp = predicates.or(predicates.hasAbsolutePath(filePath), predicates.hasRelativePath(filePath));
 
+            InputFile inputFile = null;
             if (!context.fileSystem().hasFiles(fp)) {
+                FileSystem fs = context.fileSystem();
+                //Search for path _ending_ with the filename
+                for (InputFile f : fs.inputFiles(fs.predicates().hasType(InputFile.Type.MAIN))) {
+                    if (filePath.endsWith(f.relativePath())) {
+                        inputFile = f;
+                        break;
+                    }
+                }
+            } else {
+                inputFile = context.fileSystem().inputFile(fp);
+            }
+            if (inputFile == null) {
                 logger.warn("file not included in sonar {}", filePath);
                 return;
             }
 
             String info = (String) jsonObject.get("qualifier");
-
-            InputFile inputFile = context.fileSystem().inputFile(fp);
             assert inputFile != null;
             try {
                 NewIssueLocation dil = new DefaultIssueLocation()
@@ -111,15 +125,28 @@ public class InferReportParser {
             JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(i);
             String filePath = (String) bugTraceObject.get("filename");
             if (filePath != null) {
-//                if (!filePath.equals(parentFilePath)) {
-//                    continue;
-//                }
-                FilePredicate fp = context.fileSystem().predicates().hasRelativePath(filePath);
+                File file = new File(filePath);
+                FilePredicates predicates = context.fileSystem().predicates();
+                FilePredicate fp = predicates.or(predicates.hasAbsolutePath(filePath), predicates.hasRelativePath(filePath));
+
+                InputFile inputFile = null;
                 if (!context.fileSystem().hasFiles(fp)) {
-                    logger.warn("bug_trace to location file not included in sonar {}", filePath);
+                    FileSystem fs = context.fileSystem();
+                    //Search for path _ending_ with the filename
+                    for (InputFile f : fs.inputFiles(fs.predicates().hasType(InputFile.Type.MAIN))) {
+                        if (filePath.endsWith(f.relativePath())) {
+                            inputFile = f;
+                            break;
+                        }
+                    }
+                } else {
+                    inputFile = context.fileSystem().inputFile(fp);
+                }
+                if (inputFile == null) {
+                    logger.warn("file not included in sonar {}", filePath);
                     continue;
                 }
-                InputFile inputFile = context.fileSystem().inputFile(fp);
+
                 String description = (String) bugTraceObject.get("description");
                 Object lineNumber = bugTraceObject.get(LINE_NUMBER);
                 int lineNum = Integer.parseInt(String.valueOf(lineNumber));

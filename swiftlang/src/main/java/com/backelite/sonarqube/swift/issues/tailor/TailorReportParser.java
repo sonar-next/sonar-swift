@@ -20,6 +20,8 @@ package com.backelite.sonarqube.swift.issues.tailor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.FilePredicates;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
@@ -66,13 +68,27 @@ public class TailorReportParser {
             String ruleId = matcher.group(5);
             String message = matcher.group(6);
 
-            FilePredicate fp = context.fileSystem().predicates().hasAbsolutePath(filePath);
+            FilePredicates predicates = context.fileSystem().predicates();
+            FilePredicate fp = predicates.or(predicates.hasAbsolutePath(filePath), predicates.hasRelativePath(filePath));
+
+            InputFile inputFile = null;
             if (!context.fileSystem().hasFiles(fp)) {
+                FileSystem fs = context.fileSystem();
+                //Search for path _ending_ with the filename
+                for (InputFile f : fs.inputFiles(fs.predicates().hasType(InputFile.Type.MAIN))) {
+                    if (filePath.endsWith(f.relativePath())) {
+                        inputFile = f;
+                        break;
+                    }
+                }
+            } else {
+                inputFile = context.fileSystem().inputFile(fp);
+            }
+            if (inputFile == null) {
                 LOGGER.warn("file not included in sonar {}", filePath);
                 continue;
             }
 
-            InputFile inputFile = context.fileSystem().inputFile(fp);
             NewIssueLocation dil = new DefaultIssueLocation()
                 .on(inputFile)
                 .at(inputFile.selectLine(lineNum))

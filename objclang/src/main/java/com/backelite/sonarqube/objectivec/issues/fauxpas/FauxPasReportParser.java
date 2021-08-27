@@ -23,6 +23,7 @@ import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
@@ -69,7 +70,9 @@ public class FauxPasReportParser {
     private void recordIssue(final JSONObject diagnosticJson) {
         String filePath = (String) diagnosticJson.get("file");
         if (filePath != null) {
-            FilePredicate fp = context.fileSystem().predicates().hasAbsolutePath(filePath);
+            FilePredicates predicates = context.fileSystem().predicates();
+            FilePredicate fp = predicates.or(predicates.hasAbsolutePath(filePath), predicates.hasRelativePath(filePath) );
+
 
             if (!context.fileSystem().hasFiles(fp)) {
                 LOGGER.warn("file not included in sonar {}", filePath);

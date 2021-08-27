@@ -20,6 +20,7 @@ package com.backelite.sonarqube.swift.complexity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.fs.FilePredicate;
+import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.InputComponent;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultInputComponent;
@@ -128,7 +129,9 @@ public class LizardReportParser {
     }
 
     private InputFile getFile(String fileName){
-        FilePredicate fp = context.fileSystem().predicates().hasRelativePath(fileName);
+        FilePredicates predicates = context.fileSystem().predicates();
+        FilePredicate fp = predicates.or(predicates.hasAbsolutePath(fileName), predicates.hasRelativePath(fileName) );
+
         if(!context.fileSystem().hasFiles(fp)){
             LOGGER.warn("file not included in sonar {}", fileName);
             return null;
