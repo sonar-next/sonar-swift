@@ -39,7 +39,7 @@ public class ObjectiveCCpdAnalyzer {
 //        highlighting.onFile(inputFile);
 
         // not support .h file
-        if (inputFile.filename().endsWith(".h")) {
+        if (inputFile.filename().endsWith(".h") || inputFile.filename().endsWith(".mm")) {
             return;
         }
 
