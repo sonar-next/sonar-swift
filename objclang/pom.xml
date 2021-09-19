@@ -34,6 +34,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>4.9.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.tal.sonarqube</groupId>
             <artifactId>commons</artifactId>
             <version>1.5.1</version>
