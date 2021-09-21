@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<profile>
+    <name>Next</name>
+    <language>objc</language>
+    <rules>
+        <rule>
+            <repositoryKey>Next</repositoryKey>
+            <key>RSPEC-138</key>
+        </rule>
+    </rules>
+</profile>

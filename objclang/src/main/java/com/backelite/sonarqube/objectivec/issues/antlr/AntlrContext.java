@@ -37,13 +37,12 @@ public class AntlrContext {
     private final InputFile file;
     private final CommonTokenStream stream;
     private final ParseTree root;
-    private final SourceLine[] lines;
+    private SourceLine[] lines;
 
-    public AntlrContext(InputFile file, CommonTokenStream stream, ParseTree root, SourceLine[] lines) {
+    public AntlrContext(InputFile file, CommonTokenStream stream, ParseTree root) {
         this.file = file;
         this.stream = stream;
         this.root = root;
-        this.lines = lines;
     }
 
     public static AntlrContext fromInputFile(InputFile file, Charset charset) throws IOException {
@@ -52,7 +51,7 @@ public class AntlrContext {
 
     public static AntlrContext fromStreams(InputFile inputFile, InputStream file, InputStream linesStream,
                                            Charset charset) throws IOException {
-        final SourceLinesProvider linesProvider = new SourceLinesProvider();
+//        final SourceLinesProvider linesProvider = new SourceLinesProvider();
         final CharStream charStream = CharStreams.fromStream(file, charset);
         final ObjectiveCLexer lexer = new ObjectiveCLexer(charStream);
         lexer.removeErrorListeners();
@@ -61,8 +60,8 @@ public class AntlrContext {
         final ObjectiveCParser parser = new ObjectiveCParser(stream);
         parser.removeErrorListeners();
         final ParseTree root = parser.translationUnit();
-        final SourceLine[] lines = linesProvider.getLines(linesStream, charset);
-        return new AntlrContext(inputFile, stream, root, lines);
+//        final SourceLine[] lines = linesProvider.getLines(linesStream, charset);
+        return new AntlrContext(inputFile, stream, root);
     }
 
     public SourceLine[] getLines() {

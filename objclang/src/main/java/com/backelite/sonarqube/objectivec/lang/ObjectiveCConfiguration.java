@@ -17,11 +17,11 @@
  */
 package com.backelite.sonarqube.objectivec.lang;
 
-import org.sonar.squidbridge.api.SquidConfiguration;
+//import org.sonar.squidbridge.api.SquidConfiguration;
 
 import java.nio.charset.Charset;
 
-public class ObjectiveCConfiguration extends SquidConfiguration {
+public class ObjectiveCConfiguration {
 
     private boolean ignoreHeaderComments;
 
@@ -29,7 +29,7 @@ public class ObjectiveCConfiguration extends SquidConfiguration {
     }
 
     public ObjectiveCConfiguration(Charset charset) {
-        super(charset);
+//        super(charset);
     }
 
     public boolean getIgnoreHeaderComments() {

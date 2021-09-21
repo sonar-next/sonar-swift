@@ -4,6 +4,7 @@ import com.backelite.sonarqube.objectivec.internal.ObjectiveCLexer;
 import com.backelite.sonarqube.objectivec.internal.ObjectiveCParser;
 import com.backelite.sonarqube.objectivec.issues.antlr.AntlrContext;
 import com.backelite.sonarqube.objectivec.issues.antlr.AntlrUtils;
+import com.backelite.sonarqube.objectivec.issues.antlr.ClassMethodVisitor;
 import com.backelite.sonarqube.objectivec.issues.antlr.CustomTreeVisitor;
 import com.backelite.sonarqube.objectivec.lang.ObjectiveCAstScanner;
 import com.backelite.sonarqube.objectivec.lang.api.ObjectiveCMetric;
@@ -20,6 +21,7 @@ import org.sonar.squidbridge.api.SourceFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,11 +39,9 @@ public class AntlrVisitTest {
         final ObjectiveCParser parser = new ObjectiveCParser(stream);
         parser.removeErrorListeners();
         final ParseTree root = parser.translationUnit();
-
-        CustomTreeVisitor customTreeVisitor = new CustomTreeVisitor();
-//        customTreeVisitor.visit(root);
-        AntlrContext antlrContext = AntlrUtils.getRequest(IOUtils.toString(Objects.requireNonNull(this.getClass().getResourceAsStream("/NetworkRequest.m")), "UTF-8"));
+        CustomTreeVisitor customTreeVisitor = new CustomTreeVisitor(null);
         customTreeVisitor.visit(root);
+        AntlrContext antlrContext = AntlrUtils.getRequest(IOUtils.toString(Objects.requireNonNull(this.getClass().getResourceAsStream("/NetworkRequest.m")), StandardCharsets.UTF_8));
 //        customTreeVisitor.fillContext(null, antlrContext);
     }
 }

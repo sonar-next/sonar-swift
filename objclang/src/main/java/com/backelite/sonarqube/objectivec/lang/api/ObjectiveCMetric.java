@@ -17,10 +17,10 @@
  */
 package com.backelite.sonarqube.objectivec.lang.api;
 
-import org.sonar.squidbridge.measures.CalculatedMetricFormula;
-import org.sonar.squidbridge.measures.MetricDef;
+//import org.sonar.squidbridge.measures.CalculatedMetricFormula;
+//import org.sonar.squidbridge.measures.MetricDef;
 
-public enum ObjectiveCMetric implements MetricDef {
+public enum ObjectiveCMetric {
     FILES,
     LINES,
     LINES_OF_CODE,
@@ -45,7 +45,4 @@ public enum ObjectiveCMetric implements MetricDef {
         return true;
     }
 
-    public CalculatedMetricFormula getCalculatedMetricFormula() {
-        return null;
-    }
 }
