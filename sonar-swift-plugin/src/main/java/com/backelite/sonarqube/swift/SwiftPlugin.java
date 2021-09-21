@@ -21,6 +21,7 @@ import com.backelite.sonarqube.commons.TestFileFinders;
 import com.backelite.sonarqube.objectivec.ObjectiveCSquidSensor;
 import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.issues.ObjectiveCProfile;
+import com.backelite.sonarqube.objectivec.issues.antlr.AntlrSensor;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasRulesDefinition;
@@ -175,6 +176,9 @@ public class SwiftPlugin implements Plugin {
                 // Infer Java quality profile
                 com.tal.sonarqube.java.issues.infer.InferProfile.class,
                 com.tal.sonarqube.java.issues.infer.InferProfileImporter.class,
+
+                // antlr
+                AntlrSensor.class,
 
                 // FauxPas rules
                 FauxPasSensor.class,

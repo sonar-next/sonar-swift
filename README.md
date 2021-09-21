@@ -17,8 +17,13 @@ SonarQube 作为一款成熟的代码扫描服务，对外提供了插件功能�
 ![](docs/quality-profiles-infer.png)
 ![](docs/infer-bug.png)
 
+## ChangeLog 更新日志
+
+1.6 版本之后最低要求 SonarQube 7.9 
+
 ## 规则最佳实践
 我们在公司内部邀请其他同事共同Review了现有的Infer规则，筛选出了部分规则进行扫描，供大家参考。
+
 ### [规则介绍](docs/rule.md)
 
 ## 支持的工具介绍
