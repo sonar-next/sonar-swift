@@ -22,6 +22,8 @@ import com.backelite.sonarqube.objectivec.ObjectiveCSquidSensor;
 import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.issues.ObjectiveCProfile;
 import com.backelite.sonarqube.objectivec.issues.antlr.AntlrSensor;
+import com.backelite.sonarqube.objectivec.issues.antlr.NextProfile;
+import com.backelite.sonarqube.objectivec.issues.antlr.NextRulesDefinition;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasRulesDefinition;
@@ -179,6 +181,9 @@ public class SwiftPlugin implements Plugin {
 
                 // antlr
                 AntlrSensor.class,
+                    NextProfile.class,
+                    NextRulesDefinition.class,
+
 
                 // FauxPas rules
                 FauxPasSensor.class,

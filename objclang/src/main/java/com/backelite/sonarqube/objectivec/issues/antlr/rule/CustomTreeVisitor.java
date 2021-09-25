@@ -1,12 +1,12 @@
-package com.backelite.sonarqube.objectivec.issues.antlr;
+package com.backelite.sonarqube.objectivec.issues.antlr.rule;
 
 import com.backelite.sonarqube.objectivec.internal.*;
-import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.sensor.SensorContext;
+import org.sonar.check.Rule;
 
+@Rule(key = "RSPEC-138")
 public class CustomTreeVisitor extends ObjectiveCParserBaseVisitor {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomTreeVisitor.class);

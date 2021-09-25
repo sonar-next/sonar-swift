@@ -1,5 +1,6 @@
 package com.backelite.sonarqube.objectivec.issues.antlr;
 
+import com.backelite.sonarqube.objectivec.issues.antlr.rule.CustomTreeVisitor;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
