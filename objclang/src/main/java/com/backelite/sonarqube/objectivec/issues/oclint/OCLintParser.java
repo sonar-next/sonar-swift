@@ -88,7 +88,7 @@ final class OCLintParser {
     private void collectFileViolations(String filePath, NodeList nodeList) {
         File file = new File(filePath);
         FilePredicates predicates = context.fileSystem().predicates();
-        FilePredicate fp = predicates.or(predicates.hasAbsolutePath(filePath), predicates.hasRelativePath(filePath));
+        FilePredicate fp = predicates.or(predicates.hasAbsolutePath(file.getAbsolutePath()), predicates.hasRelativePath(filePath));
 
         InputFile inputFile = null;
         if (!context.fileSystem().hasFiles(fp)) {
