@@ -2,6 +2,7 @@ package com.backelite.sonarqube.objectivec.cpd;
 
 import com.backelite.sonarqube.commons.TokenLocation;
 import com.backelite.sonarqube.objectivec.lang.api.ObjectiveCKeyword;
+import com.backelite.sonarqube.objectivec.lang.lexer.ObjectiveCLexer;
 import com.google.common.collect.Sets;
 import com.sonar.sslr.api.*;
 import com.sonar.sslr.impl.Lexer;
@@ -39,7 +40,7 @@ public class ObjectiveCCpdAnalyzer {
 //        highlighting.onFile(inputFile);
 
         // not support .h file
-        if (inputFile.filename().endsWith(".h")) {
+        if (inputFile.filename().endsWith(".h") || inputFile.filename().endsWith(".mm")) {
             return;
         }
 

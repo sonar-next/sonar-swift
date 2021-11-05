@@ -1,0 +1,1 @@
+package com.github.sonar.next.sonarqube.java;

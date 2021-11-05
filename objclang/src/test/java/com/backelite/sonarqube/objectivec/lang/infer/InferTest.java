@@ -1,6 +1,7 @@
 package com.backelite.sonarqube.objectivec.lang.infer;
 
 import com.backelite.sonarqube.objectivec.issues.infer.InferRulesDefinition;
+import org.junit.Assert;
 import org.junit.Test;
 import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
@@ -22,6 +23,6 @@ public class InferTest {
         rulesDefinition.define(context);
 
         RulesDefinition.Repository inferRepository = context.repository("Infer");
-        System.out.println(inferRepository.toString());
+        Assert.assertNotNull(inferRepository);
     }
 }

@@ -1,6 +1,6 @@
-package com.backelite.sonarqube.objectivec.issues.infer;
+package com.github.sonar.next.sonarqube.java.issues.infer;
 
-import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
+import com.github.sonar.next.sonarqube.java.lang.core.Java;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -9,25 +9,23 @@ import org.slf4j.LoggerFactory;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 /**
- * @author wuwenguang magaofei
- * @date 2020/10/27
+ * @author magaofei
+ * @date 2021/04/11
  */
 public class InferRulesDefinition implements RulesDefinition {
 
     private static final Logger logger = LoggerFactory.getLogger(InferRulesDefinition.class);
-    public static final String REPOSITORY_KEY = "Infer";
-    public static final String REPOSITORY_NAME = REPOSITORY_KEY;
-    private static final String RULES_FILE = "/org/sonar/plugins/infer/rules.json";
+    public static final String REPOSITORY_KEY = "infer-java";
+    public static final String REPOSITORY_NAME = "Infer Java";
+    private static final String RULES_FILE = "/org/sonar/plugins/infer/java-rules.json";
 
     private final SonarRuntime sonarRuntime;
     public InferRulesDefinition(SonarRuntime sonarRuntime) {
@@ -36,7 +34,7 @@ public class InferRulesDefinition implements RulesDefinition {
 
     @Override
     public void define(Context context) {
-        NewRepository repository = context.createRepository(REPOSITORY_KEY, ObjectiveC.KEY).setName(REPOSITORY_NAME);
+        NewRepository repository = context.createRepository(REPOSITORY_KEY, Java.KEY).setName(REPOSITORY_NAME);
         try (Reader reader = new InputStreamReader(getClass().getResourceAsStream(RULES_FILE), StandardCharsets.UTF_8)) {
             JSONArray slRules = (JSONArray) JSONValue.parse(reader);
             if (slRules != null) {

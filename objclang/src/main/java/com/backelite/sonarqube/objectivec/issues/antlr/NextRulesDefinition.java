@@ -1,6 +1,6 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.backelite.sonarqube.objectivec.issues.antlr;
 
-import com.tal.sonarqube.java.lang.core.Java;
+import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -18,24 +18,24 @@ import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 /**
- * @author magaofei
- * @date 2021/04/11
+ * @autho magaofei
+ * @date 2020/10/27
  */
-public class InferRulesDefinition implements RulesDefinition {
+public class NextRulesDefinition implements RulesDefinition {
 
-    private static final Logger logger = LoggerFactory.getLogger(InferRulesDefinition.class);
-    public static final String REPOSITORY_KEY = "infer-java";
-    public static final String REPOSITORY_NAME = "Infer Java";
-    private static final String RULES_FILE = "/org/sonar/plugins/infer/java-rules.json";
+    private static final Logger logger = LoggerFactory.getLogger(NextRulesDefinition.class);
+    public static final String REPOSITORY_KEY = "Next";
+    public static final String REPOSITORY_NAME = REPOSITORY_KEY;
+    private static final String RULES_FILE = "/org/sonar/plugins/next/rules.json";
 
     private final SonarRuntime sonarRuntime;
-    public InferRulesDefinition(SonarRuntime sonarRuntime) {
+    public NextRulesDefinition(SonarRuntime sonarRuntime) {
         this.sonarRuntime = sonarRuntime;
     }
 
     @Override
     public void define(Context context) {
-        NewRepository repository = context.createRepository(REPOSITORY_KEY, Java.KEY).setName(REPOSITORY_NAME);
+        NewRepository repository = context.createRepository(REPOSITORY_KEY, ObjectiveC.KEY).setName(REPOSITORY_NAME);
         try (Reader reader = new InputStreamReader(getClass().getResourceAsStream(RULES_FILE), StandardCharsets.UTF_8)) {
             JSONArray slRules = (JSONArray) JSONValue.parse(reader);
             if (slRules != null) {
@@ -50,10 +50,9 @@ public class InferRulesDefinition implements RulesDefinition {
                 }
             }
         } catch (IOException e) {
-            logger.error("Failed to load infer rules", e);
+            logger.error("Failed to load next rules", e);
         }
 
-        SqaleXmlLoader.load(repository, "/com/sonar/sqale/java-infer-model.xml");
         repository.done();
 
     }

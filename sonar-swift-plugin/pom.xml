@@ -24,33 +24,33 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.tal.sonarqube</groupId>
+        <groupId>com.github.sonar-next</groupId>
         <artifactId>sonar-swift</artifactId>
-        <version>1.5.1</version>
+        <version>1.6.0</version>
     </parent>
 
-    <artifactId>tal-sonar-swift-plugin</artifactId>
-    <version>1.5.1</version>
+    <artifactId>sonar-swift-plugin</artifactId>
+    <version>1.6.0</version>
 
     <packaging>sonar-plugin</packaging>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.tal.sonarqube</groupId>
+            <groupId>com.github.sonar-next</groupId>
             <artifactId>java-lang</artifactId>
-            <version>1.5.1</version>
+            <version>1.6.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.tal.sonarqube</groupId>
+            <groupId>com.github.sonar-next</groupId>
             <artifactId>swift-lang</artifactId>
-            <version>1.5.1</version>
+            <version>1.6.0</version>
         </dependency>
         <dependency>
-            <groupId>com.tal.sonarqube</groupId>
+            <groupId>com.github.sonar-next</groupId>
             <artifactId>objc-lang</artifactId>
-            <version>1.5.1</version>
+            <version>1.6.0</version>
         </dependency>
 
         <dependency>

@@ -45,7 +45,9 @@ public enum ObjectiveCMetric implements MetricDef {
         return true;
     }
 
+    @Override
     public CalculatedMetricFormula getCalculatedMetricFormula() {
         return null;
     }
+
 }

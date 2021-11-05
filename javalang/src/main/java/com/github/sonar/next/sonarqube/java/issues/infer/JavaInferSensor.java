@@ -1,7 +1,7 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.github.sonar.next.sonarqube.java.issues.infer;
 
 import com.backelite.sonarqube.commons.Constants;
-import com.tal.sonarqube.java.lang.core.Java;
+import com.github.sonar.next.sonarqube.java.lang.core.Java;
 import org.apache.tools.ant.DirectoryScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

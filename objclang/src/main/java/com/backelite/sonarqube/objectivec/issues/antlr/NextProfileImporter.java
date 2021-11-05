@@ -1,5 +1,7 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.backelite.sonarqube.objectivec.issues.antlr;
 
+import com.backelite.sonarqube.objectivec.issues.infer.InferRulesDefinition;
+import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.profiles.ProfileImporter;
@@ -10,20 +12,20 @@ import org.sonar.api.utils.ValidationMessages;
 import java.io.Reader;
 
 /**
- * @author magaofei
- * @date 2021/04/11
+ * @author
+ * @date 2020/10/27
  */
-public class InferProfileImporter extends ProfileImporter {
+public class NextProfileImporter extends ProfileImporter {
 
-    private static final Logger logger = LoggerFactory.getLogger(InferProfileImporter.class);
+    private static final Logger logger = LoggerFactory.getLogger(NextProfileImporter.class);
 
-    private static final String UNABLE_TO_LOAD_DEFAULT_PROFILE = "Unable to load default infer profile";
+    private static final String UNABLE_TO_LOAD_DEFAULT_PROFILE = "Unable to load default next profile";
 
     private final XMLProfileParser profileParser;
 
-    public InferProfileImporter(final XMLProfileParser xmlProfileParser) {
+    public NextProfileImporter(final XMLProfileParser xmlProfileParser) {
         super(InferRulesDefinition.REPOSITORY_KEY, InferRulesDefinition.REPOSITORY_KEY);
-        setSupportedLanguages("java");
+        setSupportedLanguages(ObjectiveC.KEY);
         profileParser = xmlProfileParser;
     }
 

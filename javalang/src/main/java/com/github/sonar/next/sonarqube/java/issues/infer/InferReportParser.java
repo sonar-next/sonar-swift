@@ -1,4 +1,4 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.github.sonar.next.sonarqube.java.issues.infer;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

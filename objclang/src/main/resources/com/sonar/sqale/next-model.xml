@@ -1,0 +1,23 @@
+<sqale>
+    <chc>
+        <key>MAINTAINABILITY</key>
+        <name>Maintainability</name>
+        <chc>
+            <key>READABILITY</key>
+            <name>Readability</name>
+            <chc>
+                <rule-repo>Next</rule-repo>
+                <rule-key>RSPEC-138</rule-key>
+                <prop>
+                    <key>remediationFunction</key>
+                    <txt>CONSTANT_ISSUE</txt>
+                </prop>
+                <prop>
+                    <key>offset</key>
+                    <val>30</val>
+                    <txt>min</txt>
+                </prop>
+            </chc>
+        </chc>
+    </chc>
+</sqale>
