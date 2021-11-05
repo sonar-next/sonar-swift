@@ -1,6 +1,6 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.github.sonar.next.sonarqube.java.issues.infer;
 
-import com.tal.sonarqube.java.lang.core.Java;
+import com.github.sonar.next.sonarqube.java.lang.core.Java;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.profiles.RulesProfile;

@@ -49,7 +49,7 @@ import com.backelite.sonarqube.swift.issues.tailor.TailorRulesDefinition;
 import com.backelite.sonarqube.swift.issues.tailor.TailorSensor;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
-import com.tal.sonarqube.java.issues.infer.JavaInferSensor;
+import com.github.sonar.next.sonarqube.java.issues.infer.JavaInferSensor;
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
@@ -170,11 +170,11 @@ public class SwiftPlugin implements Plugin {
 
                 // Infer Java rules
                 JavaInferSensor.class,
-                com.tal.sonarqube.java.issues.infer.InferRulesDefinition.class,
+                com.github.sonar.next.sonarqube.java.issues.infer.InferRulesDefinition.class,
 
                 // Infer Java quality profile
-                com.tal.sonarqube.java.issues.infer.InferProfile.class,
-                com.tal.sonarqube.java.issues.infer.InferProfileImporter.class,
+                com.github.sonar.next.sonarqube.java.issues.infer.InferProfile.class,
+                com.github.sonar.next.sonarqube.java.issues.infer.InferProfileImporter.class,
 
                 // antlr
 //                AntlrSensor.class,

@@ -37,7 +37,7 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <groupId>com.tal.sonarqube</groupId>
+    <groupId>com.github.sonar-next</groupId>
     <artifactId>sonar-swift</artifactId>
     <version>1.6.0</version>
 
@@ -58,7 +58,7 @@
 
     <inceptionYear>2015</inceptionYear>
     <organization>
-        <name>TAL</name>
+        <name>sonar-next</name>
     </organization>
     <licenses>
         <license>
@@ -75,7 +75,7 @@
     </scm>
 
     <properties>
-        <license.owner>TAL</license.owner>
+        <license.owner>sonar-next</license.owner>
         <license.title>SonarQube Swift Plugin</license.title>
 
         <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
@@ -239,7 +239,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <pluginClass>SwiftPlugin</pluginClass>
-                    <pluginName>Swift (TAL)</pluginName>
+                    <pluginName>Swift</pluginName>
                 </configuration>
             </plugin>
             <plugin>

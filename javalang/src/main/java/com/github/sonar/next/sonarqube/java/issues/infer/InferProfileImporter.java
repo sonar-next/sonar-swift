@@ -1,4 +1,4 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.github.sonar.next.sonarqube.java.issues.infer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

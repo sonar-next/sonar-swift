@@ -1,6 +1,6 @@
-package com.tal.sonarqube.java.issues.infer;
+package com.github.sonar.next.sonarqube.java.issues.infer;
 
-import com.tal.sonarqube.java.lang.core.Java;
+import com.github.sonar.next.sonarqube.java.lang.core.Java;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
