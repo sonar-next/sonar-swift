@@ -92,7 +92,7 @@
         <sonar-orchestrator.version>3.22.0.1791</sonar-orchestrator.version>
         <sonarlint.version>4.0.0.2052</sonarlint.version>
         <sslr.version>1.23</sslr.version>
-        <sslr-squid-bridge.version>2.6.1</sslr-squid-bridge.version>
+        <sslr-squid-bridge.version>2.7.1.392</sslr-squid-bridge.version>
         <ant.version>1.6</ant.version>
 
     </properties>
