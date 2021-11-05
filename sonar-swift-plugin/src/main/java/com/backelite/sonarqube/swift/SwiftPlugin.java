@@ -18,12 +18,10 @@
 package com.backelite.sonarqube.swift;
 
 import com.backelite.sonarqube.commons.TestFileFinders;
+import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.objectivec.ObjectiveCSquidSensor;
 import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.issues.ObjectiveCProfile;
-import com.backelite.sonarqube.objectivec.issues.antlr.AntlrSensor;
-import com.backelite.sonarqube.objectivec.issues.antlr.NextProfile;
-import com.backelite.sonarqube.objectivec.issues.antlr.NextRulesDefinition;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasRulesDefinition;
@@ -50,7 +48,6 @@ import com.backelite.sonarqube.swift.issues.tailor.TailorProfileImporter;
 import com.backelite.sonarqube.swift.issues.tailor.TailorRulesDefinition;
 import com.backelite.sonarqube.swift.issues.tailor.TailorSensor;
 import com.backelite.sonarqube.swift.lang.core.Swift;
-import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
 import com.tal.sonarqube.java.issues.infer.JavaInferSensor;
 import org.sonar.api.Plugin;
@@ -180,9 +177,10 @@ public class SwiftPlugin implements Plugin {
                 com.tal.sonarqube.java.issues.infer.InferProfileImporter.class,
 
                 // antlr
-                AntlrSensor.class,
-                    NextProfile.class,
-                    NextRulesDefinition.class,
+//                AntlrSensor.class,
+//                    NextProfile.class,
+//                    NextRulesDefinition.class,
+//                    NextProfileImporter.class,
 
 
                 // FauxPas rules

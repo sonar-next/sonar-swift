@@ -53,7 +53,6 @@ public class NextRulesDefinition implements RulesDefinition {
             logger.error("Failed to load next rules", e);
         }
 
-        SqaleXmlLoader.load(repository, "/com/sonar/sqale/next-model.xml");
         repository.done();
 
     }
