@@ -26,11 +26,11 @@
     <parent>
         <groupId>com.github.sonar-next</groupId>
         <artifactId>sonar-swift</artifactId>
-        <version>1.6.0</version>
+        <version>1.6.1</version>
     </parent>
 
     <artifactId>sonar-swift-plugin</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
 
     <packaging>sonar-plugin</packaging>
 
@@ -39,18 +39,18 @@
         <dependency>
             <groupId>com.github.sonar-next</groupId>
             <artifactId>java-lang</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.sonar-next</groupId>
             <artifactId>swift-lang</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.sonar-next</groupId>
             <artifactId>objc-lang</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.1</version>
         </dependency>
 
         <dependency>

@@ -1,4 +1,4 @@
-# _SonarQube Plugin for Swift_ Changelog
+//.# _SonarQube Plugin for Swift_ Changelog
 
 ## Develop
 
