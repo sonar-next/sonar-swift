@@ -56,7 +56,7 @@ public class InferReportParser {
         }
     }
 
-    private void recordIssue(final JSONObject jsonObject) {
+    protected void recordIssue(final JSONObject jsonObject) {
 
         String filePath = (String) jsonObject.get("file");
         logger.debug("record issue for java, path = {}", filePath);
@@ -81,12 +81,13 @@ public class InferReportParser {
             }
 
 
-            File file = new File( filePath );
             FilePredicates predicates = context.fileSystem().predicates();
-            FilePredicate fp = predicates.or( predicates.hasAbsolutePath( filePath ), predicates.hasRelativePath( filePath ) );
+            FilePredicate fp = predicates.or( predicates.hasAbsolutePath( filePath ),
+                predicates.hasRelativePath( filePath ) );
 
             InputFile inputFile = null;
             if (!context.fileSystem().hasFiles( fp )) {
+                logger.debug("fileSystem hasFiles filePath:{}", filePath);
                 FileSystem fs = context.fileSystem();
                 //Search for path _ending_ with the filename
                 for (InputFile f : fs.inputFiles( fs.predicates().hasType( InputFile.Type.MAIN ) )) {
@@ -96,6 +97,7 @@ public class InferReportParser {
                     }
                 }
             } else {
+                logger.debug("fileSystem inputFile filePath:{}", filePath);
                 inputFile = context.fileSystem().inputFile( fp );
             }
             if (inputFile == null) {
@@ -104,17 +106,17 @@ public class InferReportParser {
             }
 
             String info = (String) jsonObject.get("qualifier");
-            // 规则名为了保持一致，增加 JAVA 前缀
-            String rule = "JAVA:" + jsonObject.get("bug_type");
-            assert inputFile != null;
+            String rule = jsonObject.get("bug_type").toString();
             try {
                 NewIssueLocation dil = new DefaultIssueLocation()
                         .on(inputFile)
                         .at(inputFile.selectLine(lineNum))
                         .message(info);
+                RuleKey ruleKey = RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, rule);
+                List<NewIssueLocation> newIssueLocations = this.composeLocationList(filePath, bugTraceJsonArray);
                 context.newIssue()
-                        .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, rule))
-                        .addFlow(this.composeLocationList(filePath, bugTraceJsonArray))
+                        .forRule(ruleKey)
+                        .addFlow(newIssueLocations)
                         .at(dil)
                         .save();
             } catch (IllegalArgumentException e) {
