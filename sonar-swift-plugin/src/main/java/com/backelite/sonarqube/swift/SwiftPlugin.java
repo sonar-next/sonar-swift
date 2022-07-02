@@ -18,7 +18,6 @@
 package com.backelite.sonarqube.swift;
 
 import com.backelite.sonarqube.commons.TestFileFinders;
-import com.backelite.sonarqube.commons.surefire.SurefireSensor;
 import com.backelite.sonarqube.objectivec.ObjectiveCSquidSensor;
 import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.issues.ObjectiveCProfile;
@@ -82,13 +81,6 @@ import java.util.Arrays;
                 key = LizardSensor.REPORT_PATH_KEY,
                 defaultValue = LizardSensor.DEFAULT_REPORT_PATH,
                 name = "Path to Lizard report (complexity)",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-        @Property(
-                key = SurefireSensor.REPORT_PATH_KEY,
-                defaultValue = SurefireSensor.DEFAULT_REPORT_PATH,
-                name = "Path to surefire JUnit reports (unit tests)",
                 description = "Relative to projects' root.",
                 global = false,
                 project = true),
@@ -198,9 +190,6 @@ public class SwiftPlugin implements Plugin {
                 // Code
                 SwiftSquidSensor.class,
                 ObjectiveCSquidSensor.class,
-
-                // Surefire
-                SurefireSensor.class,
 
                 // Coverage
                 CoberturaSensor.class,
