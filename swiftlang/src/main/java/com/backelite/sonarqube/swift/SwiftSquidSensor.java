@@ -18,12 +18,14 @@
 package com.backelite.sonarqube.swift;
 
 import com.backelite.sonarqube.commons.MeasureUtil;
+import com.backelite.sonarqube.swift.cpd.SwiftCpdAnalyzer;
 import com.backelite.sonarqube.swift.lang.SwiftAstScanner;
 import com.backelite.sonarqube.swift.lang.SwiftConfiguration;
 import com.backelite.sonarqube.swift.lang.api.SwiftGrammar;
 import com.backelite.sonarqube.swift.lang.api.SwiftMetric;
 import com.backelite.sonarqube.swift.lang.checks.CheckList;
 import com.backelite.sonarqube.swift.lang.core.Swift;
+import com.backelite.sonarqube.swift.lang.lexer.SwiftLexer;
 import org.sonar.api.batch.fs.FilePredicate;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.rule.CheckFactory;
@@ -57,6 +59,8 @@ public class SwiftSquidSensor implements Sensor {
     private final PathResolver pathResolver;
     private final Checks<SquidCheck<SwiftGrammar>> checks;
 
+    private final SwiftCpdAnalyzer swiftCpdAnalyzer;
+
     private SensorContext context;
     private AstScanner<SwiftGrammar> scanner;
 
@@ -64,6 +68,7 @@ public class SwiftSquidSensor implements Sensor {
         this.context = context;
         this.pathResolver = pathResolver;
         this.checks = checkFactory.<SquidCheck<SwiftGrammar>>create(CheckList.REPOSITORY_KEY).addAnnotatedChecks((Iterable<Class>)CheckList.getChecks());
+        this.swiftCpdAnalyzer = new SwiftCpdAnalyzer(context, SwiftLexer.create());
     }
 
     private SwiftConfiguration createConfiguration() {
@@ -86,6 +91,7 @@ public class SwiftSquidSensor implements Sensor {
         MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.NCLOC, squidFile.getInt(SwiftMetric.LINES_OF_CODE));
         MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.STATEMENTS, squidFile.getInt(SwiftMetric.STATEMENTS));
         MeasureUtil.saveMeasure(context, inputFile, CoreMetrics.COMMENT_LINES, squidFile.getInt(SwiftMetric.COMMENT_LINES));
+        this.swiftCpdAnalyzer.pushCpdTokens(inputFile);
     }
 
     private void saveIssues(InputFile inputFile, SourceFile squidFile) {
