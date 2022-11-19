@@ -21,7 +21,6 @@ import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
 import java.io.BufferedReader;
 import java.io.IOException;

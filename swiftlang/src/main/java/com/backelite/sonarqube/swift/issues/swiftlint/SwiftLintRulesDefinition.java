@@ -24,7 +24,6 @@ import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -49,10 +48,12 @@ public class SwiftLintRulesDefinition implements RulesDefinition {
             if(slRules != null){
                 for (Object obj : slRules) {
                     JSONObject slRule = (JSONObject) obj;
-                    repository.createRule((String) slRule.get("key"))
+                    NewRule newRule = repository.createRule((String) slRule.get("key"))
                         .setName((String) slRule.get("name"))
                         .setSeverity((String) slRule.get("severity"))
                         .setHtmlDescription((String) slRule.get("description"));
+                    newRule.setDebtRemediationFunction(
+                        newRule.debtRemediationFunctions().constantPerIssue("5min"));
                 }
             }
         } catch (IOException e) {
