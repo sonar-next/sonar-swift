@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
