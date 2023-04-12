@@ -88,6 +88,8 @@ infer run --skip-analysis-in-path Pods --compilation-database compile_commands.j
 # 在命令后添加 -Dsonar.swift.lizard.report=lizard-report.xml
 sonar-scanner -Dsonar.host.url=http://sonarqube -Dsonar.projectKey=app -Dsonar.sources=. -Dsonar.swift.swiftlint.report=swiftlint.txt  -Dsonar.swift.infer.report=infer-out/report.json
 
+# oclint example
+-Dsonar.swift.oclint.report=oclint_report.xml
 ```
 
 ## 要求
