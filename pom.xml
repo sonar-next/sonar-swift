@@ -39,7 +39,7 @@
 
     <groupId>com.github.sonar-next</groupId>
     <artifactId>sonar-swift</artifactId>
-    <version>1.8.0</version>
+    <version>1.9.0</version>
 
     <packaging>pom</packaging>
 
