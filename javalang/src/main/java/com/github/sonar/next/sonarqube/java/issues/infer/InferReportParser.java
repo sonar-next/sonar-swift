@@ -108,14 +108,15 @@ public class InferReportParser {
             String info = (String) jsonObject.get("qualifier");
             String rule = jsonObject.get("bug_type").toString();
             try {
-                NewIssueLocation dil = new DefaultIssueLocation()
+                RuleKey ruleKey = RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, rule);
+                NewIssue newIssue = context.newIssue()
+                        .forRule(ruleKey);
+                NewIssueLocation dil = newIssue.newLocation()
                         .on(inputFile)
                         .at(inputFile.selectLine(lineNum))
                         .message(info);
-                RuleKey ruleKey = RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, rule);
-                List<NewIssueLocation> newIssueLocations = this.composeLocationList(filePath, bugTraceJsonArray);
-                context.newIssue()
-                        .forRule(ruleKey)
+                List<NewIssueLocation> newIssueLocations = this.composeLocationList(newIssue, bugTraceJsonArray);
+                        newIssue
                         .addFlow(newIssueLocations)
                         .at(dil)
                         .save();
@@ -126,7 +127,7 @@ public class InferReportParser {
         }
     }
 
-    private List<NewIssueLocation> composeLocationList(String parentFilePath, JSONArray bugTraceJsonArray) {
+    private List<NewIssueLocation> composeLocationList(NewIssue newIssue, JSONArray bugTraceJsonArray) {
         List<NewIssueLocation> locations = new ArrayList<>();
         for (int i = bugTraceJsonArray.size() - 1; i >= 0; i--) {
             JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(i);
@@ -163,7 +164,7 @@ public class InferReportParser {
                 }
                 assert inputFile != null;
                 try {
-                    NewIssueLocation newIssueLocation = new DefaultIssueLocation()
+                    NewIssueLocation newIssueLocation = newIssue.newLocation()
                             .on(inputFile)
                             .at(inputFile.selectLine(lineNum))
                             .message(description);

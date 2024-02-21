@@ -23,7 +23,6 @@ import org.sonar.api.batch.fs.FilePredicate;
 import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.InputComponent;
 import org.sonar.api.batch.fs.InputFile;
-import org.sonar.api.batch.fs.internal.DefaultInputComponent;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.measures.CoreMetrics;
 import org.w3c.dom.Document;
@@ -139,13 +138,12 @@ public class LizardReportParser {
         return context.fileSystem().inputFile(fp);
     }
 
-    static class SwiftFunction extends DefaultInputComponent implements InputComponent {
+    static class SwiftFunction implements InputComponent {
         private String name;
         private String key;
         private String file;
         private int lineNumber;
         SwiftFunction(int scannerId, String name) {
-            super(scannerId);
             String[] vals = name.split(" at ");
             if (vals.length >= 2) {
                 this.name = vals[0].replaceAll("\\W","");
