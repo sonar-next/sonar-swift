@@ -17,36 +17,22 @@
  */
 package com.backelite.sonarqube.objectivec.issues;
 
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser.ProfileRule;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
-import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.infer.InferProfile;
-import com.backelite.sonarqube.objectivec.issues.infer.InferProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfile;
-import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfileImporter;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonar.api.utils.ValidationMessages;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.InputStream;
+import java.util.List;
 
 public class ObjectiveCProfile implements BuiltInQualityProfilesDefinition {
     private static final Logger LOGGER = LoggerFactory.getLogger(ObjectiveCProfile.class);
-    private final OCLintProfileImporter ocLintProfileImporter;
-    private final FauxPasProfileImporter fauxPasProfileImporter;
-    private final InferProfileImporter inferProfileImporter;
-
-    public ObjectiveCProfile(final OCLintProfileImporter ocLintProfileImporter, final FauxPasProfileImporter fauxPasProfileImporter,
-                             final InferProfileImporter inferProfileImporter) {
-        this.ocLintProfileImporter = ocLintProfileImporter;
-        this.fauxPasProfileImporter = fauxPasProfileImporter;
-        this.inferProfileImporter = inferProfileImporter;
-    }
 
     @Override
     public void define(Context context) {
@@ -55,28 +41,40 @@ public class ObjectiveCProfile implements BuiltInQualityProfilesDefinition {
         NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile("Objective-C", ObjectiveC.KEY);
         nbiqp.setDefault(true);
 
-        try(Reader config = new InputStreamReader(getClass().getResourceAsStream(OCLintProfile.PROFILE_PATH))) {
-            RulesProfile ocLintRulesProfile = ocLintProfileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : ocLintRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(OCLintProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing OCLint profile resource: {}", OCLintProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
-        } catch (IOException ex){
-            LOGGER.error("Error Creating Objective-C Profile",ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating Objective-C Profile", ex);
         }
 
-        try(Reader config = new InputStreamReader(getClass().getResourceAsStream(FauxPasProfile.PROFILE_PATH))){
-            RulesProfile fauxPasRulesProfile = fauxPasProfileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : fauxPasRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(),rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(FauxPasProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing FauxPas profile resource: {}", FauxPasProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
-        } catch (IOException ex){
-            LOGGER.error("Error Creating Objective-C Profile",ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating Objective-C Profile", ex);
         }
 
-        try (Reader config = new InputStreamReader(getClass().getResourceAsStream(InferProfile.PROFILE_PATH))) {
-            RulesProfile inferPasRulesProfile = inferProfileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : inferPasRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(InferProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing Infer profile resource: {}", InferProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
         } catch (IOException ex) {
             LOGGER.error("Error Creating Objective-C Profile", ex);

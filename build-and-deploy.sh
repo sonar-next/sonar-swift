@@ -39,8 +39,23 @@ rm $SONARQUBE_HOME/extensions/plugins/backelite-sonar-swift*
 cp sonar-swift-plugin/target/backelite*.jar $SONARQUBE_HOME/extensions/plugins
 rm $SONARQUBE_HOME/extensions/plugins/*sources.jar
 
+# macOS + Java SecurityManager: allow WatchService to load the JDK's native nio library.
+# Without this, SonarQube's embedded Elasticsearch can crash at startup with:
+# AccessControlException ("java.lang.RuntimePermission" "loadLibrary.nio")
+if [ "$(uname)" = "Darwin" ] && [ -n "${SONARQUBE_HOME:-}" ]; then
+	for policy in \
+		"$SONARQUBE_HOME/elasticsearch/config/java.policy" \
+		"$SONARQUBE_HOME/conf/es.policy" \
+		"$SONARQUBE_HOME/conf/java.policy"
+	do
+		if [ -f "$policy" ] && ! grep -q "loadLibrary.nio" "$policy"; then
+			echo "Patching Java policy to allow loadLibrary.nio: $policy" 1>&2
+			printf '\n// Added by sonar-swift build-and-deploy.sh for macOS WatchService\ngrant {\n  permission java.lang.RuntimePermission \"loadLibrary.nio\";\n};\n' >>"$policy"
+		fi
+	done
+fi
+
 # Stop/start Sonar
 unset GEM_PATH GEM_HOME
 $SONARQUBE_HOME/bin/macosx-universal-64/sonar.sh stop
 $SONARQUBE_HOME/bin/macosx-universal-64/sonar.sh start
-

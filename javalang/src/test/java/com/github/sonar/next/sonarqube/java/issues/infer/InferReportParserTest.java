@@ -17,8 +17,8 @@ import org.sonar.api.batch.fs.internal.DefaultFilePredicates;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.SensorContext;
+import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
-import org.sonar.api.batch.sensor.issue.internal.DefaultIssue;
 import org.sonar.api.rule.RuleKey;
 
 import java.io.File;
@@ -80,19 +80,19 @@ class InferReportParserTest {
         when(sensorContext.fileSystem()).thenReturn(fs);
         when(fileSystem.predicates()).thenReturn(predicates);
 
-        DefaultIssue defaultIssue = mock(DefaultIssue.class);
-        when(defaultIssue.addFlow(anyIterable())).thenReturn(defaultIssue);
-        when(defaultIssue.forRule(any(RuleKey.class))).thenReturn(defaultIssue);
-        when(defaultIssue.at(any(NewIssueLocation.class))).thenReturn(defaultIssue);
-        when(sensorContext.newIssue()).thenReturn(defaultIssue);
-        doNothing().when(defaultIssue).save();
+        NewIssue issue = mock(NewIssue.class);
+        when(issue.addFlow(anyIterable())).thenReturn(issue);
+        when(issue.forRule(any(RuleKey.class))).thenReturn(issue);
+        when(issue.at(any(NewIssueLocation.class))).thenReturn(issue);
+        when(sensorContext.newIssue()).thenReturn(issue);
+        doNothing().when(issue).save();
 
         self.parseReport(reportFile);
 
-        verify(defaultIssue, times(1)).addFlow(anyIterable());
-        verify(defaultIssue, times(1)).forRule(any(RuleKey.class));
-        verify(defaultIssue, times(1)).at(any(NewIssueLocation.class));
-        verify(defaultIssue, times(1)).save();
+        verify(issue, times(1)).addFlow(anyIterable());
+        verify(issue, times(1)).forRule(any(RuleKey.class));
+        verify(issue, times(1)).at(any(NewIssueLocation.class));
+        verify(issue, times(1)).save();
 
 
     }

@@ -17,40 +17,37 @@
  */
 package com.backelite.sonarqube.objectivec.issues.oclint;
 
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser.ProfileRule;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonar.api.utils.ValidationMessages;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.InputStream;
+import java.util.List;
 
 public final class OCLintProfile implements BuiltInQualityProfilesDefinition {
     private static final Logger LOGGER = LoggerFactory.getLogger(OCLintProfile.class);
     public static final String PROFILE_PATH = "/org/sonar/plugins/oclint/profile-oclint.xml";
-
-    private final OCLintProfileImporter profileImporter;
-
-    public OCLintProfile(final OCLintProfileImporter importer) {
-        profileImporter = importer;
-    }
 
     @Override
     public void define(Context context) {
         LOGGER.info("Creating OCLint Profile");
         NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile(OCLintRulesDefinition.REPOSITORY_KEY, ObjectiveC.KEY);
 
-        try(Reader config = new InputStreamReader(getClass().getResourceAsStream(OCLintProfile.PROFILE_PATH))) {
-            RulesProfile ocLintRulesProfile = profileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : ocLintRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(OCLintProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing OCLint profile resource: {}", OCLintProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
-        } catch (IOException ex){
-            LOGGER.error("Error Creating OCLint Profile",ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating OCLint Profile", ex);
         }
         nbiqp.done();
     }

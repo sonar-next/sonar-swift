@@ -10,8 +10,8 @@ import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
+import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
-import org.sonar.api.batch.sensor.issue.internal.DefaultIssueLocation;
 import org.sonar.api.rule.RuleKey;
 
 import java.io.File;
@@ -103,13 +103,13 @@ public class InferReportParser {
             String info = (String) jsonObject.get("qualifier");
             assert inputFile != null;
             try {
-                NewIssueLocation dil = new DefaultIssueLocation()
+                NewIssue issue = context.newIssue();
+                NewIssueLocation dil = issue.newLocation()
                         .on(inputFile)
                         .at(inputFile.selectLine(lineNum))
                         .message(info);
-                context.newIssue()
-                        .forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, (String) jsonObject.get("bug_type")))
-                        .addFlow(this.composeLocationList(filePath, bugTraceJsonArray))
+                issue.forRule(RuleKey.of(InferRulesDefinition.REPOSITORY_KEY, (String) jsonObject.get("bug_type")))
+                        .addFlow(this.composeLocationList(issue, filePath, bugTraceJsonArray))
                         .at(dil)
                         .save();
             } catch (IllegalArgumentException e) {
@@ -119,7 +119,7 @@ public class InferReportParser {
         }
     }
 
-    private List<NewIssueLocation> composeLocationList(String parentFilePath, JSONArray bugTraceJsonArray) {
+    private List<NewIssueLocation> composeLocationList(NewIssue issue, String parentFilePath, JSONArray bugTraceJsonArray) {
         List<NewIssueLocation> locations = new ArrayList<>();
         for (int i = bugTraceJsonArray.size() - 1; i >= 0; i--) {
             JSONObject bugTraceObject = (JSONObject) bugTraceJsonArray.get(i);
@@ -156,7 +156,7 @@ public class InferReportParser {
                 }
                 assert inputFile != null;
                 try {
-                    NewIssueLocation newIssueLocation = new DefaultIssueLocation()
+                    NewIssueLocation newIssueLocation = issue.newLocation()
                             .on(inputFile)
                             .at(inputFile.selectLine(lineNum))
                             .message(description);

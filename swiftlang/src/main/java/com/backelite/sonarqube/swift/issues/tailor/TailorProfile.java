@@ -17,17 +17,16 @@
  */
 package com.backelite.sonarqube.swift.issues.tailor;
 
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser.ProfileRule;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonar.api.utils.ValidationMessages;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by tzwickl on 22/11/2016.
@@ -37,23 +36,21 @@ public class TailorProfile implements BuiltInQualityProfilesDefinition {
     private static final Logger LOGGER = LoggerFactory.getLogger(TailorProfile.class);
     public static final String PROFILE_PATH = "/org/sonar/plugins/tailor/profile-tailor.xml";
 
-    private final TailorProfileImporter profileImporter;
-
-    public TailorProfile(final TailorProfileImporter importer) {
-        this.profileImporter = importer;
-    }
-
     @Override
     public void define(Context context) {
         LOGGER.info("Creating Tailor Profile");
         NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile(TailorRulesDefinition.REPOSITORY_KEY, Swift.KEY);
-        try(Reader config = new InputStreamReader(getClass().getResourceAsStream(PROFILE_PATH))) {
-            RulesProfile ocLintRulesProfile = profileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : ocLintRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing Tailor profile resource: {}", PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
-        } catch (IOException ex){
-            LOGGER.error("Error Creating Tailor Profile",ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating Tailor Profile", ex);
         }
         nbiqp.done();
     }

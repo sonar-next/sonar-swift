@@ -17,32 +17,21 @@
  */
 package com.backelite.sonarqube.swift.issues;
 
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser.ProfileRule;
 import com.backelite.sonarqube.swift.issues.swiftlint.SwiftLintProfile;
-import com.backelite.sonarqube.swift.issues.swiftlint.SwiftLintProfileImporter;
-import com.backelite.sonarqube.swift.issues.tailor.TailorProfileImporter;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonar.api.utils.ValidationMessages;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.InputStream;
+import java.util.List;
 
 public class SwiftProfile implements BuiltInQualityProfilesDefinition {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SwiftProfile.class);
-
-    private final SwiftLintProfileImporter swiftLintProfileImporter;
-    private final TailorProfileImporter tailorProfileImporter;
-
-    public SwiftProfile(final SwiftLintProfileImporter swiftLintProfileImporter, final TailorProfileImporter tailorProfileImporter) {
-        this.swiftLintProfileImporter = swiftLintProfileImporter;
-        this.tailorProfileImporter = tailorProfileImporter;
-    }
 
     @Override
     public void define(BuiltInQualityProfilesDefinition.Context context) {
@@ -51,10 +40,14 @@ public class SwiftProfile implements BuiltInQualityProfilesDefinition {
         BuiltInQualityProfilesDefinition.NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile("Swift", Swift.KEY);
         nbiqp.setDefault(true);
 
-        try (Reader config = new InputStreamReader(getClass().getResourceAsStream(SwiftLintProfile.PROFILE_PATH))) {
-            RulesProfile ocLintRulesProfile = swiftLintProfileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : ocLintRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(SwiftLintProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing Swift profile resource: {}", SwiftLintProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
         } catch (IOException ex) {
             LOGGER.error("Error Creating Swift Profile", ex);

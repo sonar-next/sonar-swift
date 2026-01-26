@@ -17,17 +17,16 @@
  */
 package com.backelite.sonarqube.swift.issues.swiftlint;
 
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser.ProfileRule;
 import com.backelite.sonarqube.swift.lang.core.Swift;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonar.api.utils.ValidationMessages;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by gillesgrousset on 03/11/2015.
@@ -37,24 +36,22 @@ public class SwiftLintProfile implements BuiltInQualityProfilesDefinition {
     public static final String PROFILE_PATH = "/org/sonar/plugins/swiftlint/profile-swiftlint.xml";
     private static final Logger LOGGER = LoggerFactory.getLogger(SwiftLintProfile.class);
 
-    private final SwiftLintProfileImporter profileImporter;
-
-    public SwiftLintProfile(final SwiftLintProfileImporter importer) {
-        profileImporter = importer;
-    }
-
     @Override
     public void define(Context context) {
         LOGGER.info("Creating SwiftLint Profile");
         NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile(SwiftLintRulesDefinition.REPOSITORY_KEY, Swift.KEY);
 
-        try(Reader config = new InputStreamReader(getClass().getResourceAsStream(SwiftLintProfile.PROFILE_PATH))) {
-            RulesProfile ocLintRulesProfile = profileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : ocLintRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(SwiftLintProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing SwiftLint profile resource: {}", SwiftLintProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
-        } catch (IOException ex){
-            LOGGER.error("Error Creating SwiftLint Profile",ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating SwiftLint Profile", ex);
         }
         nbiqp.done();
     }

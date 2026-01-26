@@ -26,11 +26,11 @@
     <parent>
         <groupId>com.github.sonar-next</groupId>
         <artifactId>sonar-swift</artifactId>
-        <version>1.8.0</version>
+        <version>1.9.0</version>
     </parent>
 
     <artifactId>sonar-swift-plugin</artifactId>
-    <version>1.8.0</version>
+    <version>1.9.0</version>
 
     <packaging>sonar-plugin</packaging>
 
@@ -39,18 +39,18 @@
         <dependency>
             <groupId>com.github.sonar-next</groupId>
             <artifactId>java-lang</artifactId>
-            <version>1.8.0</version>
+            <version>1.9.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.sonar-next</groupId>
             <artifactId>swift-lang</artifactId>
-            <version>1.8.0</version>
+            <version>1.9.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.sonar-next</groupId>
             <artifactId>objc-lang</artifactId>
-            <version>1.8.0</version>
+            <version>1.9.0</version>
         </dependency>
 
         <dependency>
@@ -101,7 +101,7 @@
             <artifactId>sonar-orchestrator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
+            <groupId>org.sonarsource.api.plugin</groupId>
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
         <dependency>
@@ -118,7 +118,7 @@
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
-                <version>1.16</version>
+                <version>1.25.1.3002</version>
                 <extensions>true</extensions>
                 <configuration>
                     <pluginClass>com.backelite.sonarqube.swift.SwiftPlugin</pluginClass>

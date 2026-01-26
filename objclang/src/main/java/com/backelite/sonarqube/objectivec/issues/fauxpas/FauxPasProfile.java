@@ -17,41 +17,37 @@
  */
 package com.backelite.sonarqube.objectivec.issues.fauxpas;
 
-import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfile;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser;
+import com.backelite.sonarqube.commons.profile.XmlProfileRulesParser.ProfileRule;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonar.api.utils.ValidationMessages;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.InputStream;
+import java.util.List;
 
 public class FauxPasProfile implements BuiltInQualityProfilesDefinition {
     private static final Logger LOGGER = LoggerFactory.getLogger(FauxPasProfile.class);
     public static final String PROFILE_PATH = "/org/sonar/plugins/fauxpas/profile-fauxpas.xml";
-
-    private final FauxPasProfileImporter profileImporter;
-
-    public FauxPasProfile(final FauxPasProfileImporter importer) {
-        profileImporter = importer;
-    }
 
     @Override
     public void define(Context context) {
         LOGGER.info("Creating FauxPas Profile");
         NewBuiltInQualityProfile nbiqp = context.createBuiltInQualityProfile(FauxPasRulesDefinition.REPOSITORY_KEY, ObjectiveC.KEY);
 
-        try(Reader config = new InputStreamReader(getClass().getResourceAsStream(OCLintProfile.PROFILE_PATH))) {
-            RulesProfile ocLintRulesProfile = profileImporter.importProfile(config, ValidationMessages.create());
-            for (ActiveRule rule : ocLintRulesProfile.getActiveRules()) {
-                nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+        try (InputStream config = getClass().getResourceAsStream(FauxPasProfile.PROFILE_PATH)) {
+            if (config == null) {
+                LOGGER.error("Missing FauxPas profile resource: {}", FauxPasProfile.PROFILE_PATH);
+            } else {
+                List<ProfileRule> rules = XmlProfileRulesParser.parse(config);
+                for (ProfileRule rule : rules) {
+                    nbiqp.activateRule(rule.getRepositoryKey(), rule.getRuleKey());
+                }
             }
-        } catch (IOException ex){
-            LOGGER.error("Error Creating FauxPas Profile",ex);
+        } catch (IOException ex) {
+            LOGGER.error("Error Creating FauxPas Profile", ex);
         }
         nbiqp.done();
     }

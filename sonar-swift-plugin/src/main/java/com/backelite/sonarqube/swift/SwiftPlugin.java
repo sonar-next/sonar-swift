@@ -22,15 +22,12 @@ import com.backelite.sonarqube.objectivec.ObjectiveCSquidSensor;
 import com.backelite.sonarqube.objectivec.cpd.ObjectiveCCpdAnalyzer;
 import com.backelite.sonarqube.objectivec.issues.ObjectiveCProfile;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfile;
-import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasRulesDefinition;
 import com.backelite.sonarqube.objectivec.issues.fauxpas.FauxPasSensor;
 import com.backelite.sonarqube.objectivec.issues.infer.InferProfile;
-import com.backelite.sonarqube.objectivec.issues.infer.InferProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.infer.InferRulesDefinition;
 import com.backelite.sonarqube.objectivec.issues.infer.InferSensor;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfile;
-import com.backelite.sonarqube.objectivec.issues.oclint.OCLintProfileImporter;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintRulesDefinition;
 import com.backelite.sonarqube.objectivec.issues.oclint.OCLintSensor;
 import com.backelite.sonarqube.objectivec.lang.core.ObjectiveC;
@@ -39,11 +36,9 @@ import com.backelite.sonarqube.swift.complexity.LizardSensor;
 import com.backelite.sonarqube.swift.coverage.CoberturaSensor;
 import com.backelite.sonarqube.swift.issues.SwiftProfile;
 import com.backelite.sonarqube.swift.issues.swiftlint.SwiftLintProfile;
-import com.backelite.sonarqube.swift.issues.swiftlint.SwiftLintProfileImporter;
 import com.backelite.sonarqube.swift.issues.swiftlint.SwiftLintRulesDefinition;
 import com.backelite.sonarqube.swift.issues.swiftlint.SwiftLintSensor;
 import com.backelite.sonarqube.swift.issues.tailor.TailorProfile;
-import com.backelite.sonarqube.swift.issues.tailor.TailorProfileImporter;
 import com.backelite.sonarqube.swift.issues.tailor.TailorRulesDefinition;
 import com.backelite.sonarqube.swift.issues.tailor.TailorSensor;
 import com.backelite.sonarqube.swift.lang.core.Swift;
@@ -134,7 +129,6 @@ public class SwiftPlugin implements Plugin {
 
                 // SwiftLint guality profile
                 SwiftLintProfile.class,
-                SwiftLintProfileImporter.class,
 
                 // Tailor rules
                 TailorSensor.class,
@@ -142,7 +136,6 @@ public class SwiftPlugin implements Plugin {
 
                 // Tailor quality profile
                 TailorProfile.class,
-                TailorProfileImporter.class,
 
                 // OCLint rules
                 OCLintSensor.class,
@@ -150,7 +143,6 @@ public class SwiftPlugin implements Plugin {
 
                 // OCLint quality profile
                 OCLintProfile.class,
-                OCLintProfileImporter.class,
 
                 // Infer OC rules
                 InferSensor.class,
@@ -158,7 +150,6 @@ public class SwiftPlugin implements Plugin {
 
                 // Infer OC quality profile
                 InferProfile.class,
-                InferProfileImporter.class,
 
                 // Infer Java rules
                 JavaInferSensor.class,
@@ -166,7 +157,6 @@ public class SwiftPlugin implements Plugin {
 
                 // Infer Java quality profile
                 com.github.sonar.next.sonarqube.java.issues.infer.InferProfile.class,
-                com.github.sonar.next.sonarqube.java.issues.infer.InferProfileImporter.class,
 
                 // antlr
 //                AntlrSensor.class,
@@ -181,7 +171,6 @@ public class SwiftPlugin implements Plugin {
 
                 // FauxPas quality profile
                 FauxPasProfile.class,
-                FauxPasProfileImporter.class,
 
                 // Duplications search
 //                SwiftCpdMapping.class,
