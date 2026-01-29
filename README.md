@@ -19,7 +19,28 @@ SonarQube 作为一款成熟的代码扫描服务，对外提供了插件功能�
 
 ## ChangeLog 更新日志
 
+1.8 版本正在升级至 Java 17 和 SonarQube 9.9/10.x  
 1.6 版本之后最低要求 SonarQube 7.9 
+
+## 系统要求
+
+- **Java:** JDK 17+ (从 1.8 版本开始要求)
+- **SonarQube:** 9.9 LTS 或更高版本 (从 1.8 版本开始)
+- **Maven:** 3.6+ (推荐 3.9+)
+
+## SonarQube 兼容性
+
+**当前支持版本：** SonarQube 9.9 LTS (升级中)
+
+**重要变更：**
+- 从 1.8 版本开始，插件需要 Java 17 和 SonarQube 9.9+
+- ProfileImporter API 在 SonarQube 9.x 中已移除
+
+**注意：** 没有 SonarQube 版本 25。SonarQube 版本序列为：6.7 → 7.9 → 8.9 → 9.9 → 10.x
+
+详细的兼容性信息和升级指南请参考：
+- [SONARQUBE_COMPATIBILITY.md](SONARQUBE_COMPATIBILITY.md) - 兼容性文档
+- [UPGRADE_GUIDE.md](UPGRADE_GUIDE.md) - 升级指南
 
 ## 规则最佳实践
 我们在公司内部邀请其他同事共同Review了现有的Infer规则，筛选出了部分规则进行扫描，供大家参考。

@@ -50,70 +50,10 @@ import com.backelite.sonarqube.swift.lang.core.Swift;
 import com.backelite.sonarqube.swift.surefire.SwiftTestFileFinder;
 import com.github.sonar.next.sonarqube.java.issues.infer.JavaInferSensor;
 import org.sonar.api.Plugin;
-import org.sonar.api.Properties;
-import org.sonar.api.Property;
+import org.sonar.api.config.PropertyDefinition;
 
 import java.util.Arrays;
 
-@Properties({
-        @Property(
-                key = CoberturaSensor.REPORT_PATTERN_KEY,
-                defaultValue = CoberturaSensor.DEFAULT_REPORT_PATTERN,
-                name = "Path to Cobertura reports (coverage)",
-                description = "Relative to projects' root. Ant patterns are accepted",
-                global = false,
-                project = true),
-        @Property(
-                key = SwiftLintSensor.REPORT_PATH_KEY,
-                defaultValue = SwiftLintSensor.DEFAULT_REPORT_PATH,
-                name = "Path to SwiftLint report",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-        @Property(
-                key = TailorSensor.REPORT_PATH_KEY,
-                defaultValue = TailorSensor.DEFAULT_REPORT_PATH,
-                name = "Path to Tailor report",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-        @Property(
-                key = LizardSensor.REPORT_PATH_KEY,
-                defaultValue = LizardSensor.DEFAULT_REPORT_PATH,
-                name = "Path to Lizard report (complexity)",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-
-        @Property(
-                key = OCLintSensor.REPORT_PATH_KEY,
-                defaultValue = OCLintSensor.DEFAULT_REPORT_PATH,
-                name = "Path to OCLint pmd formatted report",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-        @Property(
-                key = FauxPasSensor.REPORT_PATH_KEY,
-                defaultValue = FauxPasSensor.DEFAULT_REPORT_PATH,
-                name = "Path to FauxPas json formatted report",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-        @Property(
-                key = InferSensor.REPORT_PATH_KEY,
-                defaultValue = InferSensor.DEFAULT_REPORT_PATH,
-                name = "Path to Infer json formatted report",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true),
-        @Property(
-                key = JavaInferSensor.REPORT_PATH_KEY,
-                defaultValue = JavaInferSensor.DEFAULT_REPORT_PATH,
-                name = "Path to Infer json formatted report",
-                description = "Relative to projects' root.",
-                global = false,
-                project = true)
-})
 public class SwiftPlugin implements Plugin {
 
     @Override
@@ -122,6 +62,56 @@ public class SwiftPlugin implements Plugin {
         TestFileFinders.getInstance().addFinder(new ObjectiveCTestFileFinder());
         context.addExtensions(
             Arrays.asList(
+                // Property definitions
+                PropertyDefinition.builder(CoberturaSensor.REPORT_PATTERN_KEY)
+                    .defaultValue(CoberturaSensor.DEFAULT_REPORT_PATTERN)
+                    .name("Path to Cobertura reports (coverage)")
+                    .description("Relative to projects' root. Ant patterns are accepted")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(SwiftLintSensor.REPORT_PATH_KEY)
+                    .defaultValue(SwiftLintSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to SwiftLint report")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(TailorSensor.REPORT_PATH_KEY)
+                    .defaultValue(TailorSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to Tailor report")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(LizardSensor.REPORT_PATH_KEY)
+                    .defaultValue(LizardSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to Lizard report (complexity)")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(OCLintSensor.REPORT_PATH_KEY)
+                    .defaultValue(OCLintSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to OCLint pmd formatted report")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(FauxPasSensor.REPORT_PATH_KEY)
+                    .defaultValue(FauxPasSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to FauxPas json formatted report")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(InferSensor.REPORT_PATH_KEY)
+                    .defaultValue(InferSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to Infer json formatted report (Objective-C)")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+                PropertyDefinition.builder(JavaInferSensor.REPORT_PATH_KEY)
+                    .defaultValue(JavaInferSensor.DEFAULT_REPORT_PATH)
+                    .name("Path to Infer json formatted report (Java)")
+                    .description("Relative to projects' root.")
+                    .onQualifiers(org.sonar.api.resources.Qualifiers.PROJECT)
+                    .build(),
+
                 // Language support
                 Swift.class,
                 SwiftProfile.class,

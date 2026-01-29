@@ -15,6 +15,26 @@ The repository is an iOS static analysis plugin for SonarQube, supporting Object
 ![](docs/quality-profiles-infer.png)
 ![](docs/infer-bug.png)
 
+## System Requirements
+
+- **Java:** JDK 17+ (required from version 1.8)
+- **SonarQube:** 9.9 LTS or higher (required from version 1.8)
+- **Maven:** 3.6+ (3.9+ recommended)
+
+## SonarQube Compatibility
+
+**Currently Supported Version:** SonarQube 9.9 LTS (upgrade in progress)
+
+**Important Changes:**
+- Starting from version 1.8, the plugin requires Java 17 and SonarQube 9.9+
+- ProfileImporter API has been removed in SonarQube 9.x
+
+**Note:** There is no SonarQube version 25. SonarQube version sequence is: 6.7 → 7.9 → 8.9 → 9.9 → 10.x
+
+For detailed compatibility information and upgrade guide, please refer to:
+- [SONARQUBE_COMPATIBILITY.md](SONARQUBE_COMPATIBILITY.md) - Compatibility documentation
+- [UPGRADE_GUIDE.md](UPGRADE_GUIDE.md) - Upgrade guide
+
 ## Rule Best Practices
 We invited other colleagues within the company to review the existing inference rules, and selected some rules to scan for your reference.
 ### [Rule Introduction](docs/rule.md)
